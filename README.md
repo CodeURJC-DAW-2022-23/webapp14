@@ -9,6 +9,7 @@ En esta fase vamos a definir y desarrollar nuestra aplicación web. Para ello he
 Siendo todos compañeros de otros años y sabiendo la afinidad que nos une, confiamos en nuestras habilidades para llevar a cabo este proyecto.
 
 ## UniHub
+
 ##### Descripción y requisitos principales
 
 UniHub es el nombre que le hemos dado a nuestra página, la cual tiene como temática la distribución de packs y material educativo universitario. Esta tendrá varios apartados que incluyen elementos de interacción social los cuales trabajaremos a lo largo de futuras fases para tenerlos implementados.
@@ -24,10 +25,10 @@ Por último y continuando con la importancia que le damos a la creación de una 
 ##### Entidades
 
 De lo mencionado previamente tenemos una serie de entidades definidas que recogen las abstracciones de los diferentes elementos que tiene nuestra aplicación web que tendrán datos que se almacenarán en nuestras bases de datos. Estas entidades serían:
-* Usuario
-* Foro
-* Encuesta
-* Cursos
+- Usuario
+- Foro
+- Encuesta
+- Cursos
 
 Las relaciones entre sí las podemos visualizar en el siguiente gráfico:
 
@@ -67,11 +68,11 @@ Para este apartado tenemos dos principales tecnologías:
 
 * Búsqueda de información en la web por medio de palabras clave
 
-    - Tendremos la posibilidad de buscar en el apartado de nuestro header visible en las principales pantallas, palabras clave que encuentren los contenidos y apartados deseados.
+  - Tendremos la posibilidad de buscar en el apartado de nuestro header visible en las principales pantallas, palabras clave que encuentren los contenidos y apartados deseados.
     
 * Realización de sugerencias en base a cursos visitados y comprados
-    - Al usuario registrado se le mostrará una ventana de sugerencias basadas en los elementos que visita o compra, coincidiendo por los tags que cada pack tiene asociados
+  - Al usuario registrado se le mostrará una ventana de sugerencias basadas en los elementos que visita o compra, coincidiendo por los tags que cada pack tiene asociados
 
 ---
 
-> _La solución para todo lo necesario en el aula_
+> *La solución para todo lo necesario en el aula*
