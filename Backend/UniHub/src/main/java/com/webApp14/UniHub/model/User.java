@@ -22,11 +22,6 @@ public class User {
     @Column(nullable = false)
     private Boolean discount;
 
-    @ElementCollection(fetch = FetchType.EAGER)
-    private List<String> roles;
-    @ElementCollection(fetch = FetchType.EAGER)
-    private List<Pack> userPack_List;
-
     // Constructors
     public User() {
     }
@@ -78,21 +73,5 @@ public class User {
     public void setDiscount(Boolean discount) {
         this.discount = discount;
     }
-
-   public List<String> getRoles() {
-        return roles;
-    }
-    public void setRoles(List<String> roles) {
-        this.roles = roles;
-    }
-
-    public List<Pack> getUserPack_List() {
-        return userPack_List;
-    }
-
-    public void setUserPack_List(List<Pack> userPack_List) {
-        this.userPack_List = userPack_List;
-    }
-
 
 }
