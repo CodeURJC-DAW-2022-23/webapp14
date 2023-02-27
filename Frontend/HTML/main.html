@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+   <head>
+      <title>UniHub</title>
+      <meta charset="UTF-8" name="viewport" http-equiv="X-UA-Compatible" content="IE=edge" />
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
+
+      <script src="/JS/screenPopUp.js"></script>
+      <script src="/JS/load_async.js"></script>
+      <script src="/JS/surveyShower.js"></script>
+      <script src="/JS/img_dropdown.js" defer></script>
+
+      <link type="text/css" rel="stylesheet" href="/CSS/packStyle.css" media="screen" />
+      <link type="text/css" rel="stylesheet" href="/CSS/mainStyle.css" media="screen" />
+      <link type="text/css" rel="stylesheet" href="/CSS/postStyle.css" media="screen" />
+      <link type="text/css" rel="stylesheet" href="/CSS/packInfoStyle.css" media="screen" />
+      <link type="text/css" rel="stylesheet" href="/CSS/threadStyle.css" media="screen" />
+      <link type="text/css" rel="stylesheet" href="/CSS/clientStyle.css" media="screen" />
+      <link type="text/css" rel="stylesheet" href="/CSS/threadMakerStyle.css" media="screen" />
+
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+      <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous" defer></script>
+      <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous" defer></script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous" defer></script>
+   </head>
+
+   <body onload="includeHTML()">
+      <header style="display: inline">
+         <nav class="navbar navbar-expand-lg">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+               <span class="navbar-toggler-icon">
+                  <img src="/Img-Sources/Loaders/DeployMore.svg" width="65" height="65" />
+               </span>
+            </button>
+            <a class="navbar-brand mr-5" href="main.html"><img src="/Img-Sources/Brand-Icon/brand.png" width="65" height="65" /></a>
+
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+               <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                  <li class="nav-item">
+                     <a class="nav-link" href="packs.html">Packs&#128293;</a>
+                  </li>
+                  <li class="nav-item">
+                     <a class="nav-link" href="forms.html">Foro&#128221;</a>
+                  </li>
+                  <li class="nav-item">
+                     <a class="nav-link" href="surveys.html">Encuestas&#128077;</a>
+                  </li>
+               </ul>
+               <form class="form-inline my-2 my-lg-0">
+                  <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />
+                  <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+               </form>
+               <li class="nav-item">
+                  <a id="headerButton" class="nav-link text-white" onclick="toggle()">LOG IN&#x2705;</a>
+               </li>
+            </div>
+         </nav>
+      </header>
+      <main>
+         <section class="main-back to-purple-500" id="packContent">
+            <div w3-include-html="loading.html"></div>
+            <div id="firstContainer" class="container my-20">
+               <div class="row">
+                  <div class="col-md-12 d-flex flex-column align-items-center text-center py-6">
+                     <h1 class="text-6xl mb-0">Aprende a estudiar <span class="text-primary">eficazmente</span></h1>
+                     <p class="text-2xl text-gray-700">
+                        Mejor web de
+                        <span class="text-yellow-500 font-bold">material</span> &
+                        <span class="text-pink-500 font-bold">recomendaciones</span>
+                        para aprobar tus exámenes
+                     </p>
+                  </div>
+               </div>
+            </div>
+            <div id="secondContainer" class="container my-20">
+               <div class="row">
+                  <div class="col-sm-12 d-flex flex-column align-items-center text-center py-6">
+                     <h1 id="emoji" class="text-6xl mb-0">👇</h1>
+                     <br /><br />
+                     <p id="information">
+                        Bienvenidos a nuestra tienda en línea donde les ofrecemos packs de materiales y recursos sobre diferentes carreras universitarias. Nuestros packs están diseñados para ayudar a los estudiantes a aprobar sus exámenes con mayor facilidad y éxito.<br />
+                        Nuestros materiales incluyen apuntes detallados, resúmenes, esquemas y mucho más, todo seleccionado por expertos en cada materia para garantizar su calidad y eficacia. <br />
+                        Además, nuestro equipo de apoyo está disponible las 24 horas para responder a cualquier pregunta o duda que pueda tener. Pero no solo eso, también disponemos de un foro donde los antiguos alumnos pueden compartir sus opiniones sobre las materias y las carreras universitarias.<br />
+                        Aquí, los estudiantes pueden obtener información valiosa de primera mano sobre las materias y las carreras, así como hacer preguntas y obtener respuestas de otros estudiantes que han pasado por la misma experiencia. En resumen, si está buscando una manera de aprobar sus exámenes con más facilidad y éxito, no busque más. <br />
+                        nuestros packs de materiales y recursos, y con el apoyo de nuestro foro, estamos seguros de que podrá obtener los resultados que desea. <br />
+                        ¡No dude en visitarnos hoy mismo!
+                     </p>
+                  </div>
+               </div>
+            </div>
+         </section>
+      </main>
+      <footer>
+         <div class="mx-auto w-24 h-1 my-40 bg-gradient-to-r from-orange-500 to-pink-500 rounded-full mb-5"></div>
+         <div class="pt-10">
+            ¿Hay algún problema con la web?
+            <a class="text-blue-500" href="https://github.com/CodeURJC-DAW-2022-23/webapp14.git">Ayúdanos en GitHub</a>
+         </div>
+         <div class="py-2">
+            ¿Necesitas ayuda? -->
+            <a><strong class="text-white font-bold">UniHub@hotmail.com</strong></a>
+         </div>
+         <div class="flex justify-center items-center"></div>
+         <h6>Links Útiles</h6>
+         <object class="rocket-logo" data="/Img-Sources/Loaders/rocketLogo.svg" type="image/svg+xml"></object>
+         <div class="py-3"><a href="packs.html">Packs</a> | <a href="/forms.html">Foro</a> | <a href="/survey.html">Encuestas</a> | <a href="#">LogIn</a> | <a href="#">SignUp</a></div>
+         <div class="text-xs">Copyright © 2023 UniHub LLC <br /></div>
+      </footer>
+      <footer class="container text-center text-gray3">
+         <div w3-include-html="footer.html"></div>
+      </footer>
+   </body>
+</html>
