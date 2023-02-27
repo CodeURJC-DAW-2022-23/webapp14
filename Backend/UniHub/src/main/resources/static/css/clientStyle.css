@@ -1,0 +1,146 @@
+@font-face {
+   font-family: 'myFont-Texts';
+   src: url(/Frontend/Fonts/rothek-extralight.otf) format('truetype');
+}
+
+.profile-container {
+   position: relative;
+   min-height: 400px;
+   padding: 1rem 1rem 0.8rem 2rem;
+   border-radius: 15px;
+   background: rgba(121, 121, 121, 0.315);
+}
+
+.profile-elements {
+   display: flex;
+   flex-direction: row;
+   margin-top: 1.5rem;
+   padding-left: 1rem;
+   align-items: flex-start;
+}
+
+.section-title {
+   color: rgb(40, 228, 181);
+   font-size: 2.5rem;
+   padding-top: 0.5rem;
+   padding-left: 1rem;
+   top: 0;
+   left: 0;
+}
+
+.profile-img {
+   background: rgba(255, 255, 255, 0.829);
+   width: 150px;
+   height: 150px;
+   border-radius: 20px;
+   transition: 500ms;
+}
+
+.profile-img:hover {
+   cursor: pointer;
+   transition: 500ms;
+   scale: 1.04;
+}
+
+.profile-placeholder {
+   color: rgb(40, 228, 181);
+   font-size: 24px;
+   margin-top: 1rem;
+   padding-left: 3rem;
+}
+
+.profile-name {
+   width: 100%;
+}
+
+.user-name {
+   bottom: 0;
+   right: 0;
+   color: aliceblue;
+   font-size: 25px;
+   padding: 15px;
+   margin-right: 10px;
+}
+
+.pack-elements {
+   margin-bottom: 3rem;
+}
+
+.packId-container {
+   box-shadow: 0 5px 30px rgba(0, 0, 0, 0.3);
+   background-image: linear-gradient(rgba(63, 63, 63, 0.74), rgba(32, 32, 32, 0.74));
+   padding: 1rem;
+   margin-right: 1rem;
+   border-radius: 10px;
+   transition: 500ms;
+}
+
+.packId-container:hover {
+   cursor: pointer;
+   background-image: linear-gradient(rgba(92, 92, 92, 0.74), rgba(68, 68, 68, 0.74));
+   scale: 1.02;
+   transition: 500ms;
+}
+
+.packId-header {
+   display: flex;
+   flex-direction: row;
+   align-items: flex-start;
+}
+
+.packId-svg {
+   background: rgba(255, 255, 255, 0.829);
+   border-radius: 20px;
+}
+
+.packId-info {
+   display: flex;
+   flex-direction: column;
+   padding-left: 1rem;
+}
+
+.packId-title {
+   font-size: larger;
+   color: rgb(65, 230, 175);
+}
+
+.packId-content {
+   font-family: 'myFont-Texts', sans-serif;
+   padding-top: 0.4rem;
+   padding-left: 0.5rem;
+   font-weight: 800;
+   color: aliceblue;
+}
+
+/*Styles for separator element in between the pages*/
+.from-blue-500 {
+   --tw-gradient-from: #16f9a2;
+   --tw-gradient-to: rgb(249 115 22 / 0);
+   --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.to-purple-500 {
+   --tw-gradient-to: #aa48ec;
+}
+
+.roundier {
+   margin-top: 20px;
+   margin-bottom: 50px;
+   border-radius: 9999px;
+}
+
+.show-more {
+   min-width: 170px;
+   height: 30px;
+   border-radius: 20px;
+   background: rgb(40, 228, 181);
+   transition: 500 ms;
+}
+
+.show-more:hover {
+   transition: 500ms;
+   cursor: pointer;
+   color: aliceblue;
+   scale: 1.1;
+   background: rgb(95, 30, 156);
+}

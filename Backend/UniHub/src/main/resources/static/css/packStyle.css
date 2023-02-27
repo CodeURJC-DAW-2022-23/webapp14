@@ -1,0 +1,441 @@
+/*Imports for the font types*/
+@font-face {
+   font-family: 'myFont-Titles';
+   src: url(/Frontend/Fonts/panton-rust-black-base.ttf) format('truetype');
+}
+
+@font-face {
+   font-family: 'myFont-Texts';
+   src: url(/Frontend/Fonts/rothek-extralight.otf) format('truetype');
+}
+
+/*Styles for the background gradient animation*/
+@keyframes gradient {
+   0% {
+      background-position: 0% 50%;
+   }
+
+   50% {
+      background-position: 100% 50%;
+   }
+
+   100% {
+      background-position: 0% 50%;
+   }
+}
+
+/*Styles for the general html*/
+html {
+   line-height: 1.5;
+   -webkit-text-size-adjust: 100%;
+   -moz-tab-size: 4;
+   -o-tab-size: 4;
+   tab-size: 4;
+}
+
+/*Styles for the header area to define items, colors, etc*/
+header .nav-link {
+   color: #ffffff;
+}
+
+header {
+   margin-top: 3rem;
+   margin-bottom: 4rem;
+   margin-left: 2rem;
+   margin-right: 4rem;
+}
+
+header .navbar-brand {
+   transition: 500ms;
+}
+
+header .navbar-brand:hover {
+   cursor: pointer;
+   scale: 1.07;
+   box-shadow: 0px 0px 10px 10px rgba(247, 0, 255, 0.219);
+}
+
+header .form-inline {
+   margin-left: 1rem;
+   margin-right: 1.3rem;
+}
+
+header .nav-link:hover {
+   cursor: pointer;
+   scale: 1.15;
+   transition: ease-in-out 500ms;
+}
+
+header .nav-link header#headerContent.on {
+   transition: 500ms;
+   filter: blur(1.5rem);
+   pointer-events: none;
+   user-select: null;
+}
+
+header#headerLogged.on {
+   transition: 500ms;
+   filter: blur(1.5rem);
+   pointer-events: none;
+   user-select: null;
+}
+
+.navbar-toggler-icon {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   width: 50px;
+   height: 50px;
+   padding: 0;
+   margin: 0;
+   border: none;
+   background-color: transparent;
+}
+
+/*Styles for the body part of the html, sets backgrounds, colors, font types*/
+body {
+   transition: 500ms;
+   font-family: 'myFont-Titles', sans-serif;
+   background: linear-gradient(-45deg, #172333, #1f1013, #0d0d33, #18042e);
+   animation: gradient 20s ease infinite;
+   background-size: 400% 400%;
+}
+
+body::-webkit-scrollbar {
+   height: 0.375rem;
+   width: 0.375rem;
+}
+
+body::-webkit-scrollbar-thumb {
+   border-radius: 0.125rem;
+   --tw-bg-opacity: 1;
+   background-color: rgb(69 78 86 / var(--tw-bg-opacity));
+}
+
+body::-webkit-scrollbar-track {
+   --tw-bg-opacity: 1;
+   background-color: rgb(18 24 27 / var(--tw-bg-opacity));
+}
+
+/*Styles for the login section to edit the position and sizes of buttons, text and container*/
+section #login_popup {
+   position: fixed;
+   top: 50%;
+   left: 50%;
+   max-width: 50%;
+   min-width: 30%;
+   height: 600px;
+   padding: 40px;
+   color: aliceblue;
+   box-shadow: 0 5px 30px rgba(0, 0, 0, 0.3);
+   background-image: linear-gradient(rgb(48, 48, 48), rgb(24, 24, 24));
+   transform: translate(-50%, -50%);
+   border-radius: 7%;
+   visibility: hidden;
+   opacity: 0;
+   transition: 500ms;
+}
+
+section #register_popup {
+   position: fixed;
+   top: 50%;
+   left: 50%;
+   max-width: 50%;
+   min-width: 30%;
+   height: 650px;
+   padding: 40px;
+   color: aliceblue;
+   box-shadow: 0 5px 30px rgba(0, 0, 0, 0.3);
+   background-image: linear-gradient(rgb(48, 48, 48), rgb(24, 24, 24));
+   transform: translate(-50%, -50%);
+   border-radius: 7%;
+   visibility: hidden;
+   opacity: 0;
+   transition: 500ms;
+}
+
+@media (max-width: 767px) {
+   #buttonsContainer {
+      flex-direction: column;
+   }
+}
+
+#buttonsContainer button {
+   margin-bottom: -85px;
+}
+
+#login_popup,
+#register_popup h1 {
+   margin-bottom: 40px;
+}
+
+section #login_popup.on {
+   z-index: 1;
+   visibility: visible;
+   opacity: 1;
+   transition: 500ms;
+}
+
+section #register_popup.on {
+   z-index: 1;
+   visibility: visible;
+   opacity: 1;
+   transition: 500ms;
+}
+
+main {
+   min-height: 100%;
+   margin-bottom: 5rem;
+}
+
+/*Styles for the survey area to have the questions spaced and colores set*/
+main .survey-container {
+   margin-top: 20px;
+   margin-bottom: 50px;
+   transition: 500ms;
+}
+
+main .survey-header {
+   color: rgb(65, 230, 175);
+   text-shadow: 2px 2px 5px #000000;
+   transition: 500ms;
+}
+
+main .survey-header:hover {
+   cursor: pointer;
+}
+
+main .survey-header:hover {
+   scale: 1.1;
+   transition: 500ms;
+}
+
+main .survey-content {
+   margin-top: 40px;
+   margin-bottom: 100px;
+   color: aliceblue;
+}
+
+main .survey-content p {
+   margin-top: 4px;
+   margin-bottom: 20px;
+   color: rgb(117, 193, 255);
+}
+
+/*Styles for separator element in between the pages*/
+.bg-gradient-to-r {
+   background-image: linear-gradient(to right, var(--tw-gradient-stops));
+}
+
+.from-orange-500 {
+   --tw-gradient-from: #f97316;
+   --tw-gradient-to: rgb(249 115 22 / 0);
+   --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.to-pink-500 {
+   --tw-gradient-to: #ec4899;
+}
+
+.rounded-full {
+   margin-top: 40px;
+   border-radius: 9999px;
+}
+
+.w-24 {
+   width: 6rem;
+}
+
+.h-1 {
+   height: 0.25rem;
+}
+
+.my-24 {
+   margin-top: 6rem;
+   margin-bottom: 6rem;
+}
+
+.mx-auto {
+   margin-left: auto;
+   margin-right: auto;
+}
+
+/*Styles for the course section to show all the different materials up for sale, controlling margins from elements and sections*/
+#packContent.on {
+   transition: 500ms;
+   filter: blur(1.5rem);
+   pointer-events: none;
+   user-select: null;
+}
+
+.packInfo-link:hover {
+   text-decoration: none;
+}
+
+.more-packs {
+   text-align: right;
+   margin-bottom: 10px;
+   margin-right: 3rem;
+   padding: 1rem;
+}
+
+.more-packs .pack-button {
+   background-color: #2dffb9;
+   width: 30px;
+   align-self: center;
+   color: #111111;
+   border-radius: 10px;
+   transition: 500ms;
+}
+
+.more-packs .pack-button:hover {
+   background-color: #6f33fa;
+   border-radius: 20px;
+   cursor: pointer;
+   transition: 500ms;
+   scale: 1.07;
+}
+
+.product-row {
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: center;
+   margin: 0 auto;
+}
+
+.product-column {
+   cursor: pointer;
+   min-width: 280px;
+   max-width: 300px;
+   height: 500px;
+   margin: 0 20px;
+   border-radius: 10px;
+   overflow: hidden;
+   margin-bottom: 15px;
+   background-image: linear-gradient(rgb(48, 48, 48), rgb(24, 24, 24));
+   display: flex;
+   flex-direction: column;
+   transition: 500ms;
+   box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.349);
+}
+
+.product-column:last-child {
+   margin-right: 20px;
+}
+
+.product-column:hover {
+   scale: 1.04;
+   transition: ease-in-out 500ms;
+}
+
+.product-column img {
+   max-width: 100%;
+   height: 40%;
+   object-fit: cover;
+   box-shadow: 0px 5px 8px rgba(0, 0, 0, 0.349);
+}
+
+.product-column h3 {
+   text-align: left;
+   padding-left: 7%;
+   color: rgb(65, 230, 175);
+   margin-top: 10px;
+   font-weight: bold;
+}
+
+.product-column p {
+   height: 170px;
+   font-family: 'myFont-Texts', sans-serif;
+   font-weight: bold;
+   color: aliceblue;
+   text-align: left;
+   padding-right: 1rem;
+   padding-top: 1rem;
+   padding-left: 0.7rem;
+   padding-bottom: 1rem;
+   font-size: 15px;
+}
+
+.purchase-span .purchase-logo {
+   position: absolute;
+   bottom: 0.3rem;
+   right: 0.4rem;
+   background-color: #1f1f1f;
+   box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.349);
+   border-radius: 10px;
+   margin-bottom: 0.5rem;
+   transition: ease-in-out 500ms;
+}
+
+.purchase-span .purchase-logo:hover {
+   background-color: #383737;
+   transition: ease-in-out 500ms;
+}
+
+/*Styles for the different tags of each individual pack*/
+.tag {
+   font-family: 'myFont-Texts', sans-serif;
+   width: fit-content;
+   bottom: 0.3rem;
+   left: 0.3rem;
+   display: inline-block;
+   margin-top: 4px;
+   margin-right: 0.25rem;
+   border-radius: 0.375rem;
+   border-style: none;
+   padding: 0.25rem 0.25rem 0.3rem;
+   font-size: 0.75rem;
+   font-weight: bolder;
+   line-height: 1rem;
+   --tw-text-opacity: 1;
+}
+
+.tag-math {
+   background-color: #d8c444;
+}
+
+.tag-programming {
+   background-color: #f02b56;
+}
+
+.tag-hardware {
+   background-color: #401470;
+   color: white;
+}
+
+.tag-logic {
+   color: rgb(63, 63, 204);
+   background-color: #111111;
+}
+
+@media (max-width: 992px) {
+   .product-column {
+      width: 100%;
+   }
+}
+
+/*Styles for the footer area which is located on the bottom side of our webpage*/
+footer {
+   padding-bottom: 20px;
+   margin-top: 15rem;
+   font-size: 11px;
+   display: block;
+}
+
+@keyframes grow {
+   0% {
+      transform: scale(1);
+   }
+
+   50% {
+      transform: scale(1.16);
+   }
+
+   100% {
+      transform: scale(1);
+   }
+}
+
+footer .rocket-logo {
+   animation: grow 1.75s ease-in-out infinite;
+}

@@ -1,0 +1,89 @@
+@font-face {
+   font-family: 'myFont-Texts';
+   src: url(/Frontend/Fonts/rothek-extralight.otf) format('truetype');
+}
+
+.post-link:hover {
+   text-decoration: none;
+}
+
+.thread {
+   cursor: pointer;
+   position: relative;
+   padding: 2rem 2rem 0.8rem 2rem;
+   border-radius: 15px;
+   transition: 500ms;
+   background: rgba(121, 121, 121, 0.315);
+}
+
+.thread-button {
+   transition: 500ms;
+}
+
+.thread-button:hover {
+   transition: 500ms;
+   color: white;
+   background: rgb(76, 24, 124);
+   scale: 1.03;
+}
+.thread:hover {
+   transition: 500ms;
+   background: rgba(121, 121, 121, 0.637);
+   scale: 1.03;
+}
+
+.thread-header {
+   display: flex;
+   flex-direction: row;
+   align-items: flex-start;
+}
+
+.thread-svg {
+   background: rgba(255, 255, 255, 0.829);
+   border-radius: 20px;
+}
+
+.thread-info {
+   display: flex;
+   flex-direction: column;
+   padding-left: 1rem;
+}
+
+.thread-title {
+   font-size: larger;
+   color: rgb(65, 230, 175);
+}
+
+.thread-content {
+   font-family: 'myFont-Texts', sans-serif;
+   padding-top: 0.4rem;
+   padding-left: 0.5rem;
+   font-weight: 800;
+   color: aliceblue;
+}
+
+.thread-author {
+   position: absolute;
+   bottom: 0;
+   right: 0;
+   color: aliceblue;
+   font-size: 17px;
+   padding: 10px;
+   margin-right: 10px;
+}
+
+.show-more {
+   min-width: 170px;
+   height: 30px;
+   border-radius: 20px;
+   background: rgb(40, 228, 181);
+   transition: 500 ms;
+}
+
+.show-more:hover {
+   transition: 500ms;
+   cursor: pointer;
+   color: aliceblue;
+   scale: 1.1;
+   background: rgb(95, 30, 156);
+}

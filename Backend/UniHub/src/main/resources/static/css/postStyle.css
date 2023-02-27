@@ -1,0 +1,134 @@
+@font-face {
+   font-family: 'myFont-Texts';
+   src: url(/Frontend/Fonts/rothek-extralight.otf) format('truetype');
+}
+
+.post-container {
+   padding: 2rem 2rem 0.8rem 2rem;
+   border-radius: 15px;
+   transition: 500ms;
+   background: rgba(219, 219, 219, 0.315);
+   display: flex;
+   flex-direction: column;
+   padding-left: 1rem;
+}
+
+.post-svg {
+   background-color: rgba(240, 248, 255, 0.623);
+   border-radius: 20px;
+}
+
+.post-header {
+   display: flex;
+   flex-direction: row;
+   align-items: flex-start;
+}
+
+.post-title {
+   padding-top: 1rem;
+   padding-left: 2rem;
+   color: rgb(40, 228, 181);
+   font-size: 40px;
+}
+
+/*Styles for separator element in between the pages*/
+.from-blue-500 {
+   --tw-gradient-from: #16f9a2;
+   --tw-gradient-to: rgb(249 115 22 / 0);
+   --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.to-purple-500 {
+   --tw-gradient-to: #aa48ec;
+}
+
+.roundy {
+   margin-top: 10px;
+   border-radius: 9999px;
+}
+
+.post-info {
+   position: relative;
+   margin-top: 20px;
+   margin-left: 2rem;
+   border-radius: 15px;
+   background: rgba(127, 139, 192, 0.747);
+   color: aliceblue;
+   margin-right: 4rem;
+   font-weight: 800;
+   padding-top: 1rem;
+   padding-left: 1.5rem;
+   padding-right: 3rem;
+   padding-bottom: 3.5rem;
+   font-family: 'myFont-Texts', sans-serif;
+}
+
+.upvote-svg {
+   z-index: 999;
+   position: absolute;
+   bottom: 0;
+   left: 0;
+   transition: 500ms;
+}
+
+.upvote-svg:hover {
+   transition: 500ms;
+   scale: 1.2;
+}
+
+.upvote-number {
+   position: absolute;
+   bottom: 0;
+   left: 0;
+   padding-left: 3.2rem;
+   padding-bottom: 0.7rem;
+}
+
+.post-metadata {
+   padding-top: 1rem;
+   padding-right: 2rem;
+   text-align: right;
+}
+
+.post-reply {
+   background: rgba(219, 219, 219, 0.315);
+   padding: 1rem;
+   position: relative;
+   border-radius: 20px;
+}
+
+.post-reply h2 {
+   text-align: right;
+   margin-top: 1rem;
+   color: rgb(40, 228, 181);
+}
+
+.response-text {
+   border: ridge 2px;
+   padding: 5px;
+   width: 100%;
+   min-height: 5em;
+   background: rgba(103, 114, 163, 0.747);
+   font-family: 'myFont-Texts', sans-serif;
+   color: white;
+   font-weight: 900;
+   margin-bottom: 2rem;
+}
+
+.submit-button {
+   position: absolute;
+   margin-bottom: 0.5rem;
+   margin-right: 1rem;
+   bottom: 0;
+   right: 0;
+   border-radius: 15px;
+   background-color: rgb(40, 228, 181);
+   transition: 500ms;
+}
+
+.submit-button:hover {
+   cursor: pointer;
+   transition: 500ms;
+   background-color: rgb(95, 30, 156);
+   scale: 1.3;
+}
