@@ -89,5 +89,5 @@ public class DatabaseInitializer {
         User admin = new User("admin123","admin@hotmail.com","123", true);
         userRepository.save(admin);
     }
-    
+
 }
