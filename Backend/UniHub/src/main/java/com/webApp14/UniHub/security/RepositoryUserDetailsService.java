@@ -2,6 +2,7 @@ package com.webApp14.UniHub.security;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
@@ -36,5 +37,35 @@ public class RepositoryUserDetailsService implements UserDetailsService {
                     user.getPassword(), roles);
 
         }
+
+  /*  public Optional<User> findById(long id) {
+        return userRepository.findById(id);
+    }
+    public Optional<User> findByUsername(String username) {
+        return userRepository.findByUsername(username);
+    }
+    public Optional<User> findByEmail(String email) {
+        return userRepository.findByEmail(email);
+    }
+    public Optional<User> findByNameAndPassword(String name, String password) {
+        return userRepository.findByNameAndPassword(name, password);
+    }
+
+    public boolean exist(long id) {
+        return userRepository.existsById(id);
+    }
+
+    public List<User> findAll() {
+        return userRepository.findAll();
+    }
+
+
+    public void save(User user) {
+        userRepository.save(user);
+    }
+
+    public void delete(long id) {
+        userRepository.deleteById(id);
+    }*/
     }
 

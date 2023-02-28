@@ -23,6 +23,8 @@ public class User {
     @Column(nullable = false)
     private Boolean discount;
 
+    private boolean admin;
+
     @Column
     @OneToMany
     private List<Forms> formsList;
