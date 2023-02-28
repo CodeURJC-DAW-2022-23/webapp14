@@ -35,4 +35,11 @@ public class RepositoryUserDetailsService implements UserDetailsService {
                 user.getPassword(), roles);
 
     }
+
+    public void save(User user) {
+        userRepository.save(user);
+    }
+    public void delete(long id) {
+        userRepository.deleteById(id);
+    }
 }
