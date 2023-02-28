@@ -29,5 +29,10 @@ public class FormsController {
         return "post";
     }
 
+    @GetMapping("/forms/formsMaker")
+    public String formsMaker(Model model){
+        return "formsMaker";
+    }
+
 
 }

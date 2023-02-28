@@ -11,24 +11,26 @@
 </header>
 <main>
     <div class="more-packs">
-        <button class="thread-button" expanded="false"><a class="thread-button" href="/formsMaker">Crea tu Hilo!</a></button>
+        <button class="thread-button" expanded="false"><a class="thread-button" href="/forms/formsMaker">Crea tu Hilo!</a></button>
     </div>
     <div class="container thread-container">
-        <a class="post-link" href="/post">
+        {{#threadList}}
+        <a class="post-link" href="/post/{{id}}">
             <article class="thread my-1">
                 <div class="thread-header">
                     <div class="thread-logo">
-                        <object class="thread-svg" data="/static/img/Loaders/thread_icon.svg" type="image/svg+xml"></object>
+                        <object class="thread-svg" data="/static/img/Forms-Icons/thunder_icon.svg" type="image/svg+xml"></object>
                     </div>
                     <div class="thread-info">
-                        <div class="thread-title">¿Como apruebo DAA?</div>
-                        <div class="thread-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet,</div>
+                        <div class="thread-title">{{threadTitle}}</div>
+                        <div class="thread-content">{{threadContent_short}}</div>
                     </div>
                 </div>
-                <div class="thread-date text-white">23/01/2023</div>
-                <div class="thread-author">Sergio2000</div>
+                <div class="thread-date text-white">{{threadDate}}</div>
+                <div class="thread-author">{{threadAuthor}}</div>
             </article>
         </a>
+        {{/threadList}}
     </div>
     <div class="container text-center mt-5">
         <button class="show-more">LOAD MORE</button>
