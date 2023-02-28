@@ -1,11 +1,11 @@
 package com.webApp14.UniHub.model;
 
-import com.webApp14.UniHub.model.Pack;
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
 public class User {
+
     //Attributes
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,10 +29,12 @@ public class User {
     @OneToMany
     private List<Forms> formsList;
 
+    @Column
+    @OneToMany
+    private List<Pack> packList;
+
     @ElementCollection(fetch = FetchType.EAGER)
     private List<String> roles;
-    // @ElementCollection(fetch = FetchType.EAGER)
-    //private List<Pack> userPack_List;
 
     // Constructors
     public User() {
@@ -95,20 +97,20 @@ public class User {
         this.formsList = formsList;
     }
 
+    public List<Pack> getPackList() {
+        return packList;
+    }
+
+    public void setPackList(List<Pack> packList) {
+        this.packList = packList;
+    }
+
     public List<String> getRoles() {
         return roles;
     }
     public void setRoles(List<String> roles) {
         this.roles = roles;
     }
-
-   /* public List<Pack> getUserPack_List() {
-        return userPack_List;
-    }
-
-    public void setUserPack_List(List<Pack> userPack_List) {
-        this.userPack_List = userPack_List;
-    }*/
 
 
 }

@@ -1,31 +1,27 @@
 <!DOCTYPE html>
 <html lang="es" xmlns="http://www.w3.org/1999/html">
-
 {{>head}}
-
 <section id="headerLogin">
   {{>header}}
   </header>
-</section>
-<form id="register_popup" class="align-self-center" action="/SignUp">
-  <h1 class="text-center">Registro</h1>
-  <div class="form-group">
-    <label class="text-white" for="name">Nombre:</label>
-    <input type="text" class="form-control" id="name" />
-  </div>
-  <div class="form-group">
-    <label class="text-white" for="email">Correo electrónico:</label>
-    <input type="email" class="form-control" id="email" />
-  </div>
-  <div class="form-group">
-    <label class="text-white" for="password">Contraseña:</label>
-    <input type="password" class="form-control" id="password" />
-  </div>
-  <div class="d-flex flex-column justify-content-between" id="buttonsContainer">
-    <a type="button" class="btn btn-primary">Confirmar</a>
-    <a type="button" class="btn btn-secondary" href="/LogIn">Atrás</a>
-  </div>
-</form>
-
-
+    </section>
+    <form id="register_popup" class="align-self-center" action="/SignUp">
+      <h1 class="text-center">Registro</h1>
+      <div class="form-group">
+        <label class="text-white" for="name">Nombre:</label>
+        <input type="text" class="form-control" id="name" />
+      </div>
+      <div class="form-group">
+        <label class="text-white" for="email">Correo electrónico:</label>
+        <input type="email" class="form-control" id="email" />
+      </div>
+      <div class="form-group">
+        <label class="text-white" for="password">Contraseña:</label>
+        <input type="password" class="form-control" id="password" />
+      </div>
+      <div class="d-flex flex-column justify-content-between" id="buttonsContainer">
+        <a type="button" class="btn btn-primary">Confirmar</a>
+        <a type="button" class="btn btn-secondary" href="/LogIn">Atrás</a>
+      </div>
+    </form>
 </html>

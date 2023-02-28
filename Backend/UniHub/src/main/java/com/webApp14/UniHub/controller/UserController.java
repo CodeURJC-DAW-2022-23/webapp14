@@ -1,7 +1,10 @@
 package com.webApp14.UniHub.controller;
 
+import com.webApp14.UniHub.model.Forms;
+import com.webApp14.UniHub.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import com.webApp14.UniHub.model.User;
@@ -11,10 +14,12 @@ import java.net.URI;
 import java.util.List;
 
 @RestController
-@RequestMapping("/users")
 public class UserController {
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private UserRepository userRepository;
 
     @GetMapping("")
     public List<User> getAll() {
@@ -53,6 +58,13 @@ public class UserController {
     public ResponseEntity<Void> delete(@PathVariable Long id) {
         userService.delete(id);
         return ResponseEntity.noContent().build();
+    }
+
+    @GetMapping("/clientArea/{id}")
+    public String clientArea(@PathVariable("id") Long id, Model model){
+        User users = userRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid user id"));
+        model.addAttribute("user", users);
+        return "clientArea";
     }
 
 }
