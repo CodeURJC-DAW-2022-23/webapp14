@@ -1,6 +1,6 @@
 @font-face {
    font-family: 'myFont-Texts';
-   src: url(/static/Fonts/rothek-extralight.otf) format('truetype');
+   src: url(/Fonts/rothek-extralight.otf) format('truetype');
 }
 
 .post-creator {
