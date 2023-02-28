@@ -128,7 +128,6 @@ section #login_popup {
    padding: 40px;
    color: aliceblue;
    box-shadow: 0 5px 30px rgba(0, 0, 0, 0.3);
-   background-image: linear-gradient(rgb(48, 48, 48), rgb(24, 24, 24));
    transform: translate(-50%, -50%);
    border-radius: 7%;
    visibility: hidden;
@@ -146,7 +145,6 @@ section #register_popup {
    padding: 40px;
    color: aliceblue;
    box-shadow: 0 5px 30px rgba(0, 0, 0, 0.3);
-   background-image: linear-gradient(rgb(48, 48, 48), rgb(24, 24, 24));
    transform: translate(-50%, -50%);
    border-radius: 7%;
    visibility: hidden;
@@ -163,23 +161,25 @@ section #register_popup {
 #buttonsContainer a {
    margin-bottom: -85px;
 }
- #login_popup,
+
+#login_popup,
 #register_popup {
-   position: fixed; /* Posiciona el formulario de forma fija */
-   top: 50%; /* Centra el formulario verticalmente */
-   left: 50%; /* Centra el formulario horizontalmente */
-   transform: translate(-50%, -50%); /* Ajusta el origen del formulario al centro */
-   z-index: 1; /* Coloca el formulario por encima del fondo */
-   filter: none; /* Quita el efecto de desenfoque al formulario */
-   width: 40%; /* Ajusta el ancho del formulario al 80% del contenedor */
-   font-size: 1.5rem; /* Ajusta el tamaño de la fuente al 1.5 veces el tamaño base */
-    width: 600px;
-    height: 900px;
-    border-radius: 10px;
-    box-shadow: 5px 5px 10px deepskyblue;
-    padding: 100px;
+   position: fixed;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%, -50%);
+   z-index: 1;
+   filter: none;
+   width: 40%;
+   font-size: 1.5rem;
+   width: 600px;
+   height: 900px;
+   border-radius: 10px;
+   box-shadow: 5px 5px 10px deepskyblue;
+   padding: 100px;
 
 }
+
 #login_popup h1,
 #register_popup h1{
    margin-bottom: 40px;
@@ -188,10 +188,6 @@ section #register_popup {
 #headerLogin{
    filter: blur(5px);
 }
-
-
-
-
 
 main {
    min-height: 100%;

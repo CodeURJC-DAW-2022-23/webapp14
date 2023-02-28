@@ -12,7 +12,7 @@
         <div class="post-header">
             <div class="post-logo">
                 <object class="post-svg"
-                        data="/static/img/Forms-Icons/ballings.svg"
+                        data="{{post.threadImage}}"
                         type="image/svg+xml"></object>
             </div>
             <div class="post-title">{{post.threadTitle}}</div>
@@ -25,7 +25,7 @@
                     <object class="upvote-svg"
                             data="/static/img/Loaders/up_icon.svg"
                             type="image/svg+xml"></object>
-                    <span class="upvote-number">20</span>
+                    <span class="upvote-number">{{post.threadUpvotes}}</span>
                 </div>
             </div>
             <div class="post-metadata">
@@ -34,33 +34,33 @@
             </div>
         </div>
         <div class="post-comments">
-            <!--{{#post.threadComments}}-->
+            {{#post.posts}}
             <div class="post-response">
                 <div class="post-info">
-                    <div class="post-content">Consectetur adipiscing elit.Consectetur adipiscing elit.Lorem ipsum dolor
-                        sit amettur.Lorem ipsum dolor sit amet, Consectetur adipiscing elit.Lorem ipsum dolor sit amet,
-                        consectetur adipiscing elit.Lorem ipsum dolor sit amet, Consectetur adipiscing elit.Lorem ipsum
-                        dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet,</div>
+                    <div class="post-content">{{postContent}}</div>
                     <div class="post-upvotes">
                         <object class="upvote-svg"
                                 data="/static/img/Loaders/up_icon.svg"
                                 type="image/svg+xml"></object>
-                        <span class="upvote-number">14</span>
+                        <span class="upvote-number">{{postUpvotes}}</span>
                     </div>
                 </div>
                 <div class="post-metadata">
-                    <div class="post-date text-white">15/02/2023</div>
-                    <div class="post-author">Albert</div>
+                    <div class="post-date text-white">{{postDate}}</div>
+                    <div class="post-author">{{postAuthor}}</div>
                 </div>
             </div>
-            <!--{{/post.threadComments}}-->
+            {{/post.posts}}
         </div>
     </div>
     <div class="mx-auto w-25 mb-2 h-1 bg-gradient-to-r from-blue-500 to-purple-500 roundy"></div>
     <div class="container post-reply">
-        <h2>Responder</h2>
-        <div class="response-text" contenteditable>ejemplo: MARAVILLOSO</div>
-        <button class="submit-button">HECHO!</button>
+        <form method="post" action="/post/{id}">
+            <input type="hidden" name="_csrf" value="${_csrf.token}" />
+            <label for="comment">Comentario:</label>
+            <textarea class="submit-CommentText" id="comment" name="comment"></textarea>
+            <input type="submit" class="submit-Comment" value="Enviar" />
+        </form>
     </div>
 </main>
 {{> footer}}

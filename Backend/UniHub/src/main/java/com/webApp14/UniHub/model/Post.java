@@ -16,16 +16,19 @@ public class Post {
     private String postContent;
 
     @Column(nullable = false)
-    private LocalDateTime postDate;
+    private String postDate;
 
-    @Column(nullable = false, unique = true)
+    @Column(nullable = false)
     private String postAuthor;
+
+    @Column
+    private int postUpvotes;
 
     // Constructors
     public Post() {
     }
 
-    public Post(String postContent, LocalDateTime postDate, String postAuthor) {
+    public Post(String postContent, String postDate, String postAuthor) {
         this.postContent = postContent;
         this.postDate = postDate;
         this.postAuthor = postAuthor;
@@ -48,11 +51,11 @@ public class Post {
         this.postContent = postContent;
     }
 
-    public LocalDateTime getPostDate() {
+    public String getPostDate() {
         return postDate;
     }
 
-    public void setPostDate(LocalDateTime postDate) {
+    public void setPostDate(String postDate) {
         this.postDate = postDate;
     }
 
@@ -62,6 +65,14 @@ public class Post {
 
     public void setPostAuthor(String postAuthor) {
         this.postAuthor = postAuthor;
+    }
+
+    public int getPostUpvotes() {
+        return postUpvotes;
+    }
+
+    public void setPostUpvotes(int postUpvotes) {
+        this.postUpvotes = postUpvotes;
     }
 }
 
