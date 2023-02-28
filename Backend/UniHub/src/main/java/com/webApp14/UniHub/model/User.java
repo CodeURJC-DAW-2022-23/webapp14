@@ -23,9 +23,13 @@ public class User {
     @Column(nullable = false)
     private Boolean discount;
 
+    @Column
+    @OneToMany
+    private List<Forms> formsList;
+
     @ElementCollection(fetch = FetchType.EAGER)
     private List<String> roles;
-   // @ElementCollection(fetch = FetchType.EAGER)
+    // @ElementCollection(fetch = FetchType.EAGER)
     //private List<Pack> userPack_List;
 
     // Constructors
@@ -37,6 +41,7 @@ public class User {
         this.email = email;
         this.password = password;
         this.discount = discount;
+        //this.roles = roles;
     }
 
     // Setters and Getters
@@ -80,7 +85,15 @@ public class User {
         this.discount = discount;
     }
 
-   public List<String> getRoles() {
+    public List<Forms> getFormsList() {
+        return formsList;
+    }
+
+    public void setFormsList(List<Forms> formsList) {
+        this.formsList = formsList;
+    }
+
+    public List<String> getRoles() {
         return roles;
     }
     public void setRoles(List<String> roles) {

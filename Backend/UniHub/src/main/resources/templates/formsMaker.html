@@ -10,7 +10,9 @@
     <div class="container post-creator text-center">
         <h2 class="creation-title">Ingrese la información requerida</h2>
         <div class="mx-auto w-25 mb-2 h-1 bg-gradient-to-r from-blue-500 to-purple-500 roundy"></div>
-        <form>
+        <form action="/forms/formsMaker" method="post">
+            <!--token CSRF -->
+            <input type="hidden" name="_csrf" value="${_csrf.token}" />
             <label class="thread-inputText" for="title">Título</label><br />
             <input class="thread-userInput" type="text" id="title" name="title" /><br /><br />
             <div class="mx-auto w-25 mb-2 h-1 bg-gradient-to-r from-blue-500 to-purple-500 roundy"></div>
@@ -18,12 +20,11 @@
             <div class="container pic-showcase my-2">
                 <button id="img-button" type="button">Seleccionar imagen</button>
                 <div id="img-container" class="img-container">
-                    <img class="thread-imgSelector" src="/static/img/Forms-Icons/code.svg" alt="img1" />
-                    <img class="thread-imgSelector" src="/static/img/Forms-Icons/thunder_icon.svg" alt="img2" />
-                    <img class="thread-imgSelector" src="/static/img/Forms-Icons/statistics.svg" alt="img3" />
-                    <img class="thread-imgSelector" src="/static/img/Forms-Icons/ballings.svg" alt="img4" />
+                    {{#threadPicsList}}
+                    <img class="thread-imgSelector" src="{{picRoute}}" alt="{{picName}}" />
+                    {{/threadPicsList}}
                 </div>
-            </div>
+            </div><br /><br />
             <div class="mx-auto w-25 mb-2 h-1 bg-gradient-to-r from-blue-500 to-purple-500 roundy"></div>
 
             <label class="thread-inputText" for="subtitle">Subtítulo:</label><br />

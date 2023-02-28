@@ -1,7 +1,7 @@
 package com.webApp14.UniHub.model;
 
 import javax.persistence.*;
-import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 public class Forms {
@@ -22,16 +22,23 @@ public class Forms {
     private String threadContent;
 
     @Column(nullable = false)
-    private LocalDate threadDate;
+    private String threadDate;
 
     @Column(nullable = false)
     private String threadAuthor;
+
+    @Column
+    private int threadUpvotes;
+
+    @Column
+    @OneToMany
+    private List<Post> posts;
 
     // Constructors
     public Forms() {
     }
 
-    public Forms(String threadTitle, String threadContent_short, String threadContent, LocalDate threadDate, String threadAuthor) {
+    public Forms(String threadTitle, String threadContent_short, String threadContent, String threadDate, String threadAuthor) {
         this.threadTitle = threadTitle;
         this.threadContent_short = threadContent_short;
         this.threadContent = threadContent;
@@ -69,11 +76,11 @@ public class Forms {
         return threadContent_short;
     }
 
-    public LocalDate getThreadDate() {
+    public String getThreadDate() {
         return threadDate;
     }
 
-    public void setThreadDate(LocalDate threadDate) {
+    public void setThreadDate(String threadDate) {
         this.threadDate = threadDate;
     }
 
@@ -85,8 +92,23 @@ public class Forms {
         this.id = id;
     }
 
-
     public Long getId() {
         return id;
+    }
+
+    public List<Post> getPosts() {
+        return posts;
+    }
+
+    public void setPosts(List<Post> posts) {
+        this.posts = posts;
+    }
+
+    public int getThreadUpvotes() {
+        return threadUpvotes;
+    }
+
+    public void setThreadUpvotes(int threadUpvotes) {
+        this.threadUpvotes = threadUpvotes;
     }
 }
