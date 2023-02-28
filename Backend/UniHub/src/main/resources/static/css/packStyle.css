@@ -1,12 +1,12 @@
 /*Imports for the font types*/
 @font-face {
    font-family: 'myFont-Titles';
-   src: url(/Frontend/Fonts/panton-rust-black-base.ttf) format('truetype');
+   src: url(/static/Fonts/panton-rust-black-base.ttf) format('truetype');
 }
 
 @font-face {
    font-family: 'myFont-Texts';
-   src: url(/Frontend/Fonts/rothek-extralight.otf) format('truetype');
+   src: url(/static/Fonts/rothek-extralight.otf) format('truetype');
 }
 
 /*Styles for the background gradient animation*/
