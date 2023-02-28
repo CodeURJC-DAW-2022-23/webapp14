@@ -1,5 +1,6 @@
 package com.webApp14.UniHub.model;
 
+import com.webApp14.UniHub.model.Pack;
 import javax.persistence.*;
 import java.util.List;
 
@@ -24,8 +25,8 @@ public class User {
 
     @ElementCollection(fetch = FetchType.EAGER)
     private List<String> roles;
-    @ElementCollection(fetch = FetchType.EAGER)
-    private List<Pack> userPack_List;
+   // @ElementCollection(fetch = FetchType.EAGER)
+    //private List<Pack> userPack_List;
 
     // Constructors
     public User() {
@@ -86,13 +87,13 @@ public class User {
         this.roles = roles;
     }
 
-    public List<Pack> getUserPack_List() {
+   /* public List<Pack> getUserPack_List() {
         return userPack_List;
     }
 
     public void setUserPack_List(List<Pack> userPack_List) {
         this.userPack_List = userPack_List;
-    }
+    }*/
 
 
 }

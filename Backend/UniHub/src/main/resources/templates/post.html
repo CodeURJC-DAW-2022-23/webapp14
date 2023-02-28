@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <title>UniHub</title>
+    <meta charset="UTF-8" name="viewport" http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
+
+    <script src="/Frontend/JS/screenPopUp.js"></script>
+    <script src="/Frontend/JS/load_async.js"></script>
+    <script src="/Frontend/JS/surveyShower.js"></script>
+    <script src="/Frontend/JS/img_dropdown.js" defer></script>
+
+    <link type="text/css" rel="stylesheet" href="/Frontend/CSS/packStyle.css" media="screen" />
+    <link type="text/css" rel="stylesheet" href="/Frontend/CSS/mainStyle.css" media="screen" />
+    <link type="text/css" rel="stylesheet" href="/Frontend/CSS/postStyle.css" media="screen" />
+    <link type="text/css" rel="stylesheet" href="/Frontend/CSS/packInfoStyle.css" media="screen" />
+    <link type="text/css" rel="stylesheet" href="/Frontend/CSS/threadStyle.css" media="screen" />
+    <link type="text/css" rel="stylesheet" href="/Frontend/CSS/clientStyle.css" media="screen" />
+    <link type="text/css" rel="stylesheet" href="/Frontend/CSS/threadMakerStyle.css" media="screen" />
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous" defer></script>
+</head>
+
+<body>
+<header style="display: inline" id="headerContent">
+    <nav class="navbar navbar-expand-lg">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+               <span class="navbar-toggler-icon">
+                  <img src="/Frontend/Img-Sources/Loaders/DeployMore.svg" width="65" height="65" />
+               </span>
+        </button>
+        <a class="navbar-brand mr-5" href="main.html"><img src="/Frontend/Img-Sources/Brand-Icon/brand.png" width="65" height="65" /></a>
+
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" href="packs.html">Packs&#128293;</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="forms.html">Foro&#128221;</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="surveys.html">Encuestas&#128077;</a>
+                </li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
+            <li class="nav-item">
+                <a id="headerButton" class="nav-link text-white" onclick="toggle()">LOG IN&#x2705;</a>
+            </li>
+        </div>
+    </nav>
+    <div class="mx-auto w-24 h-1 my-40 bg-gradient-to-r from-orange-500 to-pink-500 rounded-full"></div>
+</header>
+<main>
+    <div class="container post-container">
+        <div class="post-header">
+            <div class="post-logo">
+                <object class="post-svg" data="/Frontend/Img-Sources/Loaders/thunder_icon.svg" type="image/svg+xml"></object>
+            </div>
+            <div class="post-title">¿Como hago una lista enlazada en Pascal?</div>
+        </div>
+        <div class="mx-auto w-25 h-1 my-40 bg-gradient-to-r from-blue-500 to-purple-500 roundy"></div>
+        <div class="post-comments">
+            <div class="post-info">
+                <div class="post-content">Consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, Consectetur adipiscing elit.Consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, Consectetur adipiscing elit.Consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, Consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, Consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, Consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet,</div>
+                <div class="post-upvotes">
+                    <object class="upvote-svg" data="/Frontend/Img-Sources/Loaders/up_icon.svg" type="image/svg+xml"></object>
+                    <span class="upvote-number">20</span>
+                </div>
+            </div>
+            <div class="post-metadata">
+                <div class="post-date text-white">11/02/2023</div>
+                <div class="post-author">Ivan993</div>
+            </div>
+        </div>
+        <div class="post-comments">
+            <div class="post-response">
+                <div class="post-info">
+                    <div class="post-content">Consectetur adipiscing elit.Consectetur adipiscing elit.Lorem ipsum dolor sit amettur.Lorem ipsum dolor sit amet, Consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, Consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet,</div>
+                    <div class="post-upvotes">
+                        <object class="upvote-svg" data="/Frontend/Img-Sources/Loaders/up_icon.svg" type="image/svg+xml"></object>
+                        <span class="upvote-number">14</span>
+                    </div>
+                </div>
+                <div class="post-metadata">
+                    <div class="post-date text-white">15/02/2023</div>
+                    <div class="post-author">Albert</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="mx-auto w-25 mb-2 h-1 bg-gradient-to-r from-blue-500 to-purple-500 roundy"></div>
+    <div class="container post-reply">
+        <h2>Responder</h2>
+        <div class="response-text" contenteditable>ejemplo: MARAVILLOSO</div>
+        <button class="submit-button">HECHO!</button>
+    </div>
+</main>
+<footer class="container text-center text-gray3">
+    <div class="mx-auto w-24 h-1 my-40 bg-gradient-to-r from-orange-500 to-pink-500 rounded-full mb-5"></div>
+    <div class="pt-10">
+        ¿Hay algún problema con la web?
+        <a class="text-blue-500" href="https://github.com/CodeURJC-DAW-2022-23/webapp14.git">Ayúdanos en GitHub</a>
+    </div>
+    <div class="py-2">
+        ¿Necesitas ayuda? -->
+        <a><strong class="text-white font-bold">UniHub@hotmail.com</strong></a>
+    </div>
+    <div class="flex justify-center items-center"></div>
+    <h6>Links Útiles</h6>
+    <object class="rocket-logo" data="/Img-Sources/Loaders/rocketLogo.svg" type="image/svg+xml"></object>
+    <div class="py-3"><a href="packs.html">Packs</a> | <a href="/forms.html">Foro</a> | <a href="/survey.html">Encuestas</a> | <a href="#">LogIn</a> | <a href="#">SignUp</a></div>
+    <div class="text-xs">Copyright © 2023 UniHub LLC <br /></div>
+</footer>
+</body>
+</html>
