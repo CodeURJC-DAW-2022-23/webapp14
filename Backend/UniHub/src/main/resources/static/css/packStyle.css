@@ -163,11 +163,22 @@ section #register_popup {
 #buttonsContainer a {
    margin-bottom: -85px;
 }
-
-#login_popup,
+ #login_popup,
 #register_popup h1 {
+   position: fixed; /* Posiciona el formulario de forma fija */
+   top: 50%; /* Centra el formulario verticalmente */
+   left: 50%; /* Centra el formulario horizontalmente */
+   transform: translate(-50%, -50%); /* Ajusta el origen del formulario al centro */
+   z-index: 1; /* Coloca el formulario por encima del fondo */
+   filter: none; /* Quita el efecto de desenfoque al formulario */
    margin-bottom: 40px;
 }
+
+#headerLogin, #footerLogin{
+   filter: blur(5px);
+}
+
+
 
 section #login_popup.on {
    z-index: 1;

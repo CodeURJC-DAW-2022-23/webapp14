@@ -1,24 +1,28 @@
-
+<!DOCTYPE html>
+<html lang="es" xmlns="http://www.w3.org/1999/html">
 {{>head}}
 
+<section id="headerLogin">
 {{>header}}
 </header>
-
-<form id="login_popup" class="align-self-center">
-  <h1 class="text-center" >Inicio de sesión</h1>
-  <div class="form-group">
-    <label  class="text-white" for="email">Correo electrónico:</label>
-    <input type="email" class="form-control" id="email" />
-  </div>
-  <div class="form-group">
-    <label class="text-white" for="password">Contraseña:</label>
-    <input type="password" class="form-control" id="password" />
-  </div>
-  <div class="d-flex flex-column justify-content-between" id="buttonsContainer">
-    <a type="button" class="btn btn-primary">Iniciar sesión</a>
-    <a type="button" class="btn btn-info" href="/SignUp">Registrarse</a>
-    <a type="button" class="btn btn-secondary" href="/main">Volver </a>
-  </div>
-</form>
-
+</section>
+      <form id="login_popup" class="align-self-center">
+        <h1 class="text-center" >Inicio de sesión</h1>
+        <div class="form-group">
+          <label  class="text-white" for="email">Correo electrónico:</label>
+          <input type="email" class="form-control" id="email" />
+        </div>
+        <div class="form-group">
+          <label class="text-white" for="password">Contraseña:</label>
+          <input type="password" class="form-control" id="password" />
+        </div>
+        <div class="d-flex flex-column justify-content-between" id="buttonsContainer">
+          <a type="button" class="btn btn-primary">Iniciar sesión</a>
+          <a type="button" class="btn btn-info" href="/SignUp">Registrarse</a>
+          <a type="button" class="btn btn-secondary" href="/main">Volver </a>
+        </div>
+      </form>
+<section id="footerLogin">
 {{>footer}}
+</section>
+</html>
