@@ -31,6 +31,8 @@ public class Forms {
     private int threadUpvotes;
 
     @Column
+    private String threadImage;
+    @Column
     @OneToMany
     private List<Post> posts;
 
@@ -38,12 +40,14 @@ public class Forms {
     public Forms() {
     }
 
-    public Forms(String threadTitle, String threadContent_short, String threadContent, String threadDate, String threadAuthor) {
+    public Forms(String threadTitle, String threadContent_short, String threadContent, String threadDate, String threadAuthor, int threadUpvotes, String threadImage) {
         this.threadTitle = threadTitle;
         this.threadContent_short = threadContent_short;
         this.threadContent = threadContent;
+        this.threadImage = threadImage;
         this.threadDate = threadDate;
         this.threadAuthor = threadAuthor;
+        this.threadUpvotes = threadUpvotes;
     }
 
 
@@ -110,5 +114,13 @@ public class Forms {
 
     public void setThreadUpvotes(int threadUpvotes) {
         this.threadUpvotes = threadUpvotes;
+    }
+
+    public String getThreadImage() {
+        return threadImage;
+    }
+
+    public void setThreadImage(String threadImage) {
+        this.threadImage = threadImage;
     }
 }
