@@ -158,7 +158,7 @@ section #register_popup {
    }
 }
 
-#buttonsContainer a {
+#buttonsContainer a, #buttonsContainer input {
    margin-bottom: -85px;
 }
 
