@@ -47,7 +47,7 @@ public class DatabaseInitializer {
         Tags tag3 = new Tags("Computadores","tag-hardware", new ArrayList<>());
         Tags tag4 = new Tags("Mates", "tag-math",new ArrayList<>());
 
-
+        //********************************************************************
         // Pack1 CREATION
         Pack pack1 = new Pack("DAW", "img/Subject-Icons/ED.png", "Diseño de Aplicaciones Web", "Diseño y desarrollo de aplicaciones web modernas, utilizando lenguajes como HTML, CSS y JavaScript para crear aplicaciones tocando temas de arquitectura web, seguridad y bases de datos","La asignatura de Diseño de Aplicaciones Web es una materia que forma parte de la carrera de ingeniería en informática o sistemas, y tiene como objetivo enseñar a los estudiantes a diseñar y desarrollar aplicaciones web modernas y eficientes.\n" +
                 "\n" +
@@ -90,6 +90,45 @@ public class DatabaseInitializer {
         // Saving the pack2 with its tags
         packRepository.save(pack2);
         tagsRepository.saveAll(Arrays.asList(tag1,tag2,tag4));
+
+
+        // Pack3 CREATION
+        Pack pack3 = new Pack("ED", "img/Subject-Icons/ED.png", "Estructuras de Datos", "Estructuras de Datos es una asignatura que se imparte en carreras relacionadas con la informática y busca enseñar a los estudiantes a diseñar y utilizar estructuras de datos eficientes.","Estructuras de Datos es una asignatura fundamental en la formación de cualquier profesional de la informática. Esta asignatura se enfoca en el estudio de las diferentes estructuras de datos y algoritmos que se pueden utilizar para resolver problemas de programación de manera eficiente. A lo largo del curso, los estudiantes aprenden a analizar, diseñar e implementar estructuras de datos y algoritmos, así como también a evaluar su eficiencia y complejidad.\n" +
+                "\n" +
+                "Entre los temas que se cubren en esta asignatura se encuentran: listas, pilas, colas, árboles, grafos, algoritmos de búsqueda y ordenamiento, entre otros. Los estudiantes aprenden a implementar estas estructuras de datos y algoritmos en diferentes lenguajes de programación, y a analizar su eficiencia en términos de tiempo y espacio.\n" +
+                "\n" +
+                "Además, Estructuras de Datos también suele incluir prácticas de laboratorio en las que los estudiantes aplican los conceptos aprendidos en la teoría a través de la resolución de problemas reales. Estas prácticas suelen requerir el uso de herramientas específicas, como compiladores, depuradores y herramientas de visualización de datos.\n" +
+                "\n" +
+                "En resumen, Estructuras de Datos es una asignatura fundamental para cualquier profesional de la informática, ya que proporciona las herramientas y técnicas necesarias para diseñar y desarrollar sistemas informáticos eficientes y escalables.",
+                9.99f, new ArrayList<>());
+
+        // ManyToMany Relationships
+        tag3.getPacks().add(pack3);
+        tag4.getPacks().add(pack3);
+        pack3.getTags().add(tag3);
+        pack3.getTags().add(tag4);
+
+        // Saving the pack3 with its tags
+        packRepository.save(pack3);
+        tagsRepository.saveAll(Arrays.asList(tag3,tag4));
+
+
+        // Pack4 CREATION
+        Pack pack4 = new Pack("POO", "img/Subject-Icons/ED.png", "Programación Orientada a Objetos", "Es una materia fundamental en la cual se aprenden los principios y técnicas necesarias para desarrollar programas mediante la utilización de objetos y clases.","La asignatura de Programación Orientada a Objetos (POO) se enfoca en enseñar a los estudiantes de informática y ciencias de la computación los principios fundamentales de la programación orientada a objetos. " +
+                "Así como las técnicas necesarias para desarrollar software utilizando esta metodología. La POO es una paradigma de programación que se basa en la idea de que un programa informático puede ser diseñado como un conjunto de objetos que interactúan entre sí para llevar a cabo tareas específicas.\n" +
+                "\n" +
+                "Durante el desarrollo de esta asignatura, los estudiantes adquieren conocimientos acerca de los conceptos básicos de la POO, tales como la encapsulación, la herencia, el polimorfismo y la abstracción. A través de la enseñanza de estos conceptos, se pretende que los estudiantes puedan diseñar y desarrollar sistemas informáticos complejos de manera eficiente y mantenible, utilizando técnicas como la modularidad y la reutilización de código.",
+                13.99f, new ArrayList<>());
+
+        // ManyToMany Relationships
+        tag1.getPacks().add(pack4);
+        pack4.getTags().add(tag1);
+
+        // Saving the pack4 with its tags
+        packRepository.save(pack4);
+        tagsRepository.save(tag1);
+        //********************************************************************
+
 
 
         // Basic Form CREATION

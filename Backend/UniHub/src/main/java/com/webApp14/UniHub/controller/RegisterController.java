@@ -54,12 +54,7 @@ public class RegisterController {
             currentUser = user;
             return new ModelAndView(new RedirectView("/", true));
         }else {
-            return new ModelAndView(new RedirectView("/SignUpError", true));
+            return new ModelAndView(new RedirectView("/error", true));
         }
-    }
-
-    @GetMapping("/SignUpError")
-    public String getLoginError(Model model){
-        return "SignUpError";
     }
 }
