@@ -285,7 +285,7 @@ main .survey-content p {
    padding: 1rem;
 }
 
-.more-packs .pack-button {
+.load-more-btn {
    background-color: #2dffb9;
    width: 30px;
    align-self: center;
@@ -294,7 +294,7 @@ main .survey-content p {
    transition: 500ms;
 }
 
-.more-packs .pack-button:hover {
+.load-more-btn:hover {
    background-color: #6f33fa;
    border-radius: 20px;
    cursor: pointer;

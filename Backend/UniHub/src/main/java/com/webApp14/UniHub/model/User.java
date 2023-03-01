@@ -1,8 +1,6 @@
 package com.webApp14.UniHub.model;
 
-import com.webApp14.UniHub.model.Pack;
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -30,10 +28,9 @@ public class User {
     @OneToMany
     private List<Forms> formsList;
 
-    @ElementCollection(fetch = FetchType.EAGER)
-    private List<String> roles;
-    // @ElementCollection(fetch = FetchType.EAGER)
-    //private List<Pack> userPack_List;
+    @Column
+    @OneToMany
+    private List<Pack> packList;
 
     // Constructors
     public User() {
@@ -45,7 +42,6 @@ public class User {
         this.password = password;
        // this.discount = discount;
         this.admin = admin;
-        //this.roles = roles;
     }
 
     // Setters and Getters
@@ -97,11 +93,12 @@ public class User {
         this.formsList = formsList;
     }
 
-    public List<String> getRoles() {
-        return roles;
+    public List<Pack> getPackList() {
+        return packList;
     }
-    public void setRoles(List<String> roles) {
-        this.roles = roles;
+
+    public void setPackList(List<Pack> packList) {
+        this.packList = packList;
     }
 
     public boolean getAdmin() {
@@ -111,15 +108,6 @@ public class User {
         this.admin = admin;
     }
 
-
-
-   /* public List<Pack> getUserPack_List() {
-        return userPack_List;
-    }
-
-    public void setUserPack_List(List<Pack> userPack_List) {
-        this.userPack_List = userPack_List;
-    }*/
 
 
 }
