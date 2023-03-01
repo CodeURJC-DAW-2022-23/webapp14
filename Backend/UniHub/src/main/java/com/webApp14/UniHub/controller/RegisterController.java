@@ -37,7 +37,7 @@ public class RegisterController {
 
     @PostMapping("/UserSignUp")
     public ModelAndView processRegister(Model model, @RequestParam String username, @RequestParam String email, @RequestParam String password){
-        User user = new User(username, email, passwordEncoder.encode(password), false);
+        User user = new User(username, email, passwordEncoder.encode(password), "USER");
 
         Optional <User> tryUser = userRepository.findByUsername(user.getUsername());
         Optional <User> tryEmail = userRepository.findByEmail(user.getEmail());

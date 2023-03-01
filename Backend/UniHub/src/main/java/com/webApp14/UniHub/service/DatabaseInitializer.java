@@ -3,6 +3,7 @@ package com.webApp14.UniHub.service;
 import com.webApp14.UniHub.model.*;
 import com.webApp14.UniHub.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
@@ -26,6 +27,8 @@ public class DatabaseInitializer {
     private TagsRepository tagsRepository;
     @Autowired
     private UserRepository userRepository;
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     @Autowired
     private ThreadPicsRepository threadPicsRepository;
@@ -145,7 +148,7 @@ public class DatabaseInitializer {
 
 
         // Admin user CREATION
-        User admin = new User("admin123","admin@hotmail.com","123", true);
+        User admin = new User("admin123","admin@hotmail.com", passwordEncoder.encode("123"), "USER", "ADMIN");
         userRepository.save(admin);
     }
 

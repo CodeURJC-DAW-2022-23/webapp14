@@ -5,6 +5,7 @@ import com.webApp14.UniHub.repository.UserRepository;
 import com.webApp14.UniHub.security.RepositoryUserDetailsService;
 import com.webApp14.UniHub.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -23,10 +24,12 @@ public class LoginController {
     private UserRepository userRepository;
 
     private User currentUser=null;
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     @Autowired
     private RepositoryUserDetailsService userService;
-    
+
 
     @GetMapping("/LogIn")
     public String getLogin(Model model){
@@ -37,7 +40,8 @@ public class LoginController {
     public ModelAndView processForm(Model model, @RequestParam String username, @RequestParam String password){
         Optional <User> tryUser = userRepository.findByUsername(username);
         if (tryUser.isPresent()) {
-            if (tryUser.get().getPassword().equals(password)){
+            String hola = passwordEncoder.encode(password);
+            if (passwordEncoder.matches(password, tryUser.get().getPassword())){
                 currentUser = tryUser.get();
                 return new ModelAndView(new RedirectView("/", true));
             }else{
