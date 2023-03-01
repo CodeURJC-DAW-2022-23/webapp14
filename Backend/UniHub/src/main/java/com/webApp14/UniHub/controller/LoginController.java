@@ -41,11 +41,11 @@ public class LoginController {
                 currentUser = tryUser.get();
                 return new ModelAndView(new RedirectView("/", true));
             }else{
-                return new ModelAndView(new RedirectView("/LogInError", true));
+                return new ModelAndView(new RedirectView("/error", true));
             }
 
         }else{
-            return new ModelAndView(new RedirectView("/LogInError", true));
+            return new ModelAndView(new RedirectView("/error", true));
         }
     }
 

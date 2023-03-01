@@ -5,22 +5,22 @@
  {{> header}}
 </header>
 </section>
-      <form id="login_popup" class="align-self-center" action="/processFormLogIn" method="post">
+      <form id="login_popup" class="align-self-center" action="/processFormLogin" method="post">
         <h1 class="text-center" >Inicio de sesión</h1>
         <div class="form-group">
               <label class="text-white" for="password">Nombre de Usuario:</label>
-              <input type="text" name="username" required="" class="form-control" id="username" />
+              <input type="text" name="username" required="" class="FormInput form-control" id="username" />
         </div>
         <div class="form-group">
           <label  class="text-white" for="email">Correo electrónico:</label>
-          <input type="email" name="email" class="form-control" id="email" />
+          <input type="email" name="email" class="FormInput form-control" id="email" />
         </div>
         <div class="form-group">
           <label class="text-white" for="password">Contraseña:</label>
-          <input type="password" name="password" required="" class="form-control" id="password" />
+          <input type="password" name="password" required="" class="FormInput form-control" id="password" />
         </div>
         <div class="d-flex flex-column justify-content-between" id="buttonsContainer">
-          <input type="submit" value="Confirmar" class="btn btn-primary">
+          <input type="submit" value="Confirmar" class="btn btn-primary FormInput">
           <input type="hidden" name="_csrf" value="{{token}}"/>
           <a type="button" class="btn btn-info" href="/SignUp">Registrarse</a>
           <a type="button" class="btn btn-secondary" href="/main">Volver </a>

@@ -180,12 +180,16 @@ section #register_popup {
 
 }
 
+.FormInput {
+   font-family: 'myFont-Texts', sans-serif;
+}
+
 #login_popup h1,
 #register_popup h1{
    margin-bottom: 40px;
 }
 
-#headerLogin{
+#headerLogin {
    filter: blur(5px);
 }
 
