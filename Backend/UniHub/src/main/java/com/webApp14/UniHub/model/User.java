@@ -32,6 +32,7 @@ public class User {
 
     @ElementCollection(fetch = FetchType.EAGER)
     private List<String> roles;
+
     // @ElementCollection(fetch = FetchType.EAGER)
     //private List<Pack> userPack_List;
 
@@ -81,13 +82,14 @@ public class User {
         this.password = password;
     }
 
-  /*  public Boolean getDiscount() {
-        return discount;
+
+    public List<String> getRoles() {
+        return roles;
     }
 
-    public void setDiscount(Boolean discount) {
-        this.discount = discount;
-    }*/
+    public void setRoles(List<String> roles) {
+        this.roles = roles;
+    }
 
     public List<Forms> getFormsList() {
         return formsList;
@@ -95,13 +97,6 @@ public class User {
 
     public void setFormsList(List<Forms> formsList) {
         this.formsList = formsList;
-    }
-
-    public List<String> getRoles() {
-        return roles;
-    }
-    public void setRoles(List<String> roles) {
-        this.roles = roles;
     }
 
     public boolean getAdmin() {

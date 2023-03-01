@@ -8,11 +8,14 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
+import javax.servlet.http.HttpServletRequest;
+import java.security.Principal;
 import java.util.Optional;
 
 @Controller
@@ -25,6 +28,8 @@ public class RegisterController {
     private UserRepository userRepository;
 
     private User currentUser=null;
+
+
     @GetMapping("/SignUp")
     public String getRegister(Model model){
         return "register";
@@ -39,6 +44,13 @@ public class RegisterController {
 
         if (!tryUser.isPresent() && !tryEmail.isPresent()){
             userRepository.save(user);
+            if(!user.getAdmin()) {
+                model.addAttribute("loggedUser", true);
+                model.addAttribute("logged",true);
+            }else if(user.getAdmin()){
+                model.addAttribute("admin", true);
+                model.addAttribute("logged",true);
+            }
             currentUser = user;
             return new ModelAndView(new RedirectView("/", true));
         }else {
