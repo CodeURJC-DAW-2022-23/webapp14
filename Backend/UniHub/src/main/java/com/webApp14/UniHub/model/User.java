@@ -20,8 +20,8 @@ public class User {
     @Column(nullable = false)
     private String password;
 
-    @Column(nullable = false)
-    private Boolean discount;
+  /*  @Column(nullable = false)
+    private Boolean discount;*/
 
     private boolean admin;
 
@@ -38,11 +38,12 @@ public class User {
     public User() {
     }
 
-    public User(String username, String email, String password, Boolean discount) {
+    public User(String username, String email, String password, Boolean admin) {
         this.username = username;
         this.email = email;
         this.password = password;
-        this.discount = discount;
+       // this.discount = discount;
+        this.admin = admin;
         //this.roles = roles;
     }
 
@@ -79,13 +80,13 @@ public class User {
         this.password = password;
     }
 
-    public Boolean getDiscount() {
+  /*  public Boolean getDiscount() {
         return discount;
     }
 
     public void setDiscount(Boolean discount) {
         this.discount = discount;
-    }
+    }*/
 
     public List<Forms> getFormsList() {
         return formsList;
@@ -100,6 +101,13 @@ public class User {
     }
     public void setRoles(List<String> roles) {
         this.roles = roles;
+    }
+
+    public boolean getAdmin() {
+        return admin;
+    }
+    public void setAdmin(boolean admin) {
+        this.admin = admin;
     }
 
    /* public List<Pack> getUserPack_List() {

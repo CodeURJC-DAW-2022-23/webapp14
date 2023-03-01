@@ -7,22 +7,23 @@
   {{>header}}
   </header>
 </section>
-<form id="register_popup" class="align-self-center" action="/SignUp">
+<form id="register_popup" class="align-self-center" action="/UserSignUp" method = "post">
   <h1 class="text-center">Registro</h1>
   <div class="form-group">
     <label class="text-white" for="name">Nombre:</label>
-    <input type="text" class="form-control" id="name" />
+    <input type="hidden" name="_csrf" value="{{token}}"/>
+    <input type="text" name="username" placeholder="User name"  required="" class="form-control" id="name" />
   </div>
   <div class="form-group">
     <label class="text-white" for="email">Correo electrónico:</label>
-    <input type="email" class="form-control" id="email" />
+    <input type="email" name="email" placeholder="Email" required="" class="form-control" id="email" />
   </div>
   <div class="form-group">
     <label class="text-white" for="password">Contraseña:</label>
-    <input type="password" class="form-control" id="password" />
+    <input type="password" name="password" placeholder="password" required="" class="form-control" id="password" />
   </div>
   <div class="d-flex flex-column justify-content-between" id="buttonsContainer">
-    <a type="button" class="btn btn-primary">Confirmar</a>
+    <input type="submit" class="btn btn-primary" placeholder="SignUp">
     <a type="button" class="btn btn-secondary" href="/LogIn">Atrás</a>
   </div>
 </form>
