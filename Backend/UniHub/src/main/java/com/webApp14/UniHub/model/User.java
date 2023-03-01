@@ -2,6 +2,7 @@ package com.webApp14.UniHub.model;
 
 import com.webApp14.UniHub.model.Pack;
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -22,7 +23,7 @@ public class User {
 
   /*  @Column(nullable = false)
     private Boolean discount;*/
-
+    @Column
     private boolean admin;
 
     @Column
@@ -109,6 +110,8 @@ public class User {
     public void setAdmin(boolean admin) {
         this.admin = admin;
     }
+
+
 
    /* public List<Pack> getUserPack_List() {
         return userPack_List;

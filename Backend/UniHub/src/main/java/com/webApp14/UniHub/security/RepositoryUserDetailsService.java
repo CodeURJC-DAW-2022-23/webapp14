@@ -38,7 +38,7 @@ public class RepositoryUserDetailsService implements UserDetailsService {
 
         }
 
-  /*  public Optional<User> findById(long id) {
+  public Optional<User> findById(long id) {
         return userRepository.findById(id);
     }
     public Optional<User> findByUsername(String username) {
@@ -47,7 +47,7 @@ public class RepositoryUserDetailsService implements UserDetailsService {
     public Optional<User> findByEmail(String email) {
         return userRepository.findByEmail(email);
     }
-    public Optional<User> findByNameAndPassword(String name, String password) {
+  /*   public Optional<User> findByNameAndPassword(String name, String password) {
         return userRepository.findByNameAndPassword(name, password);
     }
 
