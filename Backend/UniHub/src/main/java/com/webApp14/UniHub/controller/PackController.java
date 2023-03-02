@@ -26,8 +26,6 @@ public class PackController {
     @Autowired
     private UserRepository userRepository;
 
-    private User currentUser=null;
-
 
     @GetMapping("/packs")
     public String packs(Model model){

@@ -5,15 +5,13 @@ import com.webApp14.UniHub.model.ThreadPics;
 import com.webApp14.UniHub.repository.FormsRepository;
 import com.webApp14.UniHub.repository.PostRepository;
 import com.webApp14.UniHub.repository.ThreadPicsRepository;
-import org.apache.tomcat.util.net.openssl.ciphers.Authentication;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
+import java.security.Principal;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
@@ -30,9 +28,22 @@ public class FormsController {
     @Autowired
     private ThreadPicsRepository threadPicsRepository;
 
+    Principal principalUser;
+
+    @ModelAttribute
+    public void addAttributes(Model model, HttpServletRequest request) {
+        Principal principal = request.getUserPrincipal();
+        principalUser = principal;
+        if(principal != null) {
+            model.addAttribute("logged", true);
+            model.addAttribute("userName", principal.getName());
+            model.addAttribute("admin", request.isUserInRole("ADMIN"));
+        } else {
+            model.addAttribute("logged", false);
+        }
+    }
 
     // Methods for URL mappings
-
     @GetMapping("/forms")
     public String forms(Model model){
         List<Forms> threadList = formsRepository.findAll();
@@ -41,15 +52,17 @@ public class FormsController {
     }
 
     @GetMapping("/post/{id}")
-    public String post(@PathVariable("id") Long id, Model model){
+    public String showPost(@PathVariable("id") Long id, Model model) {
         Forms forms = formsRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid thread id"));
         model.addAttribute("post", forms);
+        model.addAttribute("id", id);
         return "post";
     }
 
 
+
     @PostMapping("/post/{id}")
-    public String makeComment(@PathVariable("id") Long id, @RequestParam("comment") String comment) {
+    public String makeComment(@PathVariable("id") Long id, @RequestParam("comment") String comment, Model model) {
         Forms forms = formsRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid thread id"));
 
         LocalDateTime now = LocalDateTime.now();
@@ -61,7 +74,7 @@ public class FormsController {
         postRepository.save(post);
         forms.getPosts().add(post);
         formsRepository.save(forms);
-        return "post";
+        return showPost(id, model);
     }
 
 
@@ -77,8 +90,7 @@ public class FormsController {
                                        @RequestParam("subtitle") String subtitle,
                                        @RequestParam("description") String description,
                                        @RequestParam("selectedImage") String selectedImage,
-                                       Model model,
-                                       Authentication authentication) {
+                                       Model model) {
 
         //Checks if Any field is indeed null
         if (title.isEmpty() || subtitle.isEmpty() || description.isEmpty() || selectedImage.isEmpty()) {
@@ -91,7 +103,7 @@ public class FormsController {
         String formattedDate = now.format(formatter);
 
         // Fills out the entire Form with the Not null information
-        Forms newForm = new Forms(title, subtitle, description, formattedDate, "Ruky", 0, selectedImage);
+        Forms newForm = new Forms(title, subtitle, description, formattedDate, principalUser.getName(), 0, selectedImage);
         formsRepository.save(newForm);
 
         // User user = usuario entero

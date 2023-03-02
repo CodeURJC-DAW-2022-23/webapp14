@@ -24,11 +24,12 @@ public class User {
     @OneToMany
     private List<Forms> formsList;
 
+    @Column
+    @OneToMany
+    private List<Pack> packList;
+
     @ElementCollection(fetch = FetchType.EAGER)
     private List<String> roles;
-
-    // @ElementCollection(fetch = FetchType.EAGER)
-    //private List<Pack> userPack_List;
 
     // Constructors
     public User() {
@@ -91,14 +92,11 @@ public class User {
         this.formsList = formsList;
     }
 
-
-   /* public List<Pack> getUserPack_List() {
-        return userPack_List;
+    public List<Pack> getPackList() {
+        return packList;
     }
 
-    public void setUserPack_List(List<Pack> userPack_List) {
-        this.userPack_List = userPack_List;
-    }*/
-
-
+    public void setPackList(List<Pack> packList) {
+        this.packList = packList;
+    }
 }

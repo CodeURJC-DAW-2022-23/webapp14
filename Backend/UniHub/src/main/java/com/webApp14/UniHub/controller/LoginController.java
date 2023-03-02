@@ -23,7 +23,6 @@ public class LoginController {
     @Autowired
     private UserRepository userRepository;
 
-    private User currentUser=null;
     @Autowired
     private PasswordEncoder passwordEncoder;
 
@@ -36,13 +35,11 @@ public class LoginController {
         return "login";
     }
 
-    @PostMapping ("/processFormLogin")
+    /*@PostMapping ("/processFormLogin")
     public ModelAndView processForm(Model model, @RequestParam String username, @RequestParam String password){
         Optional <User> tryUser = userRepository.findByUsername(username);
         if (tryUser.isPresent()) {
-            String hola = passwordEncoder.encode(password);
             if (passwordEncoder.matches(password, tryUser.get().getPassword())){
-                currentUser = tryUser.get();
                 return new ModelAndView(new RedirectView("/", true));
             }else{
                 return new ModelAndView(new RedirectView("/error", true));
@@ -51,7 +48,7 @@ public class LoginController {
         }else{
             return new ModelAndView(new RedirectView("/error", true));
         }
-    }
+    }*/
 
 
     @GetMapping("/LogInError")

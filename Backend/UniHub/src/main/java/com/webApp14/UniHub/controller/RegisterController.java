@@ -27,8 +27,6 @@ public class RegisterController {
     @Autowired
     private UserRepository userRepository;
 
-    private User currentUser=null;
-
 
     @GetMapping("/SignUp")
     public String getRegister(Model model){
@@ -44,14 +42,6 @@ public class RegisterController {
 
         if (!tryUser.isPresent() && !tryEmail.isPresent()){
             userRepository.save(user);
-            if(!user.getAdmin()) {
-                model.addAttribute("loggedUser", true);
-                model.addAttribute("logged",true);
-            }else if(user.getAdmin()){
-                model.addAttribute("admin", true);
-                model.addAttribute("logged",true);
-            }
-            currentUser = user;
             return new ModelAndView(new RedirectView("/", true));
         }else {
             return new ModelAndView(new RedirectView("/error", true));

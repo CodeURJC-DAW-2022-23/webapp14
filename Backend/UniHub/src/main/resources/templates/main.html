@@ -2,7 +2,13 @@
 <html lang="es" xmlns="http://www.w3.org/1999/html">
  {{> head}}
 <body>
+{{# logged}}
+{{> headerLogged}}
+{{/ logged}}
+
+{{^ logged}}
  {{> header}}
+{{/ logged}}
 </header>
 <main>
   <section class="main-back to-purple-500" id="packContent">

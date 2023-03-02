@@ -55,8 +55,8 @@
     </div>
     <div class="mx-auto w-25 mb-2 h-1 bg-gradient-to-r from-blue-500 to-purple-500 roundy"></div>
     <div class="container post-reply">
-        <form method="post" action="/post/{id}">
-            <input type="hidden" name="_csrf" value="${_csrf.token}" />
+        <form  action="/post/{{id}}" method="post">
+            <input type="hidden" name="_csrf" value="{{token}}"/>
             <label for="comment">Comentario:</label>
             <textarea class="submit-CommentText" id="comment" name="comment"></textarea>
             <input type="submit" class="submit-Comment" value="Enviar" />
