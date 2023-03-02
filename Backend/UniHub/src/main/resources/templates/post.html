@@ -52,13 +52,17 @@
                 <div class="post-info">
                     <div class="post-content">{{postContent}}</div>
                     <div class="post-upvotes">
-                        <form id="upvotePosts" action="/post/{{post.id}}/upvote//{{id}}" method="post">
-                            <img id="upvotePusher{{id}}"
+                        <form id="upvotePosts" action="/post/{{post.id}}/upvote/post" method="post">
+                            <input type="hidden" name="_csrf" value="{{token}}"/>
+                            <input type="hidden" id="upvotePost" name="upvotePost" value=""/>
+                            <input type="hidden" id="postIteration" name="postId" value=""/>
+                            <img id="upvotePusher"
                                     class="upvote-svg"
                                     src="/static/img/Loaders/up_icon.svg"
-                                    type="image/svg+xml"/>
+                                    type="image/svg+xml"
+                                    onclick="submitPost({{id}})"
+                            />
                             <span class="upvote-number">{{postUpvotes}}</span>
-                            <input type="hidden" id="upvote" name="upvote" value="" />
                         </form>
                     </div>
                 </div>

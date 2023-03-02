@@ -89,8 +89,8 @@ public class FormsController {
         return showPost(id, model);
     }
 
-    @PostMapping("/post/{id}/upvote/{postId}")
-    public String postUpvote(@PathVariable("id") Long id, @PathVariable("postId") Long postId, @RequestParam("upvote") int up, Model model) {
+    @PostMapping("/post/{id}/upvote/post")
+    public String postUpvote(@PathVariable("id") Long id, @RequestParam("postId") Long postId, @RequestParam("upvotePost") int up, Model model) {
         Forms forms = formsRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid thread id"));
         Post post = postRepository.findById(postId).orElseThrow(() -> new IllegalArgumentException("Invalid post id"));
         int totalVotes = up + post.getPostUpvotes();
@@ -109,6 +109,7 @@ public class FormsController {
         model.addAttribute("threadPicsList", threadPicsList );
         return "formsMaker";
     }
+
 
     @PostMapping("/forms/formsMaker")
     public String handleFormSubmission(@RequestParam("title") String title,

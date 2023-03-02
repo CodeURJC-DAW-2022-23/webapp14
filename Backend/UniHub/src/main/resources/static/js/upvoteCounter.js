@@ -4,4 +4,3 @@ function submitForm() {
   var form = document.getElementById("upvoteThread");
   form.submit();
 }
-
