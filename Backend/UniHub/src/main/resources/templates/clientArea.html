@@ -2,7 +2,7 @@
 <html lang="es">
 {{> head}}
 <body>
-{{> header}}
+{{> headerLogged}}
     <div class="head-text text-center mb-8 mt-20 text-white">
         <h1 class="head-text-content text-5xl mb-1">AREA PERSONAL</h1>
         <div class="mx-auto w-24 h-1 my-40 bg-gradient-to-r from-orange-500 to-pink-500 rounded-full"></div>
@@ -22,7 +22,7 @@
                     <img class="profile-img" src="/static/img/Profile-Pics/profile_img.png" />
                 </div>
                 <div class="profile-name">
-                    <div class="user-name">{{user.username}}</div>
+                    <div class="user-name">{{user}}</div>
                 </div>
             </div>
             <div class="profile-placeholder">PERFIL</div>
@@ -78,6 +78,35 @@
             </div>
         </article>
     </div>
+    {{# admin}}
+    <div class="container page-elements my-3">
+        <article class="profile-container my-1">
+            <div class="section-title">Hilos de usuarios</div>
+            <div class="mx-auto w-25 h-1 my-40 bg-gradient-to-r from-blue-500 to-purple-500 roundier"></div>
+            <div class="pack-elements">
+                {{#threads}}
+                <article class="packId-container my-2">
+                    <div class="packId-header">
+                        <div class="packId-logo">
+                            <img class="packId-svg" src="{{threadImage}}" type="image/svg+xml"/>
+                        </div>
+                        <div class="packId-info">
+                            <div class="packId-title">{{threadTitle}}</div>
+                            <div class="packId-content">{{threadContent_short}}</div>
+                            <div class="packId-title">Contenido extendido</div>
+                            <div class="packId-content">{{threadContent}}</div>
+                        </div>
+                    </div>
+                    <div class="tag-section">
+                        <span class="tag tag-programming">{{threadDate}}</span>
+                        <span class="tag tag-programming">{{threadAuthor}}</span>
+                    </div>
+                </article>
+                {{/threads}}
+            </div>
+        </article>
+    </div>
+    {{/ admin}}
 </main>
 {{> footer}}
 </body>

@@ -26,6 +26,22 @@ public class PackController {
     @Autowired
     private UserRepository userRepository;
 
+    Principal principalUser;
+
+    @ModelAttribute
+    public void addAttributes(Model model, HttpServletRequest request) {
+        Principal principal = request.getUserPrincipal();
+        principalUser = principal;
+        if(principal != null) {
+            model.addAttribute("logged", true);
+            model.addAttribute("userName", principal.getName());
+            model.addAttribute("admin", request.isUserInRole("ADMIN"));
+        } else {
+            model.addAttribute("logged", false);
+        }
+    }
+
+
 
     @GetMapping("/packs")
     public String packs(Model model){

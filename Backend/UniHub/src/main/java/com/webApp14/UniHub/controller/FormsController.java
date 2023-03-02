@@ -69,11 +69,36 @@ public class FormsController {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy : HH:mm");
         String formattedDate = now.format(formatter);
 
-        Post post = new Post(comment, formattedDate,"Don Diablo");
+        Post post = new Post(comment, formattedDate, principalUser.getName());
 
         postRepository.save(post);
         forms.getPosts().add(post);
         formsRepository.save(forms);
+        return showPost(id, model);
+    }
+
+    @PostMapping("/post/{id}/upvote")
+    public String threadUpvote(@PathVariable("id") Long id, @RequestParam("threadUpvote") int up, Model model) {
+        Forms forms = formsRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid thread id"));
+        int totalVotes = up + forms.getThreadUpvotes();
+        // Updates thread Values
+        forms.setThreadUpvotes(totalVotes);
+        // Saves the thread updates
+        formsRepository.save(forms);
+
+        return showPost(id, model);
+    }
+
+    @PostMapping("/post/{id}/upvote/{postId}")
+    public String postUpvote(@PathVariable("id") Long id, @PathVariable("postId") Long postId, @RequestParam("upvote") int up, Model model) {
+        Forms forms = formsRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid thread id"));
+        Post post = postRepository.findById(postId).orElseThrow(() -> new IllegalArgumentException("Invalid post id"));
+        int totalVotes = up + post.getPostUpvotes();
+        // Updates post Values
+        post.setPostUpvotes(totalVotes);
+        // Saves the posts updates
+        formsRepository.save(forms);
+
         return showPost(id, model);
     }
 
@@ -94,14 +119,14 @@ public class FormsController {
 
         //Checks if Any field is indeed null
         if (title.isEmpty() || subtitle.isEmpty() || description.isEmpty() || selectedImage.isEmpty()) {
-            model.addAttribute("errorMessage", "Fields Missing");
             return "formsMaker";
         }
 
         LocalDateTime now = LocalDateTime.now();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy : HH:mm");
         String formattedDate = now.format(formatter);
-
+        String pattern = "http://localhost:8090";
+        selectedImage = selectedImage.replaceAll(pattern,"");
         // Fills out the entire Form with the Not null information
         Forms newForm = new Forms(title, subtitle, description, formattedDate, principalUser.getName(), 0, selectedImage);
         formsRepository.save(newForm);
@@ -109,7 +134,7 @@ public class FormsController {
         // User user = usuario entero
         // userRepository.save(user);
 
-        return "redirect:/forms";
+        return forms(model);
     }
 
 

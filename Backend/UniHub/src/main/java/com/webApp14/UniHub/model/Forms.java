@@ -44,10 +44,10 @@ public class Forms {
         this.threadTitle = threadTitle;
         this.threadContent_short = threadContent_short;
         this.threadContent = threadContent;
-        this.threadImage = threadImage;
         this.threadDate = threadDate;
         this.threadAuthor = threadAuthor;
         this.threadUpvotes = threadUpvotes;
+        this.threadImage = threadImage;
     }
 
 

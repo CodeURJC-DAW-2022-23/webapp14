@@ -14,12 +14,6 @@ for (let i = 0; i < images.length; i++) {
    images[i].addEventListener('click', function () {
       const selectedImage = this.src
       imgContainer.style.display = 'none'
-
-      const form = document.querySelector('form')
-      const input = document.createElement('input')
-      input.type = 'hidden'
-      input.name = 'picRoute'
-      input.value = selectedImage
-      form.appendChild(input)
+      document.getElementById('selectedImage').value = selectedImage;
    })
 }
