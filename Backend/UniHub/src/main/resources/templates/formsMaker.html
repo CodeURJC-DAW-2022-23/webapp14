@@ -3,7 +3,13 @@
 {{> head}}
 
 <body>
+{{# logged}}
+{{> headerLogged}}
+{{/ logged}}
+
+{{^ logged}}
 {{> header}}
+{{/ logged}}
     <div class="head-text text-center mb-8 mt-20 text-white"></div>
 </header>
 <main>
@@ -13,6 +19,7 @@
         <form action="/forms/formsMaker" method="post">
             <!--token CSRF -->
             <input type="hidden" name="_csrf" value="{{token}}"/>
+            <input type="hidden" id="selectedImage" name="selectedImage" value="" />
             <label class="thread-inputText" for="title">Título</label><br />
             <span id="title-counter"></span>
             <input class="thread-userInput" type="text" id="title" name="title" oninput="countCharacters(this, 'title-counter', 75)" /><br />

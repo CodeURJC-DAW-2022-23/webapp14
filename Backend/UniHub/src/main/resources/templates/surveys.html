@@ -2,7 +2,13 @@
 <html lang="es">
 {{>head}}
 <body>
-{{>header}}
+{{# logged}}
+{{> headerLogged}}
+{{/ logged}}
+
+{{^ logged}}
+{{> header}}
+{{/ logged}}
     <div class="head-text text-center mb-8 mt-20 text-white">
         <h1 class="head-text-content text-5xl mb-1">Encuestas</h1>
         <p class="my-0 text-gray3">Hasta 20% de descuento por hacerlas en algunos packs</p>

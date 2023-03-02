@@ -16,6 +16,8 @@
 .post-svg {
    background-color: rgba(240, 248, 255, 0.623);
    border-radius: 20px;
+   width: 160px;
+   height: 160px;
 }
 
 .post-header {

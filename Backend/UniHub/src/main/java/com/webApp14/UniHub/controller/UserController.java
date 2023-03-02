@@ -9,7 +9,9 @@ import org.springframework.web.bind.annotation.*;
 import com.webApp14.UniHub.model.User;
 import com.webApp14.UniHub.service.UserService;
 
+import javax.servlet.http.HttpServletRequest;
 import java.net.URI;
+import java.security.Principal;
 import java.util.List;
 
 @RestController
@@ -23,6 +25,21 @@ public class UserController {
     @GetMapping("")
     public List<User> getAll() {
         return userService.getAll();
+    }
+
+    Principal principalUser;
+
+    @ModelAttribute
+    public void addAttributes(Model model, HttpServletRequest request) {
+        Principal principal = request.getUserPrincipal();
+        principalUser = principal;
+        if(principal != null) {
+            model.addAttribute("logged", true);
+            model.addAttribute("userName", principal.getName());
+            model.addAttribute("admin", request.isUserInRole("ADMIN"));
+        } else {
+            model.addAttribute("logged", false);
+        }
     }
 
     @GetMapping("/{id}")
@@ -59,11 +76,5 @@ public class UserController {
         return ResponseEntity.noContent().build();
     }
 
-    @GetMapping("/clientArea/{id}")
-    public String clientArea(@PathVariable("id") Long id, Model model){
-        User users = userRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid user id"));
-        model.addAttribute("user", users);
-        return "clientArea";
-    }
 
 }
