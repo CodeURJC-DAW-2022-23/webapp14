@@ -2,10 +2,8 @@ package com.webApp14.UniHub.controller;
 
 import com.webApp14.UniHub.model.User;
 import com.webApp14.UniHub.repository.UserRepository;
-import com.webApp14.UniHub.security.RepositoryUserDetailsService;
 import com.webApp14.UniHub.service.EmailService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,8 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
-import javax.servlet.http.HttpServletRequest;
-import java.security.Principal;
+
 import java.util.Optional;
 
 @Controller
