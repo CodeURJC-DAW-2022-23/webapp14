@@ -42,8 +42,8 @@ public class RegisterController {
         if (!tryUser.isPresent() && !tryEmail.isPresent()){
             userRepository.save(user);
 
-            String subject = "Bienvenido a nuestra aplicación";
-            String content = "Gracias por registrarte en nuestra aplicación. Esperamos que disfrutes usándola.";
+            String subject = "Bienvenido a nuestro puticlub de travelos";
+            String content = "¿Quieres polla maricón?.";
 
             emailService.sendEmail(user.getEmail(), subject, content);
             return new ModelAndView(new RedirectView("/", true));

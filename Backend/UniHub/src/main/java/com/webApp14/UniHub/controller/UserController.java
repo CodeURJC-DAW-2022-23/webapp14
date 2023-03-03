@@ -15,6 +15,7 @@ import java.io.IOException;
 import java.net.URI;
 import java.security.Principal;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 public class UserController {
@@ -35,6 +36,7 @@ public class UserController {
     public void addAttributes(Model model, HttpServletRequest request) {
         Principal principal = request.getUserPrincipal();
         principalUser = principal;
+
         if(principal != null) {
             model.addAttribute("logged", true);
             model.addAttribute("userName", principal.getName());
@@ -77,16 +79,17 @@ public class UserController {
         userService.delete(id);
         return ResponseEntity.noContent().build();
     }
-    @PostMapping("/users/{id}/image")
-    public String uploadImage(@PathVariable Long id, @RequestParam("image") MultipartFile imageFile) {
-        User user = userRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid user id"));
+    @PostMapping("/upload/image")
+    public String uploadImage(@RequestParam("image") MultipartFile imageFile) {
+
+        User user = userRepository.findByUsername(principalUser.getName()).orElseThrow(() -> new IllegalArgumentException("Invalid user name"));
         try {
             user.setImage(imageFile.getBytes());
             userRepository.save(user);
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return "redirect:/users/" + id;
+        return "redirect:/users/" + principalUser.getName();
     }
 
 
