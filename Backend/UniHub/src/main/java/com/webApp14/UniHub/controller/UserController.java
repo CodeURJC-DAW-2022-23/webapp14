@@ -8,8 +8,10 @@ import org.springframework.web.bind.annotation.*;
 
 import com.webApp14.UniHub.model.User;
 import com.webApp14.UniHub.service.UserService;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
+import java.io.IOException;
 import java.net.URI;
 import java.security.Principal;
 import java.util.List;
@@ -74,6 +76,17 @@ public class UserController {
     public ResponseEntity<Void> delete(@PathVariable Long id) {
         userService.delete(id);
         return ResponseEntity.noContent().build();
+    }
+    @PostMapping("/users/{id}/image")
+    public String uploadImage(@PathVariable Long id, @RequestParam("image") MultipartFile imageFile) {
+        User user = userRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid user id"));
+        try {
+            user.setImage(imageFile.getBytes());
+            userRepository.save(user);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return "redirect:/users/" + id;
     }
 
 

@@ -26,6 +26,13 @@
                 </div>
             </div>
             <div class="profile-placeholder">PERFIL</div>
+            <form method="POST" enctype="multipart/form-data" action="@{/users/{id}/image(id=${user.id})}" class="form-inline">
+                <div class="form-group" style="margin-right: 10px">
+                    <label for="image" class="btn btn-primary">Selecciona una imagen:</label>
+                    <input type="file" hidden class="form-control-file btn btn-primary " id="image" name="image" accept="image/*">
+                </div>
+                <button type="submit" class="btn btn-primary" style="margin-left: 10px">Cargar imagen</button>
+            </form>
         </article>
     </div>
     <div class="container page-elements my-3">
