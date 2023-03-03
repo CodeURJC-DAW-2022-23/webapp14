@@ -24,7 +24,7 @@ public class Pack {
 
     @Lob
     @Column(nullable = false)
-    private String packDescription_long;
+    private String packDescriptionLong;
 
     @Column(nullable = false)
     private Float packPrice;
@@ -38,13 +38,13 @@ public class Pack {
     // Constructors
     protected Pack(){}
 
-    public Pack(String packTitle, String packImage, String packTitle_expanded, String packDescription_short, String packDescription_long, Float packPrice, List<Tags> tags) {
+    public Pack(String packTitle, String packImage, String packTitle_expanded, String packDescription_short, String packDescriptionLong, Float packPrice, List<Tags> tags) {
         super();
         this.packTitle = packTitle;
         this.packImage = packImage;
         this.packTitle_expanded = packTitle_expanded;
         this.packDescription_short = packDescription_short;
-        this.packDescription_long = packDescription_long;
+        this.packDescriptionLong = packDescriptionLong;
         this.packPrice = packPrice;
         this.tags = tags;
     }
@@ -74,12 +74,12 @@ public class Pack {
         this.packDescription_short = packDescription_short;
     }
 
-    public String getPackDescription_long() {
-        return packDescription_long;
+    public String getpackDescriptionLong() {
+        return packDescriptionLong;
     }
 
-    public void setPackDescription_long(String packDescription_long) {
-        this.packDescription_long = packDescription_long;
+    public void setpackDescriptionLong(String packDescriptionLong) {
+        this.packDescriptionLong = packDescriptionLong;
     }
 
     public Float getPackPrice() {

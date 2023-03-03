@@ -28,6 +28,4 @@ public class EmailService {
         mailSender.send(email);
     }
 
-
-
 }
