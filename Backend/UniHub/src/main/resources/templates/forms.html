@@ -16,9 +16,11 @@
     </div>
 </header>
 <main>
+    {{# logged}}
     <div class="more-packs">
         <button class="thread-button" expanded="false"><a class="thread-button" href="/forms/formsMaker">Crea tu Hilo!</a></button>
     </div>
+    {{/ logged}}
     <div class="container thread-container">
         {{#threadList}}
         <a class="post-link" href="/post/{{id}}">
@@ -37,9 +39,6 @@
             </article>
         </a>
         {{/threadList}}
-    </div>
-    <div class="container text-center mt-5">
-        <button class="show-more">LOAD MORE</button>
     </div>
 </main>
 {{>footer}}

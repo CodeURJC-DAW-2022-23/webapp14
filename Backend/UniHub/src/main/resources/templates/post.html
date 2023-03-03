@@ -74,6 +74,7 @@
             {{/post.posts}}
         </div>
     </div>
+    {{# logged}}
     <div class="mx-auto w-25 mb-2 h-1 bg-gradient-to-r from-blue-500 to-purple-500 roundy"></div>
     <div class="container post-reply">
         <form  action="/post/{{id}}" method="post">
@@ -83,6 +84,7 @@
             <input type="submit" class="submit-Comment" value="Enviar" />
         </form>
     </div>
+    {{/ logged}}
 </main>
 {{> footer}}
 </body>

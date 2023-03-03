@@ -26,7 +26,9 @@
                 </div>
             </div>
             <div class="profile-placeholder">PERFIL</div>
-            <form method="POST" enctype="multipart/form-data" action="@{/users/{id}/image(id=${user.id})}" class="form-inline">
+            <form method="post" enctype="multipart/form-data" action="@{/users/{id}/image(id=${user.id})}" class="form-inline">
+                <!--token CSRF -->
+                <input type="hidden" name="_csrf" value="{{token}}"/>
                 <div class="form-group" style="margin-right: 10px">
                     <label for="image" class="btn btn-primary">Selecciona una imagen:</label>
                     <input type="file" hidden class="form-control-file btn btn-primary " id="image" name="image" accept="image/*">

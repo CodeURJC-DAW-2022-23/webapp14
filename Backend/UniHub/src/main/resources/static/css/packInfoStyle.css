@@ -3,6 +3,32 @@
    src: url(/Fonts/rothek-extralight.otf) format('truetype');
 }
 
+.pack-info {
+   background: rgba(219, 219, 219, 0.315);
+   border-radius: 13px;
+   box-shadow: 0 5px 30px rgba(0, 0, 0, 0.3);
+   background-image: linear-gradient(rgb(48, 48, 48), rgb(24, 24, 24));
+   min-height: 1000px;
+   width: auto;
+}
+
+.packId-container {
+   display: flex;
+   flex-direction: column;
+}
+
+.packId-logo {
+   flex: 1;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+.packId-logo img {
+   max-width: 100%;
+   max-height: 100%;
+}
+
 packId-container {
    display: flex;
    flex-direction: column;
@@ -20,7 +46,6 @@ packId-container {
    max-height: 100%;
 }
 
-
 .packInfo-img {
    max-width: 100%;
    height: 40%;
@@ -31,6 +56,11 @@ packId-container {
 .packInfo-header {
    margin-top: 2rem;
    margin-bottom: 2rem;
+}
+
+.download-files {
+    margin-top: 1rem;
+    height: 60px;
 }
 
 .title {
