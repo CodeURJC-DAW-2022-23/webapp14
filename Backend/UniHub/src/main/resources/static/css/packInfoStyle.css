@@ -3,16 +3,7 @@
    src: url(/Fonts/rothek-extralight.otf) format('truetype');
 }
 
-.pack-info {
-   background: rgba(219, 219, 219, 0.315);
-   border-radius: 13px;
-   box-shadow: 0 5px 30px rgba(0, 0, 0, 0.3);
-   background-image: linear-gradient(rgb(48, 48, 48), rgb(24, 24, 24));
-   min-height: 1000px;
-   width: auto;
-}
-
-.packId-container {
+packId-container {
    display: flex;
    flex-direction: column;
 }
