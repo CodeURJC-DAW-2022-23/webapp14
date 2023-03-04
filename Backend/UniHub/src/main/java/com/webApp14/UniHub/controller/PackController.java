@@ -5,6 +5,9 @@ import com.webApp14.UniHub.model.User;
 import com.webApp14.UniHub.repository.PackRepository;
 import com.webApp14.UniHub.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -48,13 +51,21 @@ public class PackController {
         }
     }
 
-    // Method to show with a list all the current Packs avaiable on the DB
+    // Method to show with AJAX the current Packs avaiable on the DB
     @GetMapping("/packs")
-    public String packs(Model model){
-        
-        List<Pack> packList = packRepository.findAll();
+    public String packs(Model model, @RequestParam(defaultValue = "0") int page) {
+        // Number page and number of item retrievals
+        Pageable pageable = PageRequest.of(page, 2);
+        // Makes a pageable query
+        Page<Pack> packPage = packRepository.findAll(pageable);
+        // Gets the data from the current page
+        List<Pack> packList = packPage.getContent();
+        // Adds the data to the model
         model.addAttribute("packList", packList);
-        return "packs";
+        model.addAttribute("currentPage", packPage.getNumber());
+        model.addAttribute("totalPages", packPage.getTotalPages());
+        // Prints the view
+        return "packs :: packList";
     }
 
     // It loads the packInfo.html with the information of a selected pack
