@@ -27,9 +27,11 @@
         <div class="post-comments">
             <div class="post-info">
                 <div class="post-content">{{post.threadContent}}</div>
+                {{# logged}}
                 <form id="upvoteThread" action="/post/{{id}}/upvote" method="post">
                     <input type="hidden" name="_csrf" value="{{token}}"/>
                     <input type="hidden" id="threadUpvote" name="threadUpvote" value="" />
+                    {{/ logged}}
                     <div class="post-upvotes">
                         <img id="threadUpPusher"
                                 class="upvote-svg"
@@ -52,10 +54,12 @@
                 <div class="post-info">
                     <div class="post-content">{{postContent}}</div>
                     <div class="post-upvotes">
+                        {{# logged}}
                         <form id="upvotePosts" action="/post/{{post.id}}/upvote/post" method="post">
                             <input type="hidden" name="_csrf" value="{{token}}"/>
                             <input type="hidden" id="upvotePost" name="upvotePost" value=""/>
                             <input type="hidden" id="postIteration" name="postId" value=""/>
+                            {{/ logged}}
                             <img id="upvotePusher"
                                     class="upvote-svg"
                                     src="/static/img/Loaders/up_icon.svg"
