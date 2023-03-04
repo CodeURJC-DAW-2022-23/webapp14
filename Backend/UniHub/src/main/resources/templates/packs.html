@@ -1,51 +1,55 @@
 <!DOCTYPE html>
 <html lang="es" xmlns="http://www.w3.org/1999/html">
-{{>head}}
-<body>
-{{# logged}}
-{{> headerLogged}}
-{{/ logged}}
+  {{>head}}
+  <body>
+    {{# logged}}
+      {{> headerLogged}}
+    {{/ logged}}
 
-{{^ logged}}
-{{> header}}
-{{/ logged}}
-  <div class="head-text text-center mb-8 mt-20 text-white">
-    <h1 class="head-text-content text-5xl mb-1">Cursos</h1>
-    <p class="my-0 text-gray3">asignaturas con materiales disponibles actualmente</p>
-  </div>
-  <div class="mx-auto w-24 h-1 my-40 bg-gradient-to-r from-orange-500 to-pink-500 rounded-full"></div>
-</header>
-<main>
-  <!--Para incluir login-->
-  <section></section>
-  <!--Para incluir register-->
-  <section></section>
-  <div class="more-packs">
-    <button class="load-more-btn" id="load-more-btn" data-page="1">+</button>
-  </div>
-  <section>
-    <div class="container-fluid">
-      <div class="product-row no-gutters" id="packContent">
-        {{#packList}}
-        <div class="product-column col-md-3">
-          <a class="packInfo-link" href="/packInfo/{{id}}">
-            <img src="/static/{{packImage}}"/>
-            <section class="p-3">
-              <h3>{{packTitle}}</h3>
-              <p>{{packDescription_short}}</p>
-              {{#tags}}
-              <span class="tag {{tagType}}">{{tagName}}</span>
-              {{/tags}}
-              <span class="purchase-span"><object class="purchase-logo" data="/static/img/Loaders/purchase.svg" type="image/svg+xml"></object></span>
-            </section>
-          </a>
-        </div>
-        {{/packList}}
-        <div id="pack-extra"></div>
+    {{^ logged}}
+      {{> header}}
+    {{/ logged}}
+      <div class="head-text text-center mb-8 mt-20 text-white">
+        <h1 class="head-text-content text-5xl mb-1">Cursos</h1>
+        <p class="my-0 text-gray3">asignaturas con materiales disponibles actualmente</p>
       </div>
-    </div>
-  </section>
-</main>
-{{>footer}}
-</body>
+      <div class="mx-auto w-24 h-1 my-40 bg-gradient-to-r from-orange-500 to-pink-500 rounded-full"></div>
+    </header>
+    <main>
+      <!--Para incluir login-->
+      <section></section>
+      <!--Para incluir register-->
+      <section></section>
+      <div class="more-packs">
+        <button class="load-more-btn" id="load-more-btn">+</button>
+      </div>
+      <section>
+        <div class="container-fluid" id="packs-container">
+          <div class="product-row no-gutters" id="packContent">
+            {{#packList}}
+            <div class="product-column col-md-3">
+              <a class="packInfo-link" href="/packInfo/{{id}}">
+                <img src="/static/{{packImage}}"/>
+                <section class="p-3">
+                  <h3>{{packTitle}}</h3>
+                  <p>{{packDescription_short}}</p>
+                  {{#tags}}
+                  <span class="tag {{tagType}}">{{tagName}}</span>
+                  {{/tags}}
+                  <span class="purchase-span"><object class="purchase-logo" data="/static/img/Loaders/purchase.svg" type="image/svg+xml"></object></span>
+                </section>
+              </a>
+            </div>
+            {{/packList}}
+            <div class="container-fluid">
+              <div class="product-row no-gutters">
+            <div id="pack-extra"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    {{>footer}}
+  </body>
 </html>

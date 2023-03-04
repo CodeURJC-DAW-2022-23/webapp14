@@ -1,4 +1,4 @@
-/* General styles */
+/* General styles for page */
 .container {
    width: 100%;
    margin: 0 auto;
@@ -97,6 +97,7 @@
    transform: translateY(-30px);
 }
 
+/*Animation styles function*/
 @keyframes bounce {
    0%,
    20%,

@@ -1,48 +1,48 @@
 <!DOCTYPE html>
 <html lang="es">
-{{>head}}
-<body>
-{{# logged}}
-{{> headerLogged}}
-{{/ logged}}
-
-{{^ logged}}
-{{> header}}
-{{/ logged}}
-    <div class="head-text text-center mb-8 mt-20 text-white">
-        <h1 class="head-text-content text-5xl mb-1">FORO E HILOS</h1>
-        <p class="my-0 text-gray3">Busca y encuentra lo que no sabías que querías</p>
-        <div class="mx-auto w-24 h-1 my-40 bg-gradient-to-r from-orange-500 to-pink-500 rounded-full"></div>
-    </div>
-</header>
-<main>
+    {{>head}}
+    <body>
     {{# logged}}
-        {{^ admin}}
-    <div class="more-packs">
-        <button class="thread-button" expanded="false"><a class="thread-button" href="/forms/formsMaker">Crea tu Hilo!</a></button>
-    </div>
-        {{/ admin}}
+    {{> headerLogged}}
     {{/ logged}}
-    <div class="container thread-container">
-        {{#threadList}}
-        <a class="post-link" href="/post/{{id}}">
-            <article class="thread my-1">
-                <div class="thread-header">
-                    <div class="thread-logo">
-                        <img title="{{threadImage}}/{{id}}" class="thread-svg" src="{{threadImage}}" type="image/svg+xml"/>
+
+    {{^ logged}}
+    {{> header}}
+    {{/ logged}}
+        <div class="head-text text-center mb-8 mt-20 text-white">
+            <h1 class="head-text-content text-5xl mb-1">FORO E HILOS</h1>
+            <p class="my-0 text-gray3">Busca y encuentra lo que no sabías que querías</p>
+            <div class="mx-auto w-24 h-1 my-40 bg-gradient-to-r from-orange-500 to-pink-500 rounded-full"></div>
+        </div>
+    </header>
+    <main>
+        {{# logged}}
+            {{^ admin}}
+        <div class="more-packs">
+            <button class="thread-button" expanded="false"><a class="thread-button" href="/forms/formsMaker">Crea tu Hilo!</a></button>
+        </div>
+            {{/ admin}}
+        {{/ logged}}
+        <div class="container thread-container">
+            {{#threadList}}
+            <a class="post-link" href="/post/{{id}}">
+                <article class="thread my-1">
+                    <div class="thread-header">
+                        <div class="thread-logo">
+                            <img title="{{threadImage}}/{{id}}" class="thread-svg" src="{{threadImage}}" type="image/svg+xml"/>
+                        </div>
+                        <div class="thread-info">
+                            <div class="thread-title">{{threadTitle}}</div>
+                            <div class="thread-content">{{threadContent_short}}</div>
+                        </div>
                     </div>
-                    <div class="thread-info">
-                        <div class="thread-title">{{threadTitle}}</div>
-                        <div class="thread-content">{{threadContent_short}}</div>
-                    </div>
-                </div>
-                <div class="thread-date text-white">{{threadDate}}</div>
-                <div class="thread-author">{{threadAuthor}}</div>
-            </article>
-        </a>
-        {{/threadList}}
-    </div>
-</main>
-{{>footer}}
-</body>
+                    <div class="thread-date text-white">{{threadDate}}</div>
+                    <div class="thread-author">{{threadAuthor}}</div>
+                </article>
+            </a>
+            {{/threadList}}
+        </div>
+    </main>
+    {{>footer}}
+    </body>
 </html>

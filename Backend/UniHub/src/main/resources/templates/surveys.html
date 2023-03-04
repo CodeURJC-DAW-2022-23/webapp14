@@ -1,60 +1,60 @@
 <!DOCTYPE html>
 <html lang="es">
-{{>head}}
-<body>
-{{# logged}}
-{{> headerLogged}}
-{{/ logged}}
+    {{>head}}
+    <body>
+        {{# logged}}
+            {{> headerLogged}}
+        {{/ logged}}
 
-{{^ logged}}
-{{> header}}
-{{/ logged}}
-    <div class="head-text text-center mb-8 mt-20 text-white">
-        <h1 class="head-text-content text-5xl mb-1">Encuestas</h1>
-        <p class="my-0 text-gray3">Hasta 20% de descuento por hacerlas en algunos packs</p>
-        <div class="mx-auto w-24 h-1 my-40 bg-gradient-to-r from-orange-500 to-pink-500 rounded-full"></div>
-    </div>
-</header>
-<main class="text-center">
-    <section>
-    </section>
-    <section>
-    </section>
-    <section id="packContent">
-        <div w3-include-html="loading.html"></div>
-        <div id="container1" class="survey-container">
-            <h3 class="survey-header" onclick="toggleSurvey(1)">Fiestas y comidas &#x1F354;&#x1F379;</h3>
-            <div class="survey-content" id="survey1-content" style="display: none">
-                <form>
-                    <p>Pregunta 1: ¿Cuál es tu bebida favorita?</p>
-                    <input type="radio" id="q1-option1" name="q1" value="option1" />
-                    <label for="q1-option1">Larios</label><br />
-                    <input type="radio" id="q1-option2" name="q1" value="option2" />
-                    <label for="q1-option2">Ron</label><br />
-                    <input type="radio" id="q1-option3" name="q1" value="option3" />
-                    <label for="q1-option3">Jagger</label><br />
-                    <p>Pregunta 2: ¿Mejor comida de resaca?</p>
-                    <input type="radio" id="q2-option1" name="q2" value="option1" />
-                    <label for="q2-option1">Kebap o Durum</label><br />
-                    <input type="radio" id="q2-option2" name="q2" value="option2" />
-                    <label for="q2-option2">Pizza</label><br />
-                    <input type="radio" id="q2-option3" name="q2" value="option3" />
-                    <label for="q2-option3">Hamburguesa</label><br />
-                    <p>Pregunta 3: Comida de la previa mejor en</p>
-                    <input type="radio" id="q3-option1" name="q3" value="option1" />
-                    <label for="q3-option1">McDonald's</label><br />
-                    <input type="radio" id="q3-option2" name="q3" value="option2" />
-                    <label for="q3-option2">Burguer</label><br />
-                    <input type="radio" id="q3-option3" name="q3" value="option3" />
-                    <label for="q3-option3">Dominos</label><br />
-                    <input type="radio" id="q3-option4" name="q3" value="option4" />
-                    <label for="q4-option4">KFC</label><br />
-                    <input type="submit" value="Enviar" />
-                </form>
+        {{^ logged}}
+            {{> header}}
+        {{/ logged}}
+            <div class="head-text text-center mb-8 mt-20 text-white">
+                <h1 class="head-text-content text-5xl mb-1">Encuestas</h1>
+                <p class="my-0 text-gray3">Hasta 20% de descuento por hacerlas en algunos packs</p>
+                <div class="mx-auto w-24 h-1 my-40 bg-gradient-to-r from-orange-500 to-pink-500 rounded-full"></div>
             </div>
-        </div>
-    </section>
-</main>
-{{>footer}}
-</body>
+        </header>
+        <main class="text-center">
+            <section>
+            </section>
+            <section>
+            </section>
+            <section id="packContent">
+                <div w3-include-html="loading.html"></div>
+                <div id="container1" class="survey-container">
+                    <h3 class="survey-header" onclick="toggleSurvey(1)">Fiestas y comidas &#x1F354;&#x1F379;</h3>
+                    <div class="survey-content" id="survey1-content" style="display: none">
+                        <form>
+                            <p>Pregunta 1: ¿Cuál es tu bebida favorita?</p>
+                            <input type="radio" id="q1-option1" name="q1" value="option1" />
+                            <label for="q1-option1">Larios</label><br />
+                            <input type="radio" id="q1-option2" name="q1" value="option2" />
+                            <label for="q1-option2">Ron</label><br />
+                            <input type="radio" id="q1-option3" name="q1" value="option3" />
+                            <label for="q1-option3">Jagger</label><br />
+                            <p>Pregunta 2: ¿Mejor comida de resaca?</p>
+                            <input type="radio" id="q2-option1" name="q2" value="option1" />
+                            <label for="q2-option1">Kebap o Durum</label><br />
+                            <input type="radio" id="q2-option2" name="q2" value="option2" />
+                            <label for="q2-option2">Pizza</label><br />
+                            <input type="radio" id="q2-option3" name="q2" value="option3" />
+                            <label for="q2-option3">Hamburguesa</label><br />
+                            <p>Pregunta 3: Comida de la previa mejor en</p>
+                            <input type="radio" id="q3-option1" name="q3" value="option1" />
+                            <label for="q3-option1">McDonald's</label><br />
+                            <input type="radio" id="q3-option2" name="q3" value="option2" />
+                            <label for="q3-option2">Burguer</label><br />
+                            <input type="radio" id="q3-option3" name="q3" value="option3" />
+                            <label for="q3-option3">Dominos</label><br />
+                            <input type="radio" id="q3-option4" name="q3" value="option4" />
+                            <label for="q4-option4">KFC</label><br />
+                            <input type="submit" value="Enviar" />
+                        </form>
+                    </div>
+                </div>
+            </section>
+        </main>
+    {{>footer}}
+    </body>
 </html>

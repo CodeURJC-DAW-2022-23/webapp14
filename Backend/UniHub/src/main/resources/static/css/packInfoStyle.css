@@ -1,3 +1,4 @@
+/*Font imports*/
 @font-face {
    font-family: 'myFont-Texts';
    src: url(/Fonts/rothek-extralight.otf) format('truetype');
@@ -60,7 +61,7 @@ packId-container {
 }
 
 .pack-Linker:hover {
-    text-decoration: none;
+   text-decoration: none;
 }
 
 .packAdder-button {
@@ -72,13 +73,13 @@ packId-container {
 
 .packAdder-button:hover {
    transition: 500ms;
-   cursor:pointer;
+   cursor: pointer;
    background: rgba(200, 200, 240, 0.315);
    scale: 1.03;
 }
 
 .packId-container.Deleter:hover::before {
-   content: "Eliminar";
+   content: 'Eliminar';
    display: block;
    position: absolute;
    top: 50%;

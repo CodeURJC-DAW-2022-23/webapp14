@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -50,8 +51,7 @@ public class PackController {
             model.addAttribute("logged", false);
         }
     }
-
-    // Method to show with AJAX the current Packs avaiable on the DB
+    // Method to show with AJAX the next 2 packs from packList
     @GetMapping("/packs")
     public String packs(Model model, @RequestParam(defaultValue = "0") int page) {
         // Number page and number of item retrievals
@@ -65,7 +65,11 @@ public class PackController {
         model.addAttribute("currentPage", packPage.getNumber());
         model.addAttribute("totalPages", packPage.getTotalPages());
         // Prints the view
-        return "packs";
+        if (page == 0) {
+            return "packs";
+        } else {
+            return "morePacks";
+        }
     }
 
     // It loads the packInfo.html with the information of a selected pack

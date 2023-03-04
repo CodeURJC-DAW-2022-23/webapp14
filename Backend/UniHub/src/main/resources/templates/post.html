@@ -1,95 +1,95 @@
 <!DOCTYPE html>
 <html lang="es">
-{{> head}}
+    {{> head}}
 
-<body>
-{{# logged}}
-{{> headerLogged}}
-{{/ logged}}
+    <body>
+        {{# logged}}
+            {{> headerLogged}}
+        {{/ logged}}
 
-{{^ logged}}
-{{> header}}
-{{/ logged}}
-    </nav>
-    <div class="mx-auto w-24 h-1 my-40 bg-gradient-to-r from-orange-500 to-pink-500 rounded-full"></div>
-</header>
-<main>
-    <div class="container post-container">
-        <div class="post-header">
-            <div class="post-logo">
-                <img class="post-svg"
-                        src="{{post.threadImage}}"
-                        type="image/svg+xml"/>
-            </div>
-            <div class="post-title">{{post.threadTitle}}</div>
-        </div>
-        <div class="mx-auto w-25 h-1 my-40 bg-gradient-to-r from-blue-500 to-purple-500 roundy"></div>
-        <div class="post-comments">
-            <div class="post-info">
-                <div class="post-content">{{post.threadContent}}</div>
-                {{# logged}}
-                <form id="upvoteThread" action="/post/{{id}}/upvote" method="post">
-                    <input type="hidden" name="_csrf" value="{{token}}"/>
-                    <input type="hidden" id="threadUpvote" name="threadUpvote" value="" />
-                    {{/ logged}}
-                    <div class="post-upvotes">
-                        <img id="threadUpPusher"
-                                class="upvote-svg"
-                                src="/static/img/Loaders/up_icon.svg"
-                                type="image/svg+xml"
-                                onclick="submitForm()"
-                        />
-                        <span class="upvote-number">{{post.threadUpvotes}}</span>
+        {{^ logged}}
+            {{> header}}
+        {{/ logged}}
+            </nav>
+            <div class="mx-auto w-24 h-1 my-40 bg-gradient-to-r from-orange-500 to-pink-500 rounded-full"></div>
+        </header>
+        <main>
+            <div class="container post-container">
+                <div class="post-header">
+                    <div class="post-logo">
+                        <img class="post-svg"
+                                src="{{post.threadImage}}"
+                                type="image/svg+xml"/>
                     </div>
-                </form>
-            </div>
-            <div class="post-metadata">
-                <div class="post-date text-white">{{post.threadDate}}</div>
-                <div class="post-author">{{post.threadAuthor}}</div>
-            </div>
-        </div>
-        <div class="post-comments">
-            {{#post.posts}}
-            <div class="post-response">
-                <div class="post-info">
-                    <div class="post-content">{{postContent}}</div>
-                    <div class="post-upvotes">
+                    <div class="post-title">{{post.threadTitle}}</div>
+                </div>
+                <div class="mx-auto w-25 h-1 my-40 bg-gradient-to-r from-blue-500 to-purple-500 roundy"></div>
+                <div class="post-comments">
+                    <div class="post-info">
+                        <div class="post-content">{{post.threadContent}}</div>
                         {{# logged}}
-                        <form id="upvotePosts" action="/post/{{post.id}}/upvote/post" method="post">
+                        <form id="upvoteThread" action="/post/{{id}}/upvote" method="post">
                             <input type="hidden" name="_csrf" value="{{token}}"/>
-                            <input type="hidden" id="upvotePost" name="upvotePost" value=""/>
-                            <input type="hidden" id="postIteration" name="postId" value=""/>
+                            <input type="hidden" id="threadUpvote" name="threadUpvote" value="" />
                             {{/ logged}}
-                            <img id="upvotePusher"
-                                    class="upvote-svg"
-                                    src="/static/img/Loaders/up_icon.svg"
-                                    type="image/svg+xml"
-                                    onclick="submitPost({{id}})"
-                            />
-                            <span class="upvote-number">{{postUpvotes}}</span>
+                            <div class="post-upvotes">
+                                <img id="threadUpPusher"
+                                        class="upvote-svg"
+                                        src="/static/img/Loaders/up_icon.svg"
+                                        type="image/svg+xml"
+                                        onclick="submitForm()"
+                                />
+                                <span class="upvote-number">{{post.threadUpvotes}}</span>
+                            </div>
                         </form>
                     </div>
+                    <div class="post-metadata">
+                        <div class="post-date text-white">{{post.threadDate}}</div>
+                        <div class="post-author">{{post.threadAuthor}}</div>
+                    </div>
                 </div>
-                <div class="post-metadata">
-                    <div class="post-date text-white">{{postDate}}</div>
-                    <div class="post-author">{{postAuthor}}</div>
+                <div class="post-comments">
+                    {{#post.posts}}
+                    <div class="post-response">
+                        <div class="post-info">
+                            <div class="post-content">{{postContent}}</div>
+                            <div class="post-upvotes">
+                                {{# logged}}
+                                <form id="upvotePosts" action="/post/{{post.id}}/upvote/post" method="post">
+                                    <input type="hidden" name="_csrf" value="{{token}}"/>
+                                    <input type="hidden" id="upvotePost" name="upvotePost" value=""/>
+                                    <input type="hidden" id="postIteration" name="postId" value=""/>
+                                    {{/ logged}}
+                                    <img id="upvotePusher"
+                                            class="upvote-svg"
+                                            src="/static/img/Loaders/up_icon.svg"
+                                            type="image/svg+xml"
+                                            onclick="submitPost({{id}})"
+                                    />
+                                    <span class="upvote-number">{{postUpvotes}}</span>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="post-metadata">
+                            <div class="post-date text-white">{{postDate}}</div>
+                            <div class="post-author">{{postAuthor}}</div>
+                        </div>
+                    </div>
+                    {{/post.posts}}
                 </div>
             </div>
-            {{/post.posts}}
-        </div>
-    </div>
-    {{# logged}}
-    <div class="mx-auto w-25 mb-2 h-1 bg-gradient-to-r from-blue-500 to-purple-500 roundy"></div>
-    <div class="container post-reply">
-        <form  action="/post/{{id}}" method="post">
-            <input type="hidden" name="_csrf" value="{{token}}"/>
-            <label for="comment">Comentario:</label>
-            <textarea class="submit-CommentText" id="comment" name="comment"></textarea>
-            <input type="submit" class="submit-Comment" value="Enviar" />
-        </form>
-    </div>
-    {{/ logged}}
-</main>
-{{> footer}}
-</body>
+            {{# logged}}
+            <div class="mx-auto w-25 mb-2 h-1 bg-gradient-to-r from-blue-500 to-purple-500 roundy"></div>
+            <div class="container post-reply">
+                <form  action="/post/{{id}}" method="post">
+                    <input type="hidden" name="_csrf" value="{{token}}"/>
+                    <label for="comment">Comentario:</label>
+                    <textarea class="submit-CommentText" id="comment" name="comment"></textarea>
+                    <input type="submit" class="submit-Comment" value="Enviar" />
+                </form>
+            </div>
+            {{/ logged}}
+        </main>
+        {{> footer}}
+    </body>
 </html>

@@ -1,0 +1,15 @@
+{{#packList}}
+<div class="product-column col-md-3">
+  <a class="packInfo-link" href="/packInfo/{{id}}">
+    <img src="/static/{{packImage}}"/>
+    <section class="p-3">
+      <h3>{{packTitle}}</h3>
+      <p>{{packDescription_short}}</p>
+      {{#tags}}
+      <span class="tag {{tagType}}">{{tagName}}</span>
+      {{/tags}}
+      <span class="purchase-span"><object class="purchase-logo" data="/static/img/Loaders/purchase.svg" type="image/svg+xml"></object></span>
+    </section>
+  </a>
+</div>
+{{/packList}}

@@ -1,102 +1,102 @@
 <!DOCTYPE html>
 <html lang="es">
-{{> head}}
-<body>
-{{> headerLogged}}
-    <div class="head-text text-center mb-8 mt-20 text-white">
-        <h1 class="head-text-content text-5xl mb-1">AREA PERSONAL</h1>
-        <div class="mx-auto w-24 h-1 my-40 bg-gradient-to-r from-orange-500 to-pink-500 rounded-full"></div>
-    </div>
-</header>
-<main>
-    <!--Login-->
-    <section></section>
-    <!--Register-->
-    <section></section>
-    <div class="container page-elements my-3">
-        <article class="profile-container my-1">
-            <div class="section-title">Datos e Imagen de Perfil</div>
-            <div class="mx-auto w-25 h-1 my-40 bg-gradient-to-r from-blue-500 to-purple-500 roundier"></div>
-            <div class="profile-elements">
-                <div class="profile-pic">
-                    <img class="profile-img" src="data:image/jpeg;base64,{{image}}" />
+    {{> head}}
+    <body>
+    {{> headerLogged}}
+        <div class="head-text text-center mb-8 mt-20 text-white">
+            <h1 class="head-text-content text-5xl mb-1">AREA PERSONAL</h1>
+            <div class="mx-auto w-24 h-1 my-40 bg-gradient-to-r from-orange-500 to-pink-500 rounded-full"></div>
+        </div>
+    </header>
+    <main>
+        <!--Login-->
+        <section></section>
+        <!--Register-->
+        <section></section>
+        <div class="container page-elements my-3">
+            <article class="profile-container my-1">
+                <div class="section-title">Datos e Imagen de Perfil</div>
+                <div class="mx-auto w-25 h-1 my-40 bg-gradient-to-r from-blue-500 to-purple-500 roundier"></div>
+                <div class="profile-elements">
+                    <div class="profile-pic">
+                        <img class="profile-img" src="data:image/jpeg;base64,{{image}}" />
+                    </div>
+                    <div class="profile-name">
+                        <div class="user-name">{{user}}</div>
+                    </div>
                 </div>
-                <div class="profile-name">
-                    <div class="user-name">{{user}}</div>
-                </div>
-            </div>
-            <div class="profile-placeholder">PERFIL</div>
-            <form method="post" enctype="multipart/form-data" action="/upload/image" class="form-inline">
-                <!--token CSRF -->
-                <input type="hidden" name="_csrf" value="{{token}}">
-                <div class="form-group" style="margin-right: 10px">
-                    <label for="image" class="btn btn-primary">Selecciona una imagen:</label>
-                    <input type="file" hidden class="form-control-file btn btn-primary " id="image" name="image" accept="image/*">
-                </div>
-                <button type="submit" class="btn btn-primary" style="margin-left: 10px">Cargar imagen</button>
-            </form>
-        </article>
-    </div>
-    {{^ admin}}
-    <div class="container page-elements my-3">
-        <article class="profile-container my-1">
-            <div class="section-title">Mis Cursos!</div>
-            <div class="mx-auto w-25 h-1 my-40 bg-gradient-to-r from-blue-500 to-purple-500 roundier"></div>
-            <div class="pack-elements">
-                {{#userPacks}}
-                <article class="packId-container my-2">
-                    <a class="pack-Linker" href="/packInfo/{{id}}">
-                        <div class="packId-header">
-                            <div class="packId-info">
-                                <div class="packId-title">{{packTitle}}</div>
-                                <div class="packId-content">{{packDescription_short}}</div>
+                <div class="profile-placeholder">PERFIL</div>
+                <form method="post" enctype="multipart/form-data" action="/upload/image" class="form-inline">
+                    <!--token CSRF -->
+                    <input type="hidden" name="_csrf" value="{{token}}">
+                    <div class="form-group" style="margin-right: 10px">
+                        <label for="image" class="btn btn-primary">Selecciona una imagen:</label>
+                        <input type="file" hidden class="form-control-file btn btn-primary " id="image" name="image" accept="image/*">
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="margin-left: 10px">Cargar imagen</button>
+                </form>
+            </article>
+        </div>
+        {{^ admin}}
+        <div class="container page-elements my-3">
+            <article class="profile-container my-1">
+                <div class="section-title">Mis Cursos!</div>
+                <div class="mx-auto w-25 h-1 my-40 bg-gradient-to-r from-blue-500 to-purple-500 roundier"></div>
+                <div class="pack-elements">
+                    {{#userPacks}}
+                    <article class="packId-container my-2">
+                        <a class="pack-Linker" href="/packInfo/{{id}}">
+                            <div class="packId-header">
+                                <div class="packId-info">
+                                    <div class="packId-title">{{packTitle}}</div>
+                                    <div class="packId-content">{{packDescription_short}}</div>
+                                </div>
                             </div>
-                        </div>
-                        <div class="tag-section">
-                            {{#tags}}
-                            <span class="tag {{tagType}}">{{tagName}}</span>
-                            {{/tags}}
-                        </div>
-                    </a>
-                </article>
-
-                {{/userPacks}}
-            </div>
-        </article>
-    </div>
-    {{/ admin}}
-    {{# admin}}
-    <div class="container page-elements my-3">
-        <article class="profile-container my-1">
-            <div class="section-title">Hilos de usuarios</div>
-            <div class="mx-auto w-25 h-1 my-40 bg-gradient-to-r from-blue-500 to-purple-500 roundier"></div>
-            <div class="pack-elements">
-                {{#threads}}
-                <a class="thread-Deleter" href="/deleteThread/{{id}}">
-                    <article class="packId-container Deleter my-2">
-                        <div class="packId-header">
-                            <div class="packId-logoAdmin">
-                                <img class="packId-svglogoAdmin" src="{{threadImage}}" type="image/svg+xml"/>
+                            <div class="tag-section">
+                                {{#tags}}
+                                <span class="tag {{tagType}}">{{tagName}}</span>
+                                {{/tags}}
                             </div>
-                            <div class="packId-info">
-                                <div class="packId-title">{{threadTitle}}</div>
-                                <div class="packId-content">{{threadContent_short}}</div>
-                                <div class="packId-title">Contenido extendido</div>
-                                <div class="packId-content">{{threadContent}}</div>
-                            </div>
-                        </div>
-                        <div class="tag-section">
-                            <span class="tag tag-programming">{{threadDate}}</span>
-                            <span class="tag tag-programming">{{threadAuthor}}</span>
-                        </div>
+                        </a>
                     </article>
-                </a>
-                {{/threads}}
-            </div>
-        </article>
-    </div>
-    {{/ admin}}
-</main>
-{{> footer}}
-</body>
+
+                    {{/userPacks}}
+                </div>
+            </article>
+        </div>
+        {{/ admin}}
+        {{# admin}}
+        <div class="container page-elements my-3">
+            <article class="profile-container my-1">
+                <div class="section-title">Hilos de usuarios</div>
+                <div class="mx-auto w-25 h-1 my-40 bg-gradient-to-r from-blue-500 to-purple-500 roundier"></div>
+                <div class="pack-elements">
+                    {{#threads}}
+                    <a class="thread-Deleter" href="/deleteThread/{{id}}">
+                        <article class="packId-container Deleter my-2">
+                            <div class="packId-header">
+                                <div class="packId-logoAdmin">
+                                    <img class="packId-svglogoAdmin" src="{{threadImage}}" type="image/svg+xml"/>
+                                </div>
+                                <div class="packId-info">
+                                    <div class="packId-title">{{threadTitle}}</div>
+                                    <div class="packId-content">{{threadContent_short}}</div>
+                                    <div class="packId-title">Contenido extendido</div>
+                                    <div class="packId-content">{{threadContent}}</div>
+                                </div>
+                            </div>
+                            <div class="tag-section">
+                                <span class="tag tag-programming">{{threadDate}}</span>
+                                <span class="tag tag-programming">{{threadAuthor}}</span>
+                            </div>
+                        </article>
+                    </a>
+                    {{/threads}}
+                </div>
+            </article>
+        </div>
+        {{/ admin}}
+    </main>
+    {{> footer}}
+    </body>
 </html>
