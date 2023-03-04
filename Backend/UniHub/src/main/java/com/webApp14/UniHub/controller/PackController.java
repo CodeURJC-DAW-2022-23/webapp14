@@ -51,6 +51,7 @@ public class PackController {
     // Method to show with a list all the current Packs avaiable on the DB
     @GetMapping("/packs")
     public String packs(Model model){
+        
         List<Pack> packList = packRepository.findAll();
         model.addAttribute("packList", packList);
         return "packs";

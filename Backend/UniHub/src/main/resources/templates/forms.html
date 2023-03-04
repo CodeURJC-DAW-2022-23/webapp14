@@ -17,9 +17,11 @@
 </header>
 <main>
     {{# logged}}
+        {{^ admin}}
     <div class="more-packs">
         <button class="thread-button" expanded="false"><a class="thread-button" href="/forms/formsMaker">Crea tu Hilo!</a></button>
     </div>
+        {{/ admin}}
     {{/ logged}}
     <div class="container thread-container">
         {{#threadList}}
