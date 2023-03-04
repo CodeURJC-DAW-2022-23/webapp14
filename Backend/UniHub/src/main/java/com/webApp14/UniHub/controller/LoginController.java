@@ -35,22 +35,6 @@ public class LoginController {
         return "login";
     }
 
-    /*@PostMapping ("/processFormLogin")
-    public ModelAndView processForm(Model model, @RequestParam String username, @RequestParam String password){
-        Optional <User> tryUser = userRepository.findByUsername(username);
-        if (tryUser.isPresent()) {
-            if (passwordEncoder.matches(password, tryUser.get().getPassword())){
-                return new ModelAndView(new RedirectView("/", true));
-            }else{
-                return new ModelAndView(new RedirectView("/error", true));
-            }
-
-        }else{
-            return new ModelAndView(new RedirectView("/error", true));
-        }
-    }*/
-
-
     @GetMapping("/LogInError")
     public String getLoginError(Model model){
         return "error";

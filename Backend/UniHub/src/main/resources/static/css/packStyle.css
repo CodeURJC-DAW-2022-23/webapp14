@@ -36,6 +36,7 @@ html {
 /*Styles for the header area to define items, colors, etc*/
 header .nav-link {
    color: #ffffff;
+    transition: 500ms;
 }
 
 header {
@@ -53,6 +54,7 @@ header .navbar-brand:hover {
    cursor: pointer;
    scale: 1.07;
    box-shadow: 0px 0px 10px 10px rgba(247, 0, 255, 0.219);
+   transition: 500ms;
 }
 
 header .form-inline {

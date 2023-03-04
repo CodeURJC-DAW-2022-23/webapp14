@@ -5,8 +5,12 @@ import com.webApp14.UniHub.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.PostConstruct;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.time.LocalDateTime;
@@ -149,6 +153,22 @@ public class DatabaseInitializer {
 
         // Admin user CREATION
         User admin = new User("admin123","admin@hotmail.com", passwordEncoder.encode("123"), "USER", "ADMIN");
+        // Create a File object from the image file path
+        File file = new File("src/main/resources/static/img/Profile-Pics/profile_img.png");
+
+        // Read the image file into a byte array
+        FileInputStream fileInputStream = new FileInputStream(file);
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        byte[] buffer = new byte[4096];
+        int bytesRead;
+        while ((bytesRead = fileInputStream.read(buffer)) != -1) {
+            outputStream.write(buffer, 0, bytesRead);
+        }
+        byte[] imageBytes = outputStream.toByteArray();
+
+        admin.setImage(imageBytes);
+
+        // Save the user object to the database using the userRepository object
         userRepository.save(admin);
     }
 

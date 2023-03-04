@@ -12,11 +12,6 @@
    width: auto;
 }
 
-.packId-container {
-   display: flex;
-   flex-direction: column;
-}
-
 .packId-logo {
    flex: 1;
    display: flex;
@@ -34,23 +29,64 @@ packId-container {
    flex-direction: column;
 }
 
-.packId-logo {
-   flex: 1;
-   display: flex;
-   justify-content: center;
-   align-items: center;
-}
-
-.packId-logo img {
-   max-width: 100%;
-   max-height: 100%;
-}
-
 .packInfo-img {
    max-width: 100%;
    height: 40%;
    object-fit: cover;
    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.349);
+}
+
+.packId-logoAdmin {
+   flex: 1;
+   display: flex;
+}
+
+.packId-logoAdmin img {
+   width: 160px;
+   height: 160px;
+}
+
+.thread-Deleter {
+   text-decoration: none;
+   color: inherit;
+   transition: 500ms;
+}
+
+.thread-Deleter:hover {
+   transition: 500ms;
+   text-decoration: none;
+   cursor: pointer;
+   scale: 1.04;
+}
+
+.pack-Linker{
+   text-decoration: none;
+}
+
+.pack-Linker:hover {
+    text-decoration: none;
+}
+
+.packAdder-button: {
+   text-decoration: none;
+   cursor: pointer;
+}
+
+.packId-container.Deleter:hover::before {
+  content: "Eliminar";
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 2rem;
+  color: white;
+  text-shadow: 0 0 10px black;
+}
+
+.packId-container.Deleter:hover {
+  backdrop-filter: blur(2rem);
+  background-color: rgba(255, 0, 0, 0.5);
 }
 
 .packInfo-header {

@@ -35,7 +35,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http.authorizeRequests().antMatchers("/").permitAll();
         http.authorizeRequests().antMatchers("/search").permitAll();
         http.authorizeRequests().antMatchers("/packs").permitAll();
-        http.authorizeRequests().antMatchers("/packs/{id}").permitAll();
+
         http.authorizeRequests().antMatchers("/forms").permitAll();
         http.authorizeRequests().antMatchers("/post/{id}").permitAll();
 
@@ -45,10 +45,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http.authorizeRequests().antMatchers("/SignUp").permitAll();
         http.authorizeRequests().antMatchers("/mailserver/connect").permitAll();
 
-        http.authorizeRequests().antMatchers("/clientArea").permitAll();
         http.authorizeRequests().antMatchers("/users/{id}/image").permitAll();
 
         // Private pages
+        http.authorizeRequests().antMatchers("/clientArea").hasAnyRole("USER");
+        http.authorizeRequests().antMatchers("/deleteThread/{id}").hasAnyRole("ADMIN");
+        http.authorizeRequests().antMatchers("/packs/{id}").hasAnyRole("USER", "ADMIN");
+        http.authorizeRequests().antMatchers("/addPack/{id}").hasAnyRole("USER", "ADMIN");
         http.authorizeRequests().antMatchers("/LogOut").hasAnyRole("USER", "ADMIN");
         http.authorizeRequests().antMatchers("/forms/formsMaker").hasAnyRole("USER", "ADMIN");
 
