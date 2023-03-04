@@ -10,6 +10,7 @@ import java.util.Properties;
 @Configuration
 public class MailConfig {
 
+    // Attributes
    @Value("${spring.mail.host}")
     private String host;
 
@@ -22,6 +23,7 @@ public class MailConfig {
     @Value("${spring.mail.password}")
     private String password;
 
+    // Sets the JavaMailSender needed attritbutes to allow the server sending dependencies
     @Bean
     public JavaMailSender javaMailSender() {
         JavaMailSenderImpl mailSender = new JavaMailSenderImpl();

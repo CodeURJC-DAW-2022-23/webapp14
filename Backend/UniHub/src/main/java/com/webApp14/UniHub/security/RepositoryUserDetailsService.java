@@ -2,7 +2,6 @@ package com.webApp14.UniHub.security;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
@@ -18,10 +17,11 @@ import com.webApp14.UniHub.repository.UserRepository;
 @Service
 public class RepositoryUserDetailsService implements UserDetailsService {
 
+    // Attributes
     @Autowired
     private UserRepository userRepository;
 
-
+    // Loads the user found on the database given the username sent to it
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 

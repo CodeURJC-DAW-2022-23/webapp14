@@ -38,6 +38,7 @@ public class FormsController {
 
     Principal principalUser;
 
+    // Method to insert the user credentials on the html model
     @ModelAttribute
     public void addAttributes(Model model, HttpServletRequest request) {
         Principal principal = request.getUserPrincipal();
@@ -58,7 +59,7 @@ public class FormsController {
         }
     }
 
-    // Methods for URL mappings
+    // Prints the forms.html page with a list of all the current threads
     @GetMapping("/forms")
     public String forms(Model model){
         List<Forms> threadList = formsRepository.findAll();
@@ -66,6 +67,7 @@ public class FormsController {
         return "forms";
     }
 
+    // Loads the post.html with the information of the selected thread given with the id tag
     @GetMapping("/post/{id}")
     public String showPost(@PathVariable("id") Long id, Model model) {
         Forms forms = formsRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid thread id"));
@@ -74,6 +76,9 @@ public class FormsController {
         return "post";
     }
 
+    /*Creates a comment loading the information of the content and the current date to set it on the post Attributes
+    then it returns the current post.html with the comment section updated
+     */
     @PostMapping("/post/{id}")
     public String makeComment(@PathVariable("id") Long id, @RequestParam("comment") String comment, Model model) {
         Forms forms = formsRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid thread id"));
@@ -90,6 +95,7 @@ public class FormsController {
         return showPost(id, model);
     }
 
+    // Updates the thread's main upvote counter and adds 1 when the button is pressed
     @PostMapping("/post/{id}/upvote")
     public String threadUpvote(@PathVariable("id") Long id, @RequestParam("threadUpvote") int up, Model model) {
         Forms forms = formsRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid thread id"));
@@ -102,6 +108,7 @@ public class FormsController {
         return showPost(id, model);
     }
 
+    // Updates the individual posted comment upvote counter and adds 1 when the button is pressed
     @PostMapping("/post/{id}/upvote/post")
     public String postUpvote(@PathVariable("id") Long id, @RequestParam("postId") Long postId, @RequestParam("upvotePost") int up, Model model) {
         Forms forms = formsRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid thread id"));
@@ -115,6 +122,7 @@ public class FormsController {
         return showPost(id, model);
     }
 
+    // Loads the formsMaker html and on it, it loads the thread eligible pictures to have them avaiable on the web
     @GetMapping("/forms/formsMaker")
     public String formsMaker(Model model){
         List<ThreadPics> threadPicsList = threadPicsRepository.findAll();
@@ -122,6 +130,7 @@ public class FormsController {
         return "formsMaker";
     }
 
+    // With the information retrieved for the content of a thread, a new thread is created and added to the DB
     @PostMapping("/forms/formsMaker")
     public String handleFormSubmission(@RequestParam("title") String title,
                                        @RequestParam("subtitle") String subtitle,
@@ -142,9 +151,6 @@ public class FormsController {
         // Fills out the entire Form with the Not null information
         Forms newForm = new Forms(title, subtitle, description, formattedDate, principalUser.getName(), 0, selectedImage);
         formsRepository.save(newForm);
-
-        // User user = usuario entero
-        // userRepository.save(user);
 
         return forms(model);
     }

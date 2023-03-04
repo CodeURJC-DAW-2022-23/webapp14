@@ -22,6 +22,7 @@ import java.util.Optional;
 @Controller
 public class MainController {
 
+    // Attributes
     @Autowired
     UserRepository userRepository;
     @Autowired
@@ -31,6 +32,7 @@ public class MainController {
 
     Principal principalUser;
 
+    // Method to insert the user credentials on the html model
     @ModelAttribute
     public void addAttributes(Model model, HttpServletRequest request) {
         Principal principal = request.getUserPrincipal();
@@ -50,12 +52,14 @@ public class MainController {
             model.addAttribute("logged", false);
         }
     }
-    
+
+    // Returns the main.html template
     @GetMapping(value={"/", "/main"})
     public String main(){
         return "main";
     }
 
+    // Loads the clientArea.html with the different attributes to have the image, user threads and the name
     @GetMapping("/clientArea")
     public String clientArea(Model model, HttpServletRequest request){
         Optional<User> optionalUser = userRepository.findByUsername(principalUser.getName());
@@ -73,12 +77,14 @@ public class MainController {
         return "clientArea";
     }
 
+    // Method to delete the thread selected by its id
     @GetMapping("/deleteThread/{id}")
     public String deleteThread(@PathVariable("id") Long id) {
         formsRepository.deleteById(id);
         return "redirect:/clientArea";
     }
 
+    // Allows the user to upload an image from its system, sets it as the current user picture and returns the current page to visualize it.
     @PostMapping("/upload/image")
     public String uploadImage(@RequestParam("image") MultipartFile imageFile, Model model) {
         User user = userRepository.findByUsername(principalUser.getName()).orElseThrow(() -> new IllegalArgumentException("Invalid user name"));

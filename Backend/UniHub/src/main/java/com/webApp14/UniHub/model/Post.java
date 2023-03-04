@@ -2,10 +2,10 @@ package com.webApp14.UniHub.model;
 
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
 
 @Entity
 public class Post {
+
     // Attributes
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

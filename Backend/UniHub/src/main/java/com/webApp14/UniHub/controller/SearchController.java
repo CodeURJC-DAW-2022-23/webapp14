@@ -31,6 +31,7 @@ public class SearchController {
 
     Principal principalUser;
 
+    // Method to insert the user credentials on the html model
     @ModelAttribute
     public void addAttributes(Model model, HttpServletRequest request) {
         Principal principal = request.getUserPrincipal();
@@ -51,6 +52,8 @@ public class SearchController {
         }
     }
 
+    /* With this custom query we search given a String, all the packs that contain the keyword on it, showing all of them
+    in the customSearch.html*/
     @PostMapping("/search")
     public String search(Model model, @RequestParam("query") String keyword){
         List<Pack> packs = packRepository.findBypackDescriptionLongContaining(keyword);

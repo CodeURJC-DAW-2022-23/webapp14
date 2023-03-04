@@ -14,6 +14,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @Configuration
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
+    // Attributes
     @Autowired
     RepositoryUserDetailsService userDetailsService;
 
@@ -28,6 +29,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
     }
 
+    // Method to set the page disponibility given the user roles
     @Override
     protected void configure(HttpSecurity http) throws Exception {
 

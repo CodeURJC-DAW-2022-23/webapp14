@@ -15,6 +15,7 @@ import java.io.IOException;
 @Controller
 public class PdfController {
 
+    // Method to allow a user to download content from the page itself
     @GetMapping("/download")
     public ResponseEntity<byte[]> downloadPdf() throws IOException, DocumentException {
 

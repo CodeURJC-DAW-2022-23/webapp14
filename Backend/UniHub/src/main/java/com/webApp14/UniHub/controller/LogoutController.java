@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 @Controller
 public class LogoutController {
 
+    // Logs the current user out and loads the main page
     @GetMapping("/LogOut")
     public String logout(HttpServletRequest request, HttpServletResponse response, Authentication authentication) {
         if (authentication != null) {

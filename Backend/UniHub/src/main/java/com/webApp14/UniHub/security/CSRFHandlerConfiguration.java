@@ -20,6 +20,7 @@ public class CSRFHandlerConfiguration implements WebMvcConfigurer {
 
 class CSRFHandlerInterceptor implements HandlerInterceptor {
 
+    // Adds the CSRF cyphering token to the model
     @Override
     public void postHandle(final HttpServletRequest request, final HttpServletResponse response, final Object handler,
                            final ModelAndView modelAndView) throws Exception {

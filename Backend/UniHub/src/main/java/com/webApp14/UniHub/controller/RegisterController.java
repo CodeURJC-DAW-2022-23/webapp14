@@ -18,6 +18,7 @@ import java.util.Optional;
 @Controller
 public class RegisterController {
 
+    // Attributes
     @Autowired
     private PasswordEncoder passwordEncoder;
 
@@ -28,11 +29,14 @@ public class RegisterController {
     private EmailService emailService;
 
 
+    // Shows the register.html for a user to register on it
     @GetMapping("/SignUp")
     public String getRegister(Model model){
         return "register";
     }
 
+    /* When a user fully fills out the form, it created a new user with all the data required and sends a message
+    to the user's designated email address*/
     @PostMapping("/UserSignUp")
     public ModelAndView processRegister(Model model, @RequestParam String username, @RequestParam String email, @RequestParam String password) throws IOException {
         User user = new User(username, email, passwordEncoder.encode(password), "USER");

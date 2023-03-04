@@ -10,15 +10,15 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 import java.security.Principal;
-import java.util.ArrayList;
 import java.util.Base64;
 import java.util.List;
 import java.util.Optional;
 
 @Controller
 public class PackController {
+
+    // Attributes
     @Autowired
     private PackRepository packRepository;
 
@@ -27,6 +27,7 @@ public class PackController {
 
     Principal principalUser;
 
+    // Method to insert the user credentials on the html model
     @ModelAttribute
     public void addAttributes(Model model, HttpServletRequest request) {
         Principal principal = request.getUserPrincipal();
@@ -47,13 +48,15 @@ public class PackController {
         }
     }
 
-
+    // Method to show with a list all the current Packs avaiable on the DB
     @GetMapping("/packs")
     public String packs(Model model){
         List<Pack> packList = packRepository.findAll();
         model.addAttribute("packList", packList);
         return "packs";
     }
+
+    // It loads the packInfo.html with the information of a selected pack
     @GetMapping("/packInfo/{id}")
     public String packInfo(@PathVariable("id") Long id, Model model) {
         Pack pack = packRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid pack id"));
@@ -61,6 +64,7 @@ public class PackController {
         return "packInfo";
     }
 
+    // Method to add a package selected to the current user packList so they can check it on clientArea later on
     @PostMapping("/addPack/{id}")
     public String addPack(@PathVariable("id") Long id) {
         Pack pack = packRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid pack id"));

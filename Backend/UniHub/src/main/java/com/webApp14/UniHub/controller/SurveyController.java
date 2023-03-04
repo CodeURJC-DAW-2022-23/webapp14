@@ -16,12 +16,13 @@ import java.util.Optional;
 @Controller
 public class SurveyController {
 
-
+    // Attributes
     @Autowired
     private UserRepository userRepository;
 
     Principal principalUser;
 
+    // Method to insert the user credentials on the html model
     @ModelAttribute
     public void addAttributes(Model model, HttpServletRequest request) {
         Principal principal = request.getUserPrincipal();
@@ -42,6 +43,7 @@ public class SurveyController {
         }
     }
 
+    // Loads surveys.html
     @GetMapping("/surveys")
     public String survey(Model model){
         return "surveys";

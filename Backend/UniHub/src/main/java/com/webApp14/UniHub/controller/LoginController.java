@@ -19,7 +19,7 @@ import java.util.Optional;
 @Controller
 public class LoginController {
 
-
+    // Attributes
     @Autowired
     private UserRepository userRepository;
 
@@ -29,12 +29,13 @@ public class LoginController {
     @Autowired
     private RepositoryUserDetailsService userService;
 
-
+    // Loads the login.html
     @GetMapping("/LogIn")
     public String getLogin(Model model){
         return "login";
     }
 
+    // Returns the error.html page, notified when something goes wrong during navigation
     @GetMapping("/LogInError")
     public String getLoginError(Model model){
         return "error";
