@@ -2,6 +2,7 @@ package com.webApp14.UniHub.model;
 
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -24,9 +25,8 @@ public class User {
     @OneToMany
     private List<Forms> formsList;
 
-    @Column
-    @OneToMany
-    private List<Pack> packList;
+    @ManyToMany
+    private List<Pack> packList = new ArrayList<>();
 
     @ElementCollection(fetch = FetchType.EAGER)
     private List<String> roles;

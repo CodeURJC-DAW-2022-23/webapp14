@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.net.URI;
 import java.security.Principal;
+import java.util.Base64;
 import java.util.List;
 import java.util.Optional;
 
@@ -79,18 +80,5 @@ public class UserController {
         userService.delete(id);
         return ResponseEntity.noContent().build();
     }
-    @PostMapping("/upload/image")
-    public String uploadImage(@RequestParam("image") MultipartFile imageFile) {
-
-        User user = userRepository.findByUsername(principalUser.getName()).orElseThrow(() -> new IllegalArgumentException("Invalid user name"));
-        try {
-            user.setImage(imageFile.getBytes());
-            userRepository.save(user);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return "redirect:/users/" + principalUser.getName();
-    }
-
 
 }

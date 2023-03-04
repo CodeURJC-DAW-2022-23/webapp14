@@ -19,7 +19,7 @@
             <div class="mx-auto w-25 h-1 my-40 bg-gradient-to-r from-blue-500 to-purple-500 roundier"></div>
             <div class="profile-elements">
                 <div class="profile-pic">
-                    <img class="profile-img" src="/static/img/Profile-Pics/profile_img.png" />
+                    <img class="profile-img" src="data:image/jpeg;base64,{{image}}" />
                 </div>
                 <div class="profile-name">
                     <div class="user-name">{{user}}</div>
@@ -37,56 +37,34 @@
             </form>
         </article>
     </div>
+    {{^ admin}}
     <div class="container page-elements my-3">
         <article class="profile-container my-1">
             <div class="section-title">Mis Cursos!</div>
             <div class="mx-auto w-25 h-1 my-40 bg-gradient-to-r from-blue-500 to-purple-500 roundier"></div>
             <div class="pack-elements">
-                {{#user.packList}}
+                {{#userPacks}}
                 <article class="packId-container my-2">
-                    <div class="packId-header">
-                        <div class="packId-logo">
-                            <object class="packId-svg" data="/static/{{packImage}}" type="image/svg+xml"></object>
+                    <a class="pack-Linker" href="/packInfo/{{id}}">
+                        <div class="packId-header">
+                            <div class="packId-info">
+                                <div class="packId-title">{{packTitle}}</div>
+                                <div class="packId-content">{{packDescription_short}}</div>
+                            </div>
                         </div>
-                        <div class="packId-info">
-                            <div class="packId-title">{{packTitle}}</div>
-                            <div class="packId-content">{{packDescription_short}}</div>
+                        <div class="tag-section">
+                            {{#tags}}
+                            <span class="tag {{tagType}}">{{tagName}}</span>
+                            {{/tags}}
                         </div>
-                    </div>
-                    <div class="tag-section">
-                        {{#tags}}
-                        <span class="tag {{tagType}}">{{tagName}}</span>
-                        {{/tags}}
-                    </div>
+                    </a>
                 </article>
-                {{/user.packList}}
+
+                {{/userPacks}}
             </div>
         </article>
     </div>
-    <div class="container page-elements my-3">
-        <article class="profile-container my-1">
-            <div class="section-title">Recomendaciones</div>
-            <div class="mx-auto w-25 h-1 my-40 bg-gradient-to-r from-blue-500 to-purple-500 roundier"></div>
-            <div class="pack-elements">
-                <article class="packId-container my-2">
-                    <div class="packId-header">
-                        <div class="packId-logo">
-                            <object class="packId-svg" data="/Frontend/Img-Sources/Loaders/thread_icon.svg" type="image/svg+xml"></object>
-                        </div>
-                        <div class="packId-info">
-                            <div class="packId-title">¿Como apruebo DAA?</div>
-                            <div class="packId-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet,</div>
-                        </div>
-                    </div>
-                    <div class="tag-section">
-                        {{#tags}}
-                        <span class="tag {{tagType}}">{{tagName}}</span>
-                        {{/tags}}
-                    </div>
-                </article>
-            </div>
-        </article>
-    </div>
+    {{/ admin}}
     {{# admin}}
     <div class="container page-elements my-3">
         <article class="profile-container my-1">
@@ -94,23 +72,25 @@
             <div class="mx-auto w-25 h-1 my-40 bg-gradient-to-r from-blue-500 to-purple-500 roundier"></div>
             <div class="pack-elements">
                 {{#threads}}
-                <article class="packId-container my-2">
-                    <div class="packId-header">
-                        <div class="packId-logo">
-                            <img class="packId-svg" src="{{threadImage}}" type="image/svg+xml"/>
+                <a class="thread-Deleter" href="/deleteThread/{{id}}">
+                    <article class="packId-container Deleter my-2">
+                        <div class="packId-header">
+                            <div class="packId-logoAdmin">
+                                <img class="packId-svglogoAdmin" src="{{threadImage}}" type="image/svg+xml"/>
+                            </div>
+                            <div class="packId-info">
+                                <div class="packId-title">{{threadTitle}}</div>
+                                <div class="packId-content">{{threadContent_short}}</div>
+                                <div class="packId-title">Contenido extendido</div>
+                                <div class="packId-content">{{threadContent}}</div>
+                            </div>
                         </div>
-                        <div class="packId-info">
-                            <div class="packId-title">{{threadTitle}}</div>
-                            <div class="packId-content">{{threadContent_short}}</div>
-                            <div class="packId-title">Contenido extendido</div>
-                            <div class="packId-content">{{threadContent}}</div>
+                        <div class="tag-section">
+                            <span class="tag tag-programming">{{threadDate}}</span>
+                            <span class="tag tag-programming">{{threadAuthor}}</span>
                         </div>
-                    </div>
-                    <div class="tag-section">
-                        <span class="tag tag-programming">{{threadDate}}</span>
-                        <span class="tag tag-programming">{{threadAuthor}}</span>
-                    </div>
-                </article>
+                    </article>
+                </a>
                 {{/threads}}
             </div>
         </article>

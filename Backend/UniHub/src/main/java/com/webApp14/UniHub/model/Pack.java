@@ -1,7 +1,7 @@
 package com.webApp14.UniHub.model;
 
 import javax.persistence.*;
-import java.sql.Blob;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -12,6 +12,9 @@ public class Pack {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @ManyToMany(mappedBy = "packList")
+    private List<User> users = new ArrayList<>();
 
     @Column(nullable = false, unique = true)
     private String packTitle;

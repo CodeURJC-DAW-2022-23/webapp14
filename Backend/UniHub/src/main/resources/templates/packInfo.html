@@ -43,29 +43,25 @@
             <span class="price-tag">{{pack.packPrice}}</span>
             <span class="dollars">&#x1F4B5;</span>
             <div class="button-container">
-               <span class="buyout"><object class="buyout-logo" data="/static/img/Loaders/purchase.svg" type="image/svg+xml"></object></span>
+                <form action="/addPack/{{id}}" method="post">
+                    <!--token CSRF -->
+                    <input type="hidden" name="_csrf" value="{{token}}"/>
+                    <button type="submit" class="packAdder-button"><span class="buyout"><img class="buyout-logo" src="/static/img/Loaders/purchase.svg" type="image/svg+xml"/></span></button>
+                </form>
             </div>
         </div>
         <div class="mx-auto w-25 mb-2 h-1 bg-gradient-to-r from-blue-500 to-purple-500 roundy"></div>
-
-
-
-
-
         <div class="download-files">
             <span class="price-tag">Contenido Descargable</span>
             <span class="dollars">
-        <a href="/download">
-             <span class="dollars">&#128193;</span>
-        </a>
-    </span>
+                <a href="/download">
+                    <span class="dollars">&#128193;</span>
+                </a>
+             </span>
             <div class="button-container">
                 <span class="buyout"><object class="buyout-logo" data="" type="image/svg+xml"></object></span>
             </div>
         </div>
-
-
-
     </div>
 </main>
 {{> footer}}
