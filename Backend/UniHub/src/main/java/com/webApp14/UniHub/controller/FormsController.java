@@ -2,9 +2,11 @@ package com.webApp14.UniHub.controller;
 import com.webApp14.UniHub.model.Forms;
 import com.webApp14.UniHub.model.Post;
 import com.webApp14.UniHub.model.ThreadPics;
+import com.webApp14.UniHub.model.User;
 import com.webApp14.UniHub.repository.FormsRepository;
 import com.webApp14.UniHub.repository.PostRepository;
 import com.webApp14.UniHub.repository.ThreadPicsRepository;
+import com.webApp14.UniHub.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,7 +16,9 @@ import javax.servlet.http.HttpServletRequest;
 import java.security.Principal;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Base64;
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 public class FormsController {
@@ -25,6 +29,10 @@ public class FormsController {
 
     @Autowired
     private PostRepository postRepository;
+
+    @Autowired
+    private UserRepository userRepository;
+
     @Autowired
     private ThreadPicsRepository threadPicsRepository;
 
@@ -35,6 +43,13 @@ public class FormsController {
         Principal principal = request.getUserPrincipal();
         principalUser = principal;
         if(principal != null) {
+            Optional<User> optionalUser = userRepository.findByUsername(principalUser.getName());
+            if (optionalUser.isPresent()){
+                User user = optionalUser.get();
+                byte[] imageBytes = user.getImage();
+                String base64Image = Base64.getEncoder().encodeToString(imageBytes);
+                model.addAttribute("imageHeader", base64Image);
+            }
             model.addAttribute("logged", true);
             model.addAttribute("userName", principal.getName());
             model.addAttribute("admin", request.isUserInRole("ADMIN"));
@@ -58,8 +73,6 @@ public class FormsController {
         model.addAttribute("id", id);
         return "post";
     }
-
-
 
     @PostMapping("/post/{id}")
     public String makeComment(@PathVariable("id") Long id, @RequestParam("comment") String comment, Model model) {
@@ -102,14 +115,12 @@ public class FormsController {
         return showPost(id, model);
     }
 
-
     @GetMapping("/forms/formsMaker")
     public String formsMaker(Model model){
         List<ThreadPics> threadPicsList = threadPicsRepository.findAll();
         model.addAttribute("threadPicsList", threadPicsList );
         return "formsMaker";
     }
-
 
     @PostMapping("/forms/formsMaker")
     public String handleFormSubmission(@RequestParam("title") String title,

@@ -36,6 +36,13 @@ public class MainController {
         Principal principal = request.getUserPrincipal();
         principalUser = principal;
         if(principal != null) {
+            Optional<User> optionalUser = userRepository.findByUsername(principalUser.getName());
+            if (optionalUser.isPresent()){
+                User user = optionalUser.get();
+                byte[] imageBytes = user.getImage();
+                String base64Image = Base64.getEncoder().encodeToString(imageBytes);
+                model.addAttribute("imageHeader", base64Image);
+            }
             model.addAttribute("logged", true);
             model.addAttribute("userName", principal.getName());
             model.addAttribute("admin", request.isUserInRole("ADMIN"));

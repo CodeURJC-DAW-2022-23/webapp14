@@ -12,6 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
 
+import java.io.*;
 import java.util.Optional;
 
 @Controller
@@ -33,8 +34,22 @@ public class RegisterController {
     }
 
     @PostMapping("/UserSignUp")
-    public ModelAndView processRegister(Model model, @RequestParam String username, @RequestParam String email, @RequestParam String password){
+    public ModelAndView processRegister(Model model, @RequestParam String username, @RequestParam String email, @RequestParam String password) throws IOException {
         User user = new User(username, email, passwordEncoder.encode(password), "USER");
+
+        File file = new File("src/main/resources/static/img/Profile-Pics/profile_img.png");
+
+        // Read the image file into a byte array
+        FileInputStream fileInputStream = new FileInputStream(file);
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        byte[] buffer = new byte[4096];
+        int bytesRead;
+        while ((bytesRead = fileInputStream.read(buffer)) != -1) {
+            outputStream.write(buffer, 0, bytesRead);
+        }
+        byte[] imageBytes = outputStream.toByteArray();
+
+        user.setImage(imageBytes);
 
         Optional <User> tryUser = userRepository.findByUsername(user.getUsername());
         Optional <User> tryEmail = userRepository.findByEmail(user.getEmail());

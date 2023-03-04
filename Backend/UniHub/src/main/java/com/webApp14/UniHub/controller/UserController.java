@@ -8,10 +8,8 @@ import org.springframework.web.bind.annotation.*;
 
 import com.webApp14.UniHub.model.User;
 import com.webApp14.UniHub.service.UserService;
-import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
-import java.io.IOException;
 import java.net.URI;
 import java.security.Principal;
 import java.util.Base64;
@@ -37,8 +35,14 @@ public class UserController {
     public void addAttributes(Model model, HttpServletRequest request) {
         Principal principal = request.getUserPrincipal();
         principalUser = principal;
-
         if(principal != null) {
+            Optional<User> optionalUser = userRepository.findByUsername(principalUser.getName());
+            if (optionalUser.isPresent()){
+                User user = optionalUser.get();
+                byte[] imageBytes = user.getImage();
+                String base64Image = Base64.getEncoder().encodeToString(imageBytes);
+                model.addAttribute("imageHeader", base64Image);
+            }
             model.addAttribute("logged", true);
             model.addAttribute("userName", principal.getName());
             model.addAttribute("admin", request.isUserInRole("ADMIN"));
