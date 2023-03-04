@@ -65,7 +65,7 @@ public class PackController {
         model.addAttribute("currentPage", packPage.getNumber());
         model.addAttribute("totalPages", packPage.getTotalPages());
         // Prints the view
-        return "packs :: packList";
+        return "packs";
     }
 
     // It loads the packInfo.html with the information of a selected pack
