@@ -24,7 +24,7 @@ public class PdfController {
         document.open();
 
         Font font = FontFactory.getFont(FontFactory.COURIER, 16, BaseColor.BLACK);
-        Chunk chunk = new Chunk("Aquí estarían cargado el material para la asignatura", font);
+        Chunk chunk = new Chunk("Aquí estaría cargado el material para la asignatura", font);
         document.add(chunk);
 
         document.close();
