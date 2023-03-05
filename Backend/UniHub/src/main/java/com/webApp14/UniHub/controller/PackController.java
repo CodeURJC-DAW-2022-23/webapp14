@@ -55,7 +55,7 @@ public class PackController {
     @GetMapping("/packs")
     public String packs(Model model, @RequestParam(defaultValue = "0") int page) {
         // Number page and number of item retrievals
-        Pageable pageable = PageRequest.of(page, 2);
+        Pageable pageable = PageRequest.of(page, 4);
         // Makes a pageable query
         Page<Pack> packPage = packRepository.findAll(pageable);
         // Gets the data from the current page
