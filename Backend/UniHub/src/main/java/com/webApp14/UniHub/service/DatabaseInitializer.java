@@ -147,14 +147,14 @@ public class DatabaseInitializer {
                 13.99f, new ArrayList<>());
 
         // ManyToMany Relationships
-        tag1.getPacks().add(pack5);
+        tag3.getPacks().add(pack5);
         tag2.getPacks().add(pack5);
-        pack5.getTags().add(tag1);
+        pack5.getTags().add(tag3);
         pack5.getTags().add(tag2);
 
         // Saving the pack4 with its tags
         packRepository.save(pack5);
-        tagsRepository.save(tag1);
+        tagsRepository.save(tag3);
         tagsRepository.save(tag2);
 
 
@@ -164,14 +164,14 @@ public class DatabaseInitializer {
 
         // ManyToMany Relationships
         tag1.getPacks().add(pack6);
-        tag2.getPacks().add(pack6);
+        tag4.getPacks().add(pack6);
         pack6.getTags().add(tag1);
-        pack6.getTags().add(tag2);
+        pack6.getTags().add(tag4);
 
         // Saving the pack4 with its tags
         packRepository.save(pack6);
         tagsRepository.save(tag1);
-        tagsRepository.save(tag2);
+        tagsRepository.save(tag4);
 
 
         // Pack7 CREATION
@@ -190,19 +190,19 @@ public class DatabaseInitializer {
         tagsRepository.save(tag2);
 
         // Pack8 CREATION
-        Pack pack8 = new Pack("MOEG", "img/Subject-Icons/ED.png", "Métodos Operativos y Estadísticos de Gestión", "","",
+        Pack pack8 = new Pack("MOEG", "img/Subject-Icons/ED.png", "Métodos Operativos y Estadísticos de Gestión", "Pack completo de materiales para la asignatura Métodos operativos y estadísticos de gestión, que incluye ejercicios prácticos, resúmenes y ejemplos explicativos para aprobar con éxito","Domina los métodos operativos y estadísticos para mejorar la gestión empresarial con nuestro completo pack de materiales. Incluye apuntes detallados, ejercicios resueltos y exámenes de años anteriores para que puedas prepararte a fondo. ¡Asegura tu éxito en la asignatura con nuestro pack!”",
                 13.99f, new ArrayList<>());
 
         // ManyToMany Relationships
-        tag1.getPacks().add(pack8);
-        tag2.getPacks().add(pack8);
-        pack8.getTags().add(tag1);
-        pack8.getTags().add(tag2);
+        tag3.getPacks().add(pack8);
+        tag4.getPacks().add(pack8);
+        pack8.getTags().add(tag3);
+        pack8.getTags().add(tag4);
 
         // Saving the pack4 with its tags
         packRepository.save(pack8);
-        tagsRepository.save(tag1);
-        tagsRepository.save(tag2);
+        tagsRepository.save(tag3);
+        tagsRepository.save(tag4);
 
 
         // Pack9 CREATION
@@ -211,14 +211,14 @@ public class DatabaseInitializer {
 
         // ManyToMany Relationships
         tag1.getPacks().add(pack9);
-        tag2.getPacks().add(pack9);
+        tag4.getPacks().add(pack9);
         pack9.getTags().add(tag1);
-        pack9.getTags().add(tag2);
+        pack9.getTags().add(tag4);
 
         // Saving the pack4 with its tags
         packRepository.save(pack9);
         tagsRepository.save(tag1);
-        tagsRepository.save(tag2);
+        tagsRepository.save(tag4);
 
 
         // Pack10 CREATION
@@ -241,26 +241,26 @@ public class DatabaseInitializer {
                 13.99f, new ArrayList<>());
 
         // ManyToMany Relationships
-        tag1.getPacks().add(pack11);
         tag2.getPacks().add(pack11);
-        pack11.getTags().add(tag1);
+        tag1.getPacks().add(pack11);
         pack11.getTags().add(tag2);
+        pack11.getTags().add(tag1);
 
         // Saving the pack4 with its tags
         packRepository.save(pack11);
-        tagsRepository.save(tag1);
         tagsRepository.save(tag2);
+        tagsRepository.save(tag1);
 
 
         // Pack12 CREATION
-        Pack pack12 = new Pack("IP", "img/Subject-Icons/ED.png", "Introducción a la Programación", "Aprende a programar desde cero con nuestro pack de introducción a la programación, que te brinda los conceptos fundamentales y las habilidades necesarias para empezar a crear tus propias aplicaciones. ¡Compra ahora y comienza a construir el futuro!","Aprende a programar desde cero con nuestro pack de introducción a la programación, que te brinda los conceptos fundamentales y las habilidades necesarias para empezar a crear tus propias aplicaciones. ¡Compra ahora y comienza a construir el futuro!",
+        Pack pack12 = new Pack("IP", "img/Subject-Icons/ED.png", "Introducción a la Programación", "Aprende a programar desde cero con nuestro pack de introducción a la programación, que te brinda los conceptos fundamentales y las habilidades necesarias para empezar a crear tus propias aplicaciones.","Aprende a programar desde cero con nuestro pack de introducción a la programación, que te brinda los conceptos fundamentales y las habilidades necesarias para empezar a crear tus propias aplicaciones.",
                 13.99f, new ArrayList<>());
 
         // ManyToMany Relationships
+        tag3.getPacks().add(pack12);
         tag1.getPacks().add(pack12);
-        tag2.getPacks().add(pack12);
+        pack12.getTags().add(tag3);
         pack12.getTags().add(tag1);
-        pack12.getTags().add(tag2);
 
         // Saving the pack4 with its tags
         packRepository.save(pack12);
