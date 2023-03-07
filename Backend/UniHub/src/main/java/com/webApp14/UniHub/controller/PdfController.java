@@ -27,6 +27,7 @@ public class PdfController {
     @GetMapping("/download/{id}")
     public ResponseEntity<byte[]> downloadPdf(@PathVariable ("id") Long id) throws IOException, DocumentException {
 
+        Pack pack = packRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid pack id"));
         Document document = new Document(PageSize.A4, 50, 50, 50, 50);
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         PdfWriter writer = PdfWriter.getInstance(document, baos);
@@ -37,15 +38,15 @@ public class PdfController {
         writer.setViewerPreferences(PdfWriter.HideWindowUI);
         writer.setViewerPreferences(PdfWriter.CenterWindow);
         writer.setViewerPreferences(PdfWriter.DisplayDocTitle);
-        document.addTitle("Material");
+        document.addTitle(pack.getPackTitle());
 
         document.open();
-        Pack pack = packRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid pack id"));
+
         document.addLanguage("es-ES");
-        document.add(new Paragraph("Material", FontFactory.getFont(FontFactory.TIMES_BOLD, 22)));
+        document.add(new Paragraph(pack.getPackTitle(), FontFactory.getFont(FontFactory.TIMES_BOLD, 22)));
         document.add(new Paragraph(pack.getpackDescriptionLong(), FontFactory.getFont(FontFactory.TIMES, 16, BaseColor.BLACK)));
         document.close();
-        
+
         byte[] pdfBytes = baos.toByteArray();
 
         HttpHeaders headers = new HttpHeaders();
