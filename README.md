@@ -1,12 +1,42 @@
 # Fase 2
 
-En esta fase vamos a definir y desarrollar nuestra aplicación web. Para ello hemos conformado un grupo de trabajo compuesto por:
+En esta fase hemos transformado nuestros archivos html y css para corresponder mejor con la idea de la aplicación que teníamos. Creamos un proyecto con Spring, añadiendo las diferentes dependencias necesarias para este. Posteriormente añadimos como templates los html, que ahora usarán la sintaxis de mustache para poder cargar elementos de formá dinámica en la propia página. E
+
+Tras esto y centrándonos en la arquitectura MVC (modelo, vista, controlador), empezamos a crear controladores para gestionar las diferentes URLs de las páginas, permitiendo a los usuarios interactuar, registrarse, crear foros, descargar contenido e incluso implementando las funcionalidades de AJAX para cargar cursos. Por lo que hemos acabado con una carpeta Backend donde tendríamos todos los diferentes apartados que se relacionan entre sí y que gestionan la carga y guardado de datos en la propia base de datos mySQL, la carga de elementos dinámicos y específicos a cada usuario y otras funcionalidades que comentaremos a lo largo de esta memoria.
+
+En cuanto a los miembros del grupo, su participación y commits significativos y partiendo de la base de que todos conocemos el funcionamiento de los apartados que no se mencionan en nuestros commits significativos:
 
 -  Alberto García Sroda
+
+##### Participación y Contribución
+
+Entre mis contribuciones destacaría la de implementar AJAX, la funcionalidad del Foro, arreglos visuales con el CSS para mantener los estilos visualmente atractivos hacia el usuario y además el centrarme en el apartados del Area Cliente para visualizar cursos comprados o eliminar hilos según el tipo de usuario que entre en el apartado de cliente. Mis commits más significativos son:
+
+1.
+2.
+3.
+4.
+5.
+
+---
+
 -  Iván Sánchez Labrador
+
+##### Participación y Contribución
+
+Entre mis contribuciones... Mis commits más significativos son:
+
+1.
+2.
+3.
+4.
+5.
+
+---
+
 -  Sergio López Cuesta
 
-Siendo todos compañeros de otros años y sabiendo la afinidad que nos une, confiamos en nuestras habilidades para llevar a cabo este proyecto.
+##### Participación y Contribución
 
 ## UniHub
 
@@ -33,9 +63,9 @@ De lo mencionado previamente teníamos una serie de entidades definidas que reco
 -  Encuesta
 -  Cursos
 
-Pero al llevar a cabo un análisis más profundo vimos que estas se ramificaban un poco más añadiendo
+Pero al llevar a cabo un análisis más profundo vimos que estas se ramificaban un poco más, por lo que añadimos una entidad Tags para guardar la información de cada uno de estos, también dividimos la información del foro para tener Forms y Post, así como otra que tuviese las imágenes que se pueden seleccionar para un hilo con ThreadPics.
 
-Las relaciones entre sí las podemos visualizar en el siguiente gráfico:
+Las relaciones entre sí ya actualizadas se pueden ver en el siguiente gráfico:
 
 ![Screenshot 2023-03-12 131918](https://user-images.githubusercontent.com/63263060/224544137-c2331bc1-1a7a-4560-bae3-108d697e7c74.png)
 
