@@ -24,13 +24,13 @@ Entre mis contribuciones destacaría la de implementar AJAX, la funcionalidad de
 
 ##### Participación y Contribución
 
-Entre mis contribuciones... Mis commits más significativos son:
+Entre mis contribuciones destacaría la parte correspondiente a la seguridad de la aplicación web con Spring Boot Security, la implementación de la tecnología extra correspondiente al envío de un correo electrónico de confirmación de registro para el usuario, la funcionalidad de descarga de un pdf con los materiales del curso seleccionado, la carga de imágenes del usuario para poder modificar su avatar dentro del area cliente.También he participado activamente en el desarrollo de la mayoría de los archivos del frontend para crear una interfaz de usuario atractiva y fácil de usar. Mis commits más significativos son:
 
-1.
-2.
-3.
-4.
-5.
+1. https://github.com/CodeURJC-DAW-2022-23/webapp14/commit/cf1b733eb3eb4c794b1e7ec28add742601a5e3a9
+2. https://github.com/CodeURJC-DAW-2022-23/webapp14/commit/7477ff440fc34006f82191fc190819aa53d378ba
+3. https://github.com/CodeURJC-DAW-2022-23/webapp14/commit/318c1cf44b35b3f410d4b26fb31de95393609654#diff-c18ee21c2ccb2e35368ec10eb2351b79349dee5df6ab59142e8a4e0f3c0d651e
+4. https://github.com/CodeURJC-DAW-2022-23/webapp14/commit/8b0945d5b7d32d0399e015ecf6b699a2e222c05b
+5. https://github.com/CodeURJC-DAW-2022-23/webapp14/commit/ec8bf2605608f3653df6be9ed9ce3932c93b24a3
 
 ---
 
@@ -121,7 +121,7 @@ La navegación por nuestra web queda definida con los roles de cada usuario medi
 
 ##### Instrucciones de ejecución
 
-De lo mencionado previamente teníamos una serie de entidades definidas que recogen las abstracciones de los diferentes elementos que tiene nuestra aplicación web que tendrán datos que se almacenarán en nuestras bases de datos. Estas entidades eran:
+En cuanto a los pasos para poder descargar el código del repositorio, el primero sería clonarlo a través de github. La versión mínima de java que se debería tener instalada es la 17, el modelVersion seria 4.0.0, la versión de MySQL es la 8.0.32 y la versión de springboot es la 2.7.7. El proyecto se configuró y creo a través de la siguiente página web: https://start.spring.io/
 
 ---
 
