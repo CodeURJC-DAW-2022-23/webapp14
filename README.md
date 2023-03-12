@@ -119,18 +119,16 @@ La navegación por nuestra web queda definida con los roles de cada usuario medi
 
 ---
 
-##### Diagrama de clases y templates
+##### Video Demo
 
 Video demo mostrando el comportamiento y funcionalidad de la aplicación web
-https://youtu.be/KWRKlhbISiY
+[![UniHub](https://youtu.be/KWRKlhbISiY)](https://www.youtube.com/watch?v=YOUTU...)
 
 ---
 
 ##### Instrucciones de ejecución
 
 En cuanto a los pasos para poder descargar el código del repositorio, el primero sería clonarlo a través de github. La versión mínima de java que se debería tener instalada es la 17, el modelVersion seria 4.0.0, la versión de MySQL es la 8.0.32 y la versión de springboot es la 2.7.7. El proyecto se configuró y creo a través de la siguiente página web: https://start.spring.io/
-
-Para poder ejecutarlo, tras tener los elementos previamente mencionados, tendríamos que acceder a la carpeta UniHub dentro de Backend, y abrirla con un IDE como Intellij. Tras esto, podremos correr nuestro Main del programa, asegurándonos de que la contraseña del properties que usamos en la base de datos está cambiada y coincide con la que se haya establecido en el ordenador con el MySQL.
 
 ---
 
