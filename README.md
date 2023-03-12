@@ -102,6 +102,10 @@ Diagrama1:
 
 ![WhatsApp_Image_2023-03-05_at_14 12 06 (1)](https://user-images.githubusercontent.com/63263060/224544801-048f6b99-7b13-4328-b8dd-a9e2292772fd.jpeg)
 
+En cuanto al diagrama de clases y templates se puede visualizar en la siguiente imagen:
+
+![WhatsApp Image 2023-03-05 at 14 12 06](https://user-images.githubusercontent.com/79569564/224544913-062f44b9-522d-4c65-8f01-e3c103c8c2db.jpeg)
+
 ---
 
 > _La solución para todo lo necesario en el aula_
