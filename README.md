@@ -104,7 +104,7 @@ Diagrama1:
 
 En cuanto al diagrama de clases y templates se puede visualizar en la siguiente imagen:
 
-![WhatsApp Image 2023-03-05 at 14 12 06](https://user-images.githubusercontent.com/79569564/224544913-062f44b9-522d-4c65-8f01-e3c103c8c2db.jpeg)
+![WhatsApp Image 2023-03-10 at 14 03 31](https://user-images.githubusercontent.com/79569564/224545059-0acd15ed-ccff-4468-bec5-1b082a763e51.jpeg)
 
 ---
 
