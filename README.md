@@ -119,6 +119,13 @@ La navegación por nuestra web queda definida con los roles de cada usuario medi
 
 ---
 
+##### Diagrama de clases y templates
+
+Video demo mostrando el comportamiento y funcionalidad de la aplicación web
+https://youtu.be/KWRKlhbISiY
+
+---
+
 ##### Instrucciones de ejecución
 
 En cuanto a los pasos para poder descargar el código del repositorio, el primero sería clonarlo a través de github. La versión mínima de java que se debería tener instalada es la 17, el modelVersion seria 4.0.0, la versión de MySQL es la 8.0.32 y la versión de springboot es la 2.7.7. El proyecto se configuró y creo a través de la siguiente página web: https://start.spring.io/
