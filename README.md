@@ -122,7 +122,7 @@ La navegación por nuestra web queda definida con los roles de cada usuario medi
 ##### Video Demo
 
 Video demo mostrando el comportamiento y funcionalidad de la aplicación web
-[![UniHub](https://youtu.be/KWRKlhbISiY)](https://www.youtube.com/watch?v=YOUTU...)
+[![UniHub](https://youtu.be/KWRKlhbISiY)](https://youtu.be/KWRKlhbISiY)
 
 ---
 
