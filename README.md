@@ -1,6 +1,6 @@
 # Fase 2
 
-En esta fase hemos transformado nuestros archivos html y css para corresponder mejor con la idea de la aplicación que teníamos. Creamos un proyecto con Spring, añadiendo las diferentes dependencias necesarias para este. Posteriormente añadimos como templates los html, que ahora usarán la sintaxis de mustache para poder cargar elementos de formá dinámica en la propia página. E
+En esta fase hemos transformado nuestros archivos html y css para corresponder mejor con la idea de la aplicación que teníamos. Creamos un proyecto con Spring, añadiendo las diferentes dependencias necesarias para este. Posteriormente añadimos como templates los html, que ahora usarán la sintaxis de mustache para poder cargar elementos de formá dinámica en la propia página.
 
 Tras esto y centrándonos en la arquitectura MVC (modelo, vista, controlador), empezamos a crear controladores para gestionar las diferentes URLs de las páginas, permitiendo a los usuarios interactuar, registrarse, crear foros, descargar contenido e incluso implementando las funcionalidades de AJAX para cargar cursos. Por lo que hemos acabado con una carpeta Backend donde tendríamos todos los diferentes apartados que se relacionan entre sí y que gestionan la carga y guardado de datos en la propia base de datos mySQL, la carga de elementos dinámicos y específicos a cada usuario y otras funcionalidades que comentaremos a lo largo de esta memoria.
 
@@ -12,11 +12,11 @@ En cuanto a los miembros del grupo, su participación y commits significativos y
 
 Entre mis contribuciones destacaría la de implementar AJAX, la funcionalidad del Foro, arreglos visuales con el CSS para mantener los estilos visualmente atractivos hacia el usuario y además el centrarme en el apartados del Area Cliente para visualizar cursos comprados o eliminar hilos según el tipo de usuario que entre en el apartado de cliente. Mis commits más significativos son:
 
-1.
-2.
-3.
-4.
-5.
+1. https://github.com/CodeURJC-DAW-2022-23/webapp14/commit/a800897c1f5272934f3de17340dcd56d8037c64f
+2. https://github.com/CodeURJC-DAW-2022-23/webapp14/commit/294435b45df4add2288d2f9dad076b86f249ff6f
+3. https://github.com/CodeURJC-DAW-2022-23/webapp14/commit/3aaa6f4802ea6e73586fcbc74808fefe2754967b
+4. https://github.com/CodeURJC-DAW-2022-23/webapp14/commit/867b49cac03e8d883fc02a85f8bc8cffc99d386d
+5. https://github.com/CodeURJC-DAW-2022-23/webapp14/commit/4a03cced2282cc8909fe97cb9a857cc8209035bc
 
 ---
 
