@@ -18,7 +18,7 @@ public class LoginRestController {
     @Autowired
     private UserLoginService userLoginService;
 
-
+    // This method is called when the user wants to login
     @PostMapping("/login")
     public ResponseEntity<AuthResponse> processForm(
             @CookieValue(name = "AuthToken", required = false) String accessToken,
@@ -28,10 +28,10 @@ public class LoginRestController {
 
     }
 
+    // This method is called when the user clicks on the "Refresh Token" button
     @PostMapping("/refresh")
     public ResponseEntity<AuthResponse> refreshToken(
             @CookieValue(name = "RefreshToken", required = false) String refreshToken) {
-
         return userLoginService.refresh(refreshToken);
     }
 
