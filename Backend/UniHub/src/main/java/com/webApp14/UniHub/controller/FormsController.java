@@ -59,6 +59,7 @@ public class FormsController {
         }
     }
 
+
     // Prints the forms.html page with a list of all the current threads
     @GetMapping("/forms")
     public String forms(Model model){

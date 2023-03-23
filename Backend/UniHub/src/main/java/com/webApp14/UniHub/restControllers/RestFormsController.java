@@ -37,6 +37,41 @@ public class RestFormsController {
         return formsRepository.findAll();
     }
 
+    // Deletes a form based on the id
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Forms> deleteForm(@PathVariable long id){
+        Optional<Forms> tryForm = formsRepository.findById(id);
+        if(tryForm.isPresent()){
+            Forms form = tryForm.get();
+            formsRepository.delete(form);
+            return new ResponseEntity<>(form, HttpStatus.OK);
+        }else{
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
+    // Updates a form based on the id and the sent form
+    @PutMapping("/forms/{id}")
+    public ResponseEntity<Forms> updateForm(@PathVariable long id, @RequestBody Forms form){
+        Optional<Forms> tryForm = formsRepository.findById(id);
+        if(tryForm.isPresent()){
+            Forms formToUpdate = tryForm.get();
+            formToUpdate.setThreadAuthor(form.getThreadAuthor());
+            formToUpdate.setThreadContent_short(form.getThreadContent_short());
+            formToUpdate.setThreadContent(form.getThreadContent());
+            formToUpdate.setThreadUpvotes(form.getThreadUpvotes());
+            formToUpdate.setPosts(form.getPosts());
+            formToUpdate.setThreadDate(form.getThreadDate());
+            formToUpdate.setThreadTitle(form.getThreadTitle());
+            formToUpdate.setThreadImage(form.getThreadImage());
+            formsRepository.save(formToUpdate);
+            return new ResponseEntity<>(formToUpdate, HttpStatus.OK);
+        }else{
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
+    
     // Retrieves a desired form from the list and gives back the correct status if it is found
     @GetMapping("/forms/{id}")
     public ResponseEntity<Forms> getPost(@PathVariable long id){
