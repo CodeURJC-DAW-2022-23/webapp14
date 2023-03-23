@@ -37,21 +37,28 @@ public class RestFormsController {
         return formsRepository.findAll();
     }
 
-    // Deletes a form based on the id
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Forms> deleteForm(@PathVariable long id){
+    // Retrieves a desired form from the list and gives back the correct status if it is found
+    @GetMapping("/{id}")
+    public ResponseEntity<Forms> getPost(@PathVariable long id){
         Optional<Forms> tryForm = formsRepository.findById(id);
         if(tryForm.isPresent()){
             Forms form = tryForm.get();
-            formsRepository.delete(form);
             return new ResponseEntity<>(form, HttpStatus.OK);
         }else{
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
 
+    // Creates a form based on a sent form
+    @PostMapping("/")
+    @ResponseStatus(HttpStatus.CREATED)
+    public Forms createForm(@RequestBody Forms form){
+        formsRepository.save(form);
+        return form;
+    }
+
     // Updates a form based on the id and the sent form
-    @PutMapping("/forms/{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<Forms> updateForm(@PathVariable long id, @RequestBody Forms form){
         Optional<Forms> tryForm = formsRepository.findById(id);
         if(tryForm.isPresent()){
@@ -71,25 +78,17 @@ public class RestFormsController {
         }
     }
 
-    
-    // Retrieves a desired form from the list and gives back the correct status if it is found
-    @GetMapping("/{id}")
-    public ResponseEntity<Forms> getPost(@PathVariable long id){
+    // Deletes a form based on the id
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Forms> deleteForm(@PathVariable long id){
         Optional<Forms> tryForm = formsRepository.findById(id);
         if(tryForm.isPresent()){
             Forms form = tryForm.get();
+            formsRepository.delete(form);
             return new ResponseEntity<>(form, HttpStatus.OK);
         }else{
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
-    }
-
-    // Creates a form based on a sent form
-    @PostMapping("/")
-    @ResponseStatus(HttpStatus.CREATED)
-    public Forms createForm(@RequestBody Forms form){
-        formsRepository.save(form);
-        return form;
     }
 
 
