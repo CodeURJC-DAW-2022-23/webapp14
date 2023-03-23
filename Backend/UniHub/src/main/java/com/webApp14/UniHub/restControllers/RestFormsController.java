@@ -32,7 +32,7 @@ public class RestFormsController {
     private ThreadPicsRepository threadPicsRepository;
 
     // Retrieves all the forms available
-    @GetMapping("/forms")
+    @GetMapping("/")
     public Collection<Forms> getForms(){
         return formsRepository.findAll();
     }
@@ -73,7 +73,7 @@ public class RestFormsController {
 
     
     // Retrieves a desired form from the list and gives back the correct status if it is found
-    @GetMapping("/forms/{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<Forms> getPost(@PathVariable long id){
         Optional<Forms> tryForm = formsRepository.findById(id);
         if(tryForm.isPresent()){
@@ -85,7 +85,7 @@ public class RestFormsController {
     }
 
     // Creates a form based on a sent form
-    @PostMapping("/forms")
+    @PostMapping("/")
     @ResponseStatus(HttpStatus.CREATED)
     public Forms createForm(@RequestBody Forms form){
         formsRepository.save(form);
