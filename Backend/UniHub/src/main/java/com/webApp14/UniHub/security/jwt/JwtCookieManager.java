@@ -5,6 +5,7 @@ import org.springframework.http.HttpCookie;
 import org.springframework.http.ResponseCookie;
 import org.springframework.stereotype.Component;
 
+@Component
 public class JwtCookieManager {
 
     public static final String ACCESS_TOKEN_COOKIE_NAME = "AuthToken";
