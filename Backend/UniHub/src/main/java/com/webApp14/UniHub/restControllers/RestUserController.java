@@ -1,6 +1,5 @@
 package com.webApp14.UniHub.restControllers;
 
-import com.webApp14.UniHub.controller.RegisterController;
 import com.webApp14.UniHub.model.User;
 import com.webApp14.UniHub.repository.UserRepository;
 import com.webApp14.UniHub.security.RepositoryUserDetailsService;
@@ -20,7 +19,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/users")
-public class UserRestController {
+public class RestUserController {
 
     @Autowired
     private PasswordEncoder passwordEncoder;
@@ -30,7 +29,7 @@ public class UserRestController {
 
     @Autowired
     private UserRepository userRepository;
-    
+
     @Autowired
     private EmailService emailService;
 
@@ -40,14 +39,9 @@ public class UserRestController {
     public ResponseEntity<User> getProfile(HttpServletRequest request){
         Principal principal = request.getUserPrincipal();
         Optional<User> userPrincipal = userRepository.findByUsername(principal.getName());
-
         if(userPrincipal.isPresent()) {
             this.user = userPrincipal.get();
-            long id = this.user.getId();
-            String username = this.user.getUsername();
-            String email = this.user.getEmail();
             return new ResponseEntity<>(this.user, HttpStatus.OK);
-
         } else {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }

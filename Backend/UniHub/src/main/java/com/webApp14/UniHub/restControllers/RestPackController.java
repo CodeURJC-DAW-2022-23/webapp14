@@ -18,14 +18,15 @@ public class RestPackController {
     @Autowired
     private PackRepository packRepository;
 
-    // Get all the packs avaiable
+    //Crea un metodo que devuelva todos los packs
     @GetMapping("/")
-    public Collection<Pack> getPacks(){
-        return packRepository.findAll();
+    public ResponseEntity<Collection<Pack>> getAllPacks(){
+        Collection<Pack> packs = packRepository.findAll();
+        return new ResponseEntity<>(packs, HttpStatus.OK);
     }
 
     // Get a specific pack based on the id
-    @GetMapping("/{id}")
+    @GetMapping("/packs/{id}")
     public ResponseEntity<Pack> getPack(@PathVariable long id){
         Optional<Pack> tryPack = packRepository.findById(id);
         if(tryPack.isPresent()) {

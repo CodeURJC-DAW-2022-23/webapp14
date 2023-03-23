@@ -1,11 +1,7 @@
 package com.webApp14.UniHub.restControllers;
 
 import com.webApp14.UniHub.model.Forms;
-import com.webApp14.UniHub.model.Post;
 import com.webApp14.UniHub.repository.FormsRepository;
-import com.webApp14.UniHub.repository.PostRepository;
-import com.webApp14.UniHub.repository.ThreadPicsRepository;
-import com.webApp14.UniHub.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,23 +18,15 @@ public class RestFormsController {
     @Autowired
     private FormsRepository formsRepository;
 
-    @Autowired
-    private PostRepository postRepository;
-
-    @Autowired
-    private UserRepository userRepository;
-
-    @Autowired
-    private ThreadPicsRepository threadPicsRepository;
 
     // Retrieves all the forms available
-    @GetMapping("/")
+    @GetMapping("/forms")
     public Collection<Forms> getForms(){
         return formsRepository.findAll();
     }
 
     // Retrieves a desired form from the list and gives back the correct status if it is found
-    @GetMapping("/{id}")
+    @GetMapping("/forms/{id}")
     public ResponseEntity<Forms> getPost(@PathVariable long id){
         Optional<Forms> tryForm = formsRepository.findById(id);
         if(tryForm.isPresent()){

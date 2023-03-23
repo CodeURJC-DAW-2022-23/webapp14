@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 @RestController
 @RequestMapping("/api/auth")
-public class LoginRestController {
+public class RestLoginController {
 
     @Autowired
     private UserLoginService userLoginService;
