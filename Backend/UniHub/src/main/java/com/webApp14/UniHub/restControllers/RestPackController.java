@@ -19,14 +19,14 @@ public class RestPackController {
     private PackRepository packRepository;
 
     //Crea un metodo que devuelva todos los packs
-    @GetMapping("/packs")
+    @GetMapping("/")
     public ResponseEntity<Collection<Pack>> getPacks(){
         Collection<Pack> packs = packRepository.findAll();
         return new ResponseEntity<>(packs, HttpStatus.OK);
     }
 
     // Get a specific pack based on the id
-    @GetMapping("/packs/{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<Pack> getPack(@PathVariable long id){
         Optional<Pack> tryPack = packRepository.findById(id);
         if(tryPack.isPresent()) {
@@ -38,7 +38,7 @@ public class RestPackController {
     }
 
     // Create a specific pack based on the sent pack
-    @PostMapping("/packs")
+    @PostMapping("/")
     @ResponseStatus(HttpStatus.CREATED)
     public Pack createPack(@RequestBody Pack pack){
         packRepository.save(pack);

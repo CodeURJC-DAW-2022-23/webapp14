@@ -1,5 +1,7 @@
 package com.webApp14.UniHub.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -35,6 +37,7 @@ public class Pack {
     @Column(nullable = false)
     private String packImage;
 
+    @JsonIgnore
     @ManyToMany(mappedBy = "packs")
     private List<Tags> tags;
 
