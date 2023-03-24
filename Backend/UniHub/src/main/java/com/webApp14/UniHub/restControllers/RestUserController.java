@@ -1,6 +1,7 @@
 package com.webApp14.UniHub.restControllers;
 
 import com.webApp14.UniHub.model.User;
+import com.webApp14.UniHub.repository.PackRepository;
 import com.webApp14.UniHub.repository.UserRepository;
 import com.webApp14.UniHub.security.RepositoryUserDetailsService;
 import com.webApp14.UniHub.security.jwt.RegisterRequest;
@@ -32,6 +33,9 @@ public class RestUserController {
 
     @Autowired
     private EmailService emailService;
+
+    @Autowired
+    private PackRepository packRepository;
 
     private User user;
 
@@ -77,5 +81,19 @@ public class RestUserController {
         }
     }
 
+    // Adds a pack to a user
+    @PutMapping("/addPack/{id}")
+    public ResponseEntity<User> addPack(@PathVariable long id, HttpServletRequest request){
+        Principal principal = request.getUserPrincipal();
+        Optional<User> userPrincipal = userRepository.findByUsername(principal.getName());
+        if(userPrincipal.isPresent()) {
+            User user = userPrincipal.get();
+            user.getPackList().add(packRepository.findById(id).get());
+            userRepository.save(user);
+            return new ResponseEntity<>(user, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
 
 }

@@ -18,7 +18,6 @@ public class RestFormsController {
     @Autowired
     private FormsRepository formsRepository;
 
-
     // Retrieves all the forms available
     @GetMapping("/forms")
     public Collection<Forms> getForms(){
@@ -38,7 +37,7 @@ public class RestFormsController {
     }
 
     // Creates a form based on a sent form
-    @PostMapping("/")
+    @PostMapping("/forms")
     @ResponseStatus(HttpStatus.CREATED)
     public Forms createForm(@RequestBody Forms form){
         formsRepository.save(form);
