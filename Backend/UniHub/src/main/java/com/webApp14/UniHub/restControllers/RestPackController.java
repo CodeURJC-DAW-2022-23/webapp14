@@ -19,8 +19,8 @@ public class RestPackController {
     private PackRepository packRepository;
 
     //Crea un metodo que devuelva todos los packs
-    @GetMapping("/")
-    public ResponseEntity<Collection<Pack>> getAllPacks(){
+    @GetMapping("/packs")
+    public ResponseEntity<Collection<Pack>> getPacks(){
         Collection<Pack> packs = packRepository.findAll();
         return new ResponseEntity<>(packs, HttpStatus.OK);
     }
@@ -38,7 +38,7 @@ public class RestPackController {
     }
 
     // Create a specific pack based on the sent pack
-    @PostMapping("/")
+    @PostMapping("/packs")
     @ResponseStatus(HttpStatus.CREATED)
     public Pack createPack(@RequestBody Pack pack){
         packRepository.save(pack);
