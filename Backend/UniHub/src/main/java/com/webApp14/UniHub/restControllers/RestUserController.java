@@ -11,8 +11,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
+import java.io.IOException;
 import java.security.Principal;
 import java.util.Collection;
 import java.util.List;
@@ -95,5 +97,21 @@ public class RestUserController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
+
+    // Changes the current profile picture
+    @PutMapping("/profilePic/image")
+    public ResponseEntity<User> changePic(HttpServletRequest request, @RequestParam("image") MultipartFile image) throws IOException {
+        Principal principal = request.getUserPrincipal();
+        Optional<User> userPrincipal = userRepository.findByUsername(principal.getName());
+        if(userPrincipal.isPresent()) {
+            User user = userPrincipal.get();
+            user.setImage(image.getBytes());
+            userRepository.save(user);
+            return new ResponseEntity<>(user, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
 
 }
