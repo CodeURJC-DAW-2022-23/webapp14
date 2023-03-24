@@ -1,6 +1,5 @@
 package com.webApp14.UniHub.restControllers;
 
-import com.webApp14.UniHub.model.Forms;
 import com.webApp14.UniHub.model.Pack;
 import com.webApp14.UniHub.repository.PackRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,13 +18,15 @@ public class RestPackController {
     @Autowired
     private PackRepository packRepository;
 
+    //Crea un metodo que devuelva todos los packs
     @GetMapping("/")
-    public Collection<Pack> getForms(){
-        return packRepository.findAll();
+    public ResponseEntity<Collection<Pack>> getPacks(){
+        Collection<Pack> packs = packRepository.findAll();
+        return new ResponseEntity<>(packs, HttpStatus.OK);
     }
 
     // Get a specific pack based on the id
-    @GetMapping("/packs/{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<Pack> getPack(@PathVariable long id){
         Optional<Pack> tryPack = packRepository.findById(id);
         if(tryPack.isPresent()) {
