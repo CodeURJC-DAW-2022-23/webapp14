@@ -4,6 +4,10 @@ import com.webApp14.UniHub.model.Forms;
 import com.webApp14.UniHub.model.Post;
 import com.webApp14.UniHub.repository.FormsRepository;
 import com.webApp14.UniHub.repository.PostRepository;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -28,6 +32,17 @@ public class RestPostController {
     private PostRepository postRepository;
 
     // Retrieves all the post available
+    @Operation(summary = "Get all the posts")
+    @ApiResponse(
+            responseCode = "200",
+            description = "Found the posts",
+            content = @Content(mediaType = "application/json", schema = @Schema(implementation = Post.class))
+    )
+    @ApiResponse(responseCode = "404", description = "Posts not found", content = @Content)
+    @ApiResponse(responseCode = "500", description = "Internal server error", content = @Content)
+    @ApiResponse(responseCode = "400", description = "Bad request", content = @Content)
+    @ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content)
+    @ApiResponse(responseCode = "403", description = "Forbidden", content = @Content)
     @GetMapping("/")
     public Collection<List<Post>> getPosts(){
         Collection<Forms> forms = formsRepository.findAll();
@@ -40,6 +55,17 @@ public class RestPostController {
     }
 
     // Create a post for a form given its id and the post
+    @Operation(summary = "Create a new post for a form")
+    @ApiResponse(
+            responseCode = "201",
+            description = "Post created",
+            content = @Content(mediaType = "application/json", schema = @Schema(implementation = Post.class))
+    )
+    @ApiResponse(responseCode = "404", description = "Form not found", content = @Content)
+    @ApiResponse(responseCode = "500", description = "Internal server error", content = @Content)
+    @ApiResponse(responseCode = "400", description = "Bad request", content = @Content)
+    @ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content)
+    @ApiResponse(responseCode = "403", description = "Forbidden", content = @Content)
     @PostMapping("/{id}")
     @ResponseStatus(HttpStatus.CREATED)
     public ResponseEntity<Post> createPost(@RequestBody Post post, @PathVariable long id){
@@ -60,6 +86,17 @@ public class RestPostController {
     }
 
     // Delete a certain post given its id and the form id
+    @Operation(summary = "Delete a post for a form")
+    @ApiResponse(
+            responseCode = "200",
+            description = "Post deleted",
+            content = @Content(mediaType = "application/json", schema = @Schema(implementation = Post.class))
+    )
+    @ApiResponse(responseCode = "404", description = "Form or post not found", content = @Content)
+    @ApiResponse(responseCode = "500", description = "Internal server error", content = @Content)
+    @ApiResponse(responseCode = "400", description = "Bad request", content = @Content)
+    @ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content)
+    @ApiResponse(responseCode = "403", description = "Forbidden", content = @Content)
     @DeleteMapping("/{formId}/{id}")
     public ResponseEntity<Post> deletePost(@PathVariable long id, @PathVariable long formId){
         Optional<Forms> tryForm = formsRepository.findById(formId);
@@ -81,6 +118,17 @@ public class RestPostController {
     }
 
     // Update a certain post given its id and the form id
+    @Operation(summary = "Update a post for a form")
+    @ApiResponse(
+            responseCode = "200",
+            description = "Post updated",
+            content = @Content(mediaType = "application/json", schema = @Schema(implementation = Post.class))
+    )
+    @ApiResponse(responseCode = "404", description = "Form or post not found", content = @Content)
+    @ApiResponse(responseCode = "500", description = "Internal server error", content = @Content)
+    @ApiResponse(responseCode = "400", description = "Bad request", content = @Content)
+    @ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content)
+    @ApiResponse(responseCode = "403", description = "Forbidden", content = @Content)
     @PutMapping("/{formId}/{id}")
     public ResponseEntity<Post> updatePost( @PathVariable long formId, @PathVariable long id, @RequestBody Post postNew){
         Optional<Forms> tryForm = formsRepository.findById(formId);
