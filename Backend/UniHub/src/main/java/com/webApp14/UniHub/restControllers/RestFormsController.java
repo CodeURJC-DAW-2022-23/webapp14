@@ -2,6 +2,10 @@ package com.webApp14.UniHub.restControllers;
 
 import com.webApp14.UniHub.model.Forms;
 import com.webApp14.UniHub.repository.FormsRepository;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,42 +18,58 @@ import java.util.Optional;
 @RequestMapping("/api/forms")
 public class RestFormsController {
 
-    // Attributes
     @Autowired
     private FormsRepository formsRepository;
 
-    // Retrieves all the forms available
     @GetMapping("/")
-    public Collection<Forms> getForms(){
+    public Collection<Forms> getForms() {
         return formsRepository.findAll();
     }
 
-    // Retrieves a desired form from the list and gives back the correct status if it is found
+    @Operation(summary = "Get a form by id")
+    @ApiResponse(
+            responseCode = "200",
+            description = "Found the form",
+            content = @Content(mediaType = "application/json", schema = @Schema(implementation = Forms.class))
+    )
+    @ApiResponse(responseCode = "404", description = "Form not found", content = @Content)
+    @ApiResponse(responseCode = "500", description = "Internal server error", content = @Content)
+    @ApiResponse(responseCode = "400", description = "Bad request", content = @Content)
     @GetMapping("/{id}")
-    public ResponseEntity<Forms> getPost(@PathVariable long id){
+    public ResponseEntity<Forms> getForm(@PathVariable long id) {
         Optional<Forms> tryForm = formsRepository.findById(id);
-        if(tryForm.isPresent()){
-            Forms form = tryForm.get();
-            return new ResponseEntity<>(form, HttpStatus.OK);
-        }else{
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
+        return tryForm.map(form -> new ResponseEntity<>(form, HttpStatus.OK))
+                .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
-    // Creates a form based on a sent form
+    @Operation(summary = "Create a new form")
+    @ApiResponse(
+            responseCode = "201",
+            description = "Form created successfully",
+            content = @Content(mediaType = "application/json", schema = @Schema(implementation = Forms.class))
+    )
+    @ApiResponse(responseCode = "500", description = "Internal server error", content = @Content)
+    @ApiResponse(responseCode = "400", description = "Bad request", content = @Content)
     @PostMapping("/")
     @ResponseStatus(HttpStatus.CREATED)
-    public Forms createForm(@RequestBody Forms form){
+    public Forms createForm(@RequestBody Forms form) {
         formsRepository.save(form);
         return form;
     }
 
-    // Updates a form based on the id and the sent form
+    @Operation(summary = "Update an existing form by id")
+    @ApiResponse(
+            responseCode = "200",
+            description = "Form updated successfully",
+            content = @Content(mediaType = "application/json", schema = @Schema(implementation = Forms.class))
+    )
+    @ApiResponse(responseCode = "404", description = "Form not found", content = @Content)
+    @ApiResponse(responseCode = "500", description = "Internal server error", content = @Content)
+    @ApiResponse(responseCode = "400", description = "Bad request", content = @Content)
     @PutMapping("/{id}")
-    public ResponseEntity<Forms> updateForm(@PathVariable long id, @RequestBody Forms form){
+    public ResponseEntity<Forms> updateForm(@PathVariable long id, @RequestBody Forms form) {
         Optional<Forms> tryForm = formsRepository.findById(id);
-        if(tryForm.isPresent()){
-            Forms formToUpdate = tryForm.get();
+        return tryForm.map(formToUpdate -> {
             formToUpdate.setThreadAuthor(form.getThreadAuthor());
             formToUpdate.setThreadContent_short(form.getThreadContent_short());
             formToUpdate.setThreadContent(form.getThreadContent());
@@ -60,23 +80,22 @@ public class RestFormsController {
             formToUpdate.setThreadImage(form.getThreadImage());
             formsRepository.save(formToUpdate);
             return new ResponseEntity<>(formToUpdate, HttpStatus.OK);
-        }else{
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
+        }).orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
-
-    // Deletes a form based on the id
+    @Operation(summary = "Delete a form by id")
+    @ApiResponse(
+            responseCode = "200",
+            description = "Form deleted successfully",
+            content = @Content(mediaType = "application/json", schema = @Schema(implementation = Forms.class))
+    )
+    @ApiResponse(responseCode = "404", description = "Form not found", content = @Content)
+    @ApiResponse(responseCode = "500", description = "Internal server error", content = @Content)
     @DeleteMapping("/{id}")
-    public ResponseEntity<Forms> deleteForm(@PathVariable long id){
+    public ResponseEntity<Forms> deleteForm(@PathVariable long id) {
         Optional<Forms> tryForm = formsRepository.findById(id);
-        if(tryForm.isPresent()){
-            Forms form = tryForm.get();
+        return tryForm.map(form -> {
             formsRepository.delete(form);
             return new ResponseEntity<>(form, HttpStatus.OK);
-        }else{
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
+        }).orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
-
-
 }
