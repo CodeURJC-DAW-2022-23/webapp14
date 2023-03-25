@@ -6,6 +6,10 @@ import com.webApp14.UniHub.repository.UserRepository;
 import com.webApp14.UniHub.security.RepositoryUserDetailsService;
 import com.webApp14.UniHub.security.jwt.RegisterRequest;
 import com.webApp14.UniHub.service.EmailService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -41,6 +45,17 @@ public class RestUserController {
 
     private User user;
 
+    @Operation(summary = "Get the current user")
+    @ApiResponse(
+            responseCode = "200",
+            description = "Found the user",
+            content = @Content(mediaType = "application/json", schema = @Schema(implementation = User.class))
+    )
+    @ApiResponse(responseCode = "404", description = "User not found", content = @Content)
+    @ApiResponse(responseCode = "500", description = "Internal server error", content = @Content)
+    @ApiResponse(responseCode = "400", description = "Bad request", content = @Content)
+    @ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content)
+    @ApiResponse(responseCode = "403", description = "Forbidden", content = @Content)
     @GetMapping("/me")
     public ResponseEntity<User> getProfile(HttpServletRequest request){
         Principal principal = request.getUserPrincipal();
@@ -53,13 +68,33 @@ public class RestUserController {
         }
     }
 
+    @Operation(summary = "Get all users")
+    @ApiResponse(
+            responseCode = "200",
+            description = "Found the users",
+            content = @Content(mediaType = "application/json", schema = @Schema(implementation = User.class))
+    )
+    @ApiResponse(responseCode = "404", description = "Users not found", content = @Content)
+    @ApiResponse(responseCode = "500", description = "Internal server error", content = @Content)
+    @ApiResponse(responseCode = "400", description = "Bad request", content = @Content)
+    @ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content)
+    @ApiResponse(responseCode = "403", description = "Forbidden", content = @Content)
     @GetMapping("/all")
     public ResponseEntity<Collection<User>> getProfiles(HttpServletRequest request){
         List<User> users = userRepository.findAll();
         return new ResponseEntity<>(users, HttpStatus.OK);
     }
 
-
+    @Operation(summary = "Create a new user")
+    @ApiResponse(
+            responseCode = "201",
+            description = "Created the user",
+            content = @Content(mediaType = "application/json", schema = @Schema(implementation = User.class))
+    )
+    @ApiResponse(responseCode = "500", description = "Internal server error", content = @Content)
+    @ApiResponse(responseCode = "400", description = "Bad request", content = @Content)
+    @ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content)
+    @ApiResponse(responseCode = "403", description = "Forbidden", content = @Content)
     @PostMapping("/new")
     @ResponseStatus(HttpStatus.CREATED)
     public ResponseEntity<User> processRegister(@RequestBody RegisterRequest registerRequest){
@@ -84,6 +119,17 @@ public class RestUserController {
     }
 
     // Adds a pack to a user
+    @Operation(summary = "Add a pack to a user")
+    @ApiResponse(
+            responseCode = "200",
+            description = "Added the pack to the user",
+            content = @Content(mediaType = "application/json", schema = @Schema(implementation = User.class))
+    )
+    @ApiResponse(responseCode = "404", description = "User not found", content = @Content)
+    @ApiResponse(responseCode = "500", description = "Internal server error", content = @Content)
+    @ApiResponse(responseCode = "400", description = "Bad request", content = @Content)
+    @ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content)
+    @ApiResponse(responseCode = "403", description = "Forbidden", content = @Content)
     @PutMapping("/addPack/{id}")
     public ResponseEntity<User> addPack(@PathVariable long id, HttpServletRequest request){
         Principal principal = request.getUserPrincipal();
@@ -99,6 +145,17 @@ public class RestUserController {
     }
 
     // Changes the current profile picture
+    @Operation(summary = "Change the current profile picture")
+    @ApiResponse(
+            responseCode = "200",
+            description = "Changed the profile picture",
+            content = @Content(mediaType = "application/json", schema = @Schema(implementation = User.class))
+    )
+    @ApiResponse(responseCode = "404", description = "User not found", content = @Content)
+    @ApiResponse(responseCode = "500", description = "Internal server error", content = @Content)
+    @ApiResponse(responseCode = "400", description = "Bad request", content = @Content)
+    @ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content)
+    @ApiResponse(responseCode = "403", description = "Forbidden", content = @Content)
     @PutMapping("/profilePic/image")
     public ResponseEntity<User> changePic(HttpServletRequest request, @RequestParam("image") MultipartFile image) throws IOException {
         Principal principal = request.getUserPrincipal();
