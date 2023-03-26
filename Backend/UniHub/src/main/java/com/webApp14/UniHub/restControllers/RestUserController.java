@@ -12,6 +12,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
@@ -182,7 +183,7 @@ public class RestUserController {
     @ApiResponse(responseCode = "400", description = "Bad request", content = @Content)
     @ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content)
     @ApiResponse(responseCode = "403", description = "Forbidden", content = @Content)
-    @GetMapping("/profilePic/image")
+    @GetMapping(value = "/profilePic/image", produces = MediaType.IMAGE_JPEG_VALUE)
     public ResponseEntity<byte[]> getPic(HttpServletRequest request) throws IOException {
         Principal principal = request.getUserPrincipal();
         Optional<User> userPrincipal = userRepository.findByUsername(principal.getName());
