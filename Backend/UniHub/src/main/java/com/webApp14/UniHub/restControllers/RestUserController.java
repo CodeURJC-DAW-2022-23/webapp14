@@ -170,5 +170,30 @@ public class RestUserController {
         }
     }
 
+    // Given the id of an image, retrieve the image from the database and return it
+    @Operation(summary = "Get the profile picture")
+    @ApiResponse(
+            responseCode = "200",
+            description = "Found the profile picture",
+            content = @Content(mediaType = "application/json", schema = @Schema(implementation = User.class))
+    )
+    @ApiResponse(responseCode = "404", description = "User not found", content = @Content)
+    @ApiResponse(responseCode = "500", description = "Internal server error", content = @Content)
+    @ApiResponse(responseCode = "400", description = "Bad request", content = @Content)
+    @ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content)
+    @ApiResponse(responseCode = "403", description = "Forbidden", content = @Content)
+    @GetMapping("/profilePic/image")
+    public ResponseEntity<byte[]> getPic(HttpServletRequest request) throws IOException {
+        Principal principal = request.getUserPrincipal();
+        Optional<User> userPrincipal = userRepository.findByUsername(principal.getName());
+        if(userPrincipal.isPresent()) {
+            User user = userPrincipal.get();
+            byte[] image = user.getImage();
+            return new ResponseEntity<>(image, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
 
 }
