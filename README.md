@@ -1,8 +1,8 @@
-# Fase 2
+# Fase 3
 
-En esta fase hemos transformado nuestros archivos html y css para corresponder mejor con la idea de la aplicación que teníamos. Creamos un proyecto con Spring, añadiendo las diferentes dependencias necesarias para este. Posteriormente añadimos como templates los html, que ahora usarán la sintaxis de mustache para poder cargar elementos de formá dinámica en la propia página.
+En esta fase hemos llevado a cabo la implementación de una API REST, donde mediante el uso de la herramienta Postman podemos realizar las operaciones de nuestra web gracias a esta API. Tenemos la implementación de todas las consultas, desde las personalizadas a las más comunes, incluyendo eliminaciones de foros, de packs, etc.
 
-Tras esto y centrándonos en la arquitectura MVC (modelo, vista, controlador), empezamos a crear controladores para gestionar las diferentes URLs de las páginas, permitiendo a los usuarios interactuar, registrarse, crear foros, descargar contenido e incluso implementando las funcionalidades de AJAX para cargar cursos. Por lo que hemos acabado con una carpeta Backend donde tendríamos todos los diferentes apartados que se relacionan entre sí y que gestionan la carga y guardado de datos en la propia base de datos mySQL, la carga de elementos dinámicos y específicos a cada usuario y otras funcionalidades que comentaremos a lo largo de esta memoria.
+Para poder llevar a cabo un despliegue de esta aplicación y que su ejecución pueda ser realizada en cualquier entorno de desarrollo hemos usado Docker, donde con un Dockerfile y un archivo .yml que usa Docker Compose, creamos dos imágenes (una para la base de datos y otra para la aplicación) logramos generar un contenedor para nuestra aplicación.
 
 En cuanto a los miembros del grupo, su participación y commits significativos y partiendo de la base de que todos conocemos el funcionamiento de los apartados que no se mencionan en nuestros commits significativos:
 
@@ -10,7 +10,7 @@ En cuanto a los miembros del grupo, su participación y commits significativos y
 
 ##### Participación y Contribución
 
-Entre mis contribuciones destacaría la de implementar AJAX, la funcionalidad del Foro, arreglos visuales con el CSS para mantener los estilos visualmente atractivos hacia el usuario y además el centrarme en el apartados del Area Cliente para visualizar cursos comprados o eliminar hilos según el tipo de usuario que entre en el apartado de cliente. Mis commits más significativos son:
+Entre mis contribuciones destacaría la de llevar a cabo numerosas implementaciones de consultas para la API REST y gestionar la creación de ficheros y correcta funcionalidad del proceso de creación de contenedores Docker. Aquí dejo mis 5 commits más relevantes de esta fase:
 
 1. https://github.com/CodeURJC-DAW-2022-23/webapp14/commit/a800897c1f5272934f3de17340dcd56d8037c64f
 2. https://github.com/CodeURJC-DAW-2022-23/webapp14/commit/294435b45df4add2288d2f9dad076b86f249ff6f
@@ -33,8 +33,6 @@ Entre mis contribuciones destacaría la parte correspondiente a la seguridad de 
 5. https://github.com/CodeURJC-DAW-2022-23/webapp14/commit/ec8bf2605608f3653df6be9ed9ce3932c93b24a3
 
 ---
-
--  Sergio López Cuesta
 
 ##### Participación y Contribución
 
@@ -136,8 +134,7 @@ Para poder ejecutarlo, tras tener los elementos previamente mencionados, tendrí
 
 ##### Diagrama de clases y templates
 
-De lo mencionado previamente teníamos una serie de entidades definidas que recogen las abstracciones de los diferentes elementos que tiene nuestra aplicación web que tendrán datos que se almacenarán en nuestras bases de datos. Estas entidades eran:
-Diagrama1:
+En este caso los diagramas han cambiado debido a la implementación de varios archivos diferentes en nuestro propio proyecto, así como la creación del paquete RestController donde implementamos todos los métodos necesarios para la creación de nuestra API REST. También tenemos los apartados de seguridad hechos para gestionar el acceso de según qué usuario a cada elemento. Podemos observar estos diagramas modificados en las siguientes imágenes:
 
 ![WhatsApp_Image_2023-03-05_at_14 12 06 (1)](https://user-images.githubusercontent.com/63263060/224544801-048f6b99-7b13-4328-b8dd-a9e2292772fd.jpeg)
 
