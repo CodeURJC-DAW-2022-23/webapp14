@@ -66,7 +66,7 @@ public class RestPostController {
     @ApiResponse(responseCode = "400", description = "Bad request", content = @Content)
     @ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content)
     @ApiResponse(responseCode = "403", description = "Forbidden", content = @Content)
-    @PostMapping("/{id}")
+    @PostMapping("/comment/{id}")
     @ResponseStatus(HttpStatus.CREATED)
     public ResponseEntity<Post> createPost(@RequestBody Post post, @PathVariable long id){
         Optional<Forms> tryForm = formsRepository.findById(id);
@@ -97,7 +97,7 @@ public class RestPostController {
     @ApiResponse(responseCode = "400", description = "Bad request", content = @Content)
     @ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content)
     @ApiResponse(responseCode = "403", description = "Forbidden", content = @Content)
-    @DeleteMapping("/{formId}/{id}")
+    @DeleteMapping("/{formId}/comment/{id}")
     public ResponseEntity<Post> deletePost(@PathVariable long id, @PathVariable long formId){
         Optional<Forms> tryForm = formsRepository.findById(formId);
         if(tryForm.isPresent()){
@@ -129,7 +129,7 @@ public class RestPostController {
     @ApiResponse(responseCode = "400", description = "Bad request", content = @Content)
     @ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content)
     @ApiResponse(responseCode = "403", description = "Forbidden", content = @Content)
-    @PutMapping("/{formId}/{id}")
+    @PutMapping("/{formId}/comment/{id}")
     public ResponseEntity<Post> updatePost( @PathVariable long formId, @PathVariable long id, @RequestBody Post postNew){
         Optional<Forms> tryForm = formsRepository.findById(formId);
         if(tryForm.isPresent()){
