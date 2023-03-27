@@ -12,11 +12,11 @@ En cuanto a los miembros del grupo, su participación y commits significativos y
 
 Entre mis contribuciones destacaría la de llevar a cabo numerosas implementaciones de consultas para la API REST y gestionar la creación de ficheros y correcta funcionalidad del proceso de creación de contenedores Docker. Aquí dejo mis 5 commits más relevantes de esta fase:
 
-1. https://github.com/CodeURJC-DAW-2022-23/webapp14/commit/a800897c1f5272934f3de17340dcd56d8037c64f
-2. https://github.com/CodeURJC-DAW-2022-23/webapp14/commit/294435b45df4add2288d2f9dad076b86f249ff6f
-3. https://github.com/CodeURJC-DAW-2022-23/webapp14/commit/3aaa6f4802ea6e73586fcbc74808fefe2754967b
-4. https://github.com/CodeURJC-DAW-2022-23/webapp14/commit/867b49cac03e8d883fc02a85f8bc8cffc99d386d
-5. https://github.com/CodeURJC-DAW-2022-23/webapp14/commit/4a03cced2282cc8909fe97cb9a857cc8209035bc
+1. https://github.com/CodeURJC-DAW-2022-23/webapp14/commit/f1d0e3362c5e122aba8e4d2561648e03eed6b9d0
+2. https://github.com/CodeURJC-DAW-2022-23/webapp14/commit/7d7616a2ef0c28f5b2c8fe5d03d39a03f9849df1
+3. https://github.com/CodeURJC-DAW-2022-23/webapp14/commit/4f15ce9ec72508c099f163db9354583fcc33fcc3
+4. https://github.com/CodeURJC-DAW-2022-23/webapp14/commit/a3f445a62b82eb1d5c61050054e451d3deb60b95
+5. https://github.com/CodeURJC-DAW-2022-23/webapp14/commit/6b0767905ecb6c16db69e909b84c29da2e9ec117
 
 ---
 
@@ -24,13 +24,13 @@ Entre mis contribuciones destacaría la de llevar a cabo numerosas implementacio
 
 ##### Participación y Contribución
 
-Entre mis contribuciones destacaría la parte correspondiente a la seguridad de la aplicación web con Spring Boot Security, la implementación de la tecnología extra correspondiente al envío de un correo electrónico de confirmación de registro para el usuario, la funcionalidad de descarga de un pdf con los materiales del curso seleccionado, la carga de imágenes del usuario para poder modificar su avatar dentro del area cliente.También he participado activamente en el desarrollo de la mayoría de los archivos del frontend para crear una interfaz de usuario atractiva y fácil de usar. Mis commits más significativos son:
+Entre mis contribuciones destacan la corrección de problemas e implementación correcta de todas las APIs REST, así como arreglar los problemas con Docker y generación de documentaciones. Aquí subo mis 5 commits más significativos:
 
-1. https://github.com/CodeURJC-DAW-2022-23/webapp14/commit/cf1b733eb3eb4c794b1e7ec28add742601a5e3a9
-2. https://github.com/CodeURJC-DAW-2022-23/webapp14/commit/7477ff440fc34006f82191fc190819aa53d378ba
-3. https://github.com/CodeURJC-DAW-2022-23/webapp14/commit/318c1cf44b35b3f410d4b26fb31de95393609654#diff-c18ee21c2ccb2e35368ec10eb2351b79349dee5df6ab59142e8a4e0f3c0d651e
-4. https://github.com/CodeURJC-DAW-2022-23/webapp14/commit/8b0945d5b7d32d0399e015ecf6b699a2e222c05b
-5. https://github.com/CodeURJC-DAW-2022-23/webapp14/commit/ec8bf2605608f3653df6be9ed9ce3932c93b24a3
+1. https://github.com/CodeURJC-DAW-2022-23/webapp14/commit/e94a7004f09cc0d087a06b33b3612f78e381902d
+2. https://github.com/CodeURJC-DAW-2022-23/webapp14/commit/f9c47d22275263aca1e095d3ed6201aab023263d
+3. https://github.com/CodeURJC-DAW-2022-23/webapp14/commit/7cfabba9f975c7f146ddad21b95d169be90fd027
+4. https://github.com/CodeURJC-DAW-2022-23/webapp14/commit/507b7172c131f8bedd3e1eb7d9a14ab8f9aa94ad
+5. https://github.com/CodeURJC-DAW-2022-23/webapp14/commit/bfbcf0380f1b2b99ab2d04d829762a9c4aa78c18
 
 ---
 
@@ -130,17 +130,23 @@ En cuanto a los pasos para poder descargar el código del repositorio, el primer
 
 Para poder ejecutarlo, tras tener los elementos previamente mencionados, tendríamos que acceder a la carpeta UniHub dentro de Backend, y abrirla con un IDE como Intellij. Tras esto, podremos correr nuestro Main del programa, asegurándonos de que la contraseña del properties que usamos en la base de datos está cambiada y coincide con la que se haya establecido en el ordenador con el MySQL.
 
+Ahora con docker tenemos un fichero llamado docker.ps1. El cual sería lo único necesario para hacer correr nuestra aplicación. Dentro consta de los elementos para hacer que corra la app dockerizada, necesitando únicamente de los apartados necesarios para la base de datos que tenga el usuario.
+
 ---
 
 ##### Diagrama de clases y templates
 
 En este caso los diagramas han cambiado debido a la implementación de varios archivos diferentes en nuestro propio proyecto, así como la creación del paquete RestController donde implementamos todos los métodos necesarios para la creación de nuestra API REST. También tenemos los apartados de seguridad hechos para gestionar el acceso de según qué usuario a cada elemento. Podemos observar estos diagramas modificados en las siguientes imágenes:
 
-![WhatsApp_Image_2023-03-05_at_14 12 06 (1)](https://user-images.githubusercontent.com/63263060/224544801-048f6b99-7b13-4328-b8dd-a9e2292772fd.jpeg)
+![WhatsApp Image 2023-03-27 at 22 54 20](https://user-images.githubusercontent.com/63263060/228077545-813049fc-a743-4f35-8581-1c4e911fea8f.jpeg)
 
 En cuanto al diagrama de clases y templates se puede visualizar en la siguiente imagen:
 
 ![WhatsApp Image 2023-03-10 at 14 03 31](https://user-images.githubusercontent.com/79569564/224545059-0acd15ed-ccff-4468-bec5-1b082a763e51.jpeg)
+
+Teniendo en cuenta esto, adjuntamos el archivo que muestra todos los componentes de la Fase hasta ahora:
+
+![WhatsApp Image 2023-03-27 at 22 54 20 (1)](https://user-images.githubusercontent.com/63263060/228077751-892683fa-5683-413a-8ef3-b3b22d69002e.jpeg)
 
 ---
 
