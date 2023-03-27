@@ -2,6 +2,7 @@ package com.webApp14.UniHub.service;
 
 import com.webApp14.UniHub.model.*;
 import com.webApp14.UniHub.repository.*;
+import org.hibernate.engine.jdbc.BlobProxy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -11,11 +12,13 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.net.URISyntaxException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Arrays;
+
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
 
 @Service
 public class DatabaseInitializer {
@@ -24,8 +27,6 @@ public class DatabaseInitializer {
     private FormsRepository formsRepository;
     @Autowired
     private PackRepository packRepository;
-    @Autowired
-    private PostRepository postRepository;
     @Autowired
     private TagsRepository tagsRepository;
     @Autowired
@@ -37,7 +38,7 @@ public class DatabaseInitializer {
     private ThreadPicsRepository threadPicsRepository;
 
     @PostConstruct
-    private void init() throws IOException, URISyntaxException{
+    private void init() throws IOException{
 
         // Thread Pictures route GENERATION
         ThreadPics pic1 = new ThreadPics("/static/img/Forms-Icons/ballings.svg","img1");
@@ -55,14 +56,8 @@ public class DatabaseInitializer {
 
         //********************************************************************
         // Pack1 CREATION
-        Pack pack1 = new Pack("DAW", "img/Subject-Icons/ED.png", "Diseño de Aplicaciones Web", "Diseño y desarrollo de aplicaciones web modernas, utilizando lenguajes como HTML, CSS y JavaScript para crear aplicaciones tocando temas de arquitectura web, seguridad y bases de datos", """
-                La asignatura de Diseño de Aplicaciones Web es una materia que forma parte de la carrera de ingeniería en informática o sistemas, y tiene como objetivo enseñar a los estudiantes a diseñar y desarrollar aplicaciones web modernas y eficientes.
-
-                Durante el curso, los estudiantes aprenden sobre los diferentes lenguajes, herramientas y tecnologías que se utilizan en el desarrollo de aplicaciones web, incluyendo HTML, CSS, JavaScript, frameworks de desarrollo como Angular, React o Vue.js, y lenguajes de programación del lado del servidor como Java, PHP o Python.
-
-                La asignatura cubre también temas como arquitectura web, diseño de interfaces de usuario, bases de datos, seguridad en aplicaciones web, optimización de rendimiento, integración con servicios web y APIs, entre otros.
-
-                En resumen, la asignatura de diseño de aplicaciones web es fundamental para cualquier estudiante que quiera convertirse en un desarrollador web profesional, ya que les proporciona los conocimientos y habilidades necesarios para crear aplicaciones web de alta calidad y con un buen desempeño, cumpliendo con los estándares actuales de la industria.""",
+        Pack pack1 = new Pack("DAW", "img/Subject-Icons/ED.png", "Diseno de Aplicaciones Web", "Diseno y desarrollo de aplicaciones web modernas, utilizando lenguajes como HTML, CSS y JavaScript para crear aplicaciones tocando temas de arquitectura web, seguridad y bases de datos",
+                " La asignatura de Diseno de Aplicaciones Web es una materia que forma parte de la carrera de ingenieria en informatica o sistemas, y tiene como objetivo ensenar a los estudiantes a disenar y desarrollar aplicaciones web modernas y eficientes. Durante el curso, los estudiantes aprenden sobre los diferentes lenguajes, herramientas y tecnologias que se utilizan en el desarrollo de aplicaciones web, incluyendo HTML, CSS, JavaScript, frameworks de desarrollo como Angular, React o Vue.js, y lenguajes de programacion del lado del servidor como Java, PHP o Python. La asignatura cubre tambien temas como arquitectura web, diseno de interfaces de usuario, bases de datos, seguridad en aplicaciones web, optimizacion de rendimiento, integracion con servicios web y APIs, entre otros. En resumen, la asignatura de diseno de aplicaciones web es fundamental para cualquier estudiante que quiera convertirse en un desarrollador web profesional, ya que les proporciona los conocimientos y habilidades necesarios para crear aplicaciones web de alta calidad y con un buen desempeno, cumpliendo con los estandares actuales de la industria.",
                 9.99f, new ArrayList<>());
 
         // ManyToMany Relationships
@@ -76,16 +71,8 @@ public class DatabaseInitializer {
         tagsRepository.saveAll(Arrays.asList(tag1,tag2));
 
         // Pack2 CREATION
-        Pack pack2 = new Pack("DAA", "img/Subject-Icons/ED.png","Diseño y Análisis de Algoritmos", "Diseño y Análisis de Algoritmos enseña a diseñar algoritmos eficientes para resolver problemas computacionales. Esencial para estudiantes de Ciencias de la Computación o Ingeniería en Sistemas Computacionales" , """
-                La asignatura de Diseño y Análisis de Algoritmos es una materia fundamental en la carrera de Ciencias de la Computación o Ingeniería en Sistemas Computacionales. Esta asignatura se enfoca en enseñar a los estudiantes cómo diseñar y analizar algoritmos eficientes para resolver problemas computacionales.
-
-                Durante el curso, los estudiantes aprenden técnicas para diseñar algoritmos, incluyendo estrategias de dividir y conquistar, programación dinámica, algoritmos voraces, entre otras. También aprenden cómo analizar la eficiencia de los algoritmos, incluyendo la notación O-grande y el análisis amortizado.
-
-                Además, los estudiantes aprenden a aplicar estas técnicas de diseño y análisis de algoritmos a una variedad de problemas, incluyendo problemas de ordenamiento, búsqueda, grafos, redes y optimización.
-
-                Otras áreas de estudio en la asignatura pueden incluir el estudio de algoritmos de aproximación y algoritmos probabilísticos, así como el uso de herramientas computacionales para ayudar en el diseño y análisis de algoritmos.
-
-                En resumen, la asignatura de Diseño y Análisis de Algoritmos es esencial para cualquier estudiante que desee convertirse en un profesional en Ciencias de la Computación o Ingeniería en Sistemas Computacionales. Les brinda las habilidades y herramientas necesarias para diseñar y analizar algoritmos eficientes, lo que es esencial en la resolución de problemas en una amplia variedad de campos, incluyendo la inteligencia artificial, el aprendizaje automático, la ciencia de datos, entre otros.""",
+        Pack pack2 = new Pack("DAA", "img/Subject-Icons/ED.png","Diseno y Analisis de Algoritmos", "Diseno y Analisis de Algoritmos ensena a disenar algoritmos eficientes para resolver problemas computacionales. Esencial para estudiantes de Ciencias de la Computacion o Ingenieria en Sistemas Computacionales" ,
+                "La asignatura de Diseno y Analisis de Algoritmos es una materia fundamental en la carrera de Ciencias de la Computacion o Ingenieria en Sistemas Computacionales. Esta asignatura se enfoca en ensenar a los estudiantes como disenar y analizar algoritmos eficientes para resolver problemas computacionales. Durante el curso, los estudiantes aprenden tecnicas para disenar algoritmos, incluyendo estrategias de dividir y conquistar, programacion dinamica, algoritmos voraces, entre otras. Tambien aprenden como analizar la eficiencia de los algoritmos, incluyendo la notacion O-grande y el analisis amortizado. Ademas, los estudiantes aprenden a aplicar estas tecnicas de diseno y analisis de algoritmos a una variedad de problemas, incluyendo problemas de ordenamiento, busqueda, grafos, redes y optimizacion. Otras areas de estudio en la asignatura pueden incluir el estudio de algoritmos de aproximacion y algoritmos probabilisticos, asi como el uso de herramientas computacionales para ayudar en el diseno y analisis de algoritmos. En resumen, la asignatura de Diseno y Analisis de Algoritmos es esencial para cualquier estudiante que desee convertirse en un profesional en Ciencias de la Computacion o Ingenieria en Sistemas Computacionales. Les brinda las habilidades y herramientas necesarias para disenar y analizar algoritmos eficientes, lo que es esencial en la resolucion de problemas en una amplia variedad de campos, incluyendo la inteligencia artificial, el aprendizaje automatico, la ciencia de datos, entre otros.",
                 12.99f, new ArrayList<>());
 
         tag2.getPacks().add(pack2);
@@ -101,14 +88,7 @@ public class DatabaseInitializer {
 
 
         // Pack3 CREATION
-        Pack pack3 = new Pack("ED", "img/Subject-Icons/ED.png", "Estructuras de Datos", "Estructuras de Datos es una asignatura que se imparte en carreras relacionadas con la informática y busca enseñar a los estudiantes a diseñar y utilizar estructuras de datos eficientes.", """
-                Estructuras de Datos es una asignatura fundamental en la formación de cualquier profesional de la informática. Esta asignatura se enfoca en el estudio de las diferentes estructuras de datos y algoritmos que se pueden utilizar para resolver problemas de programación de manera eficiente. A lo largo del curso, los estudiantes aprenden a analizar, diseñar e implementar estructuras de datos y algoritmos, así como también a evaluar su eficiencia y complejidad.
-
-                Entre los temas que se cubren en esta asignatura se encuentran: listas, pilas, colas, árboles, grafos, algoritmos de búsqueda y ordenamiento, entre otros. Los estudiantes aprenden a implementar estas estructuras de datos y algoritmos en diferentes lenguajes de programación, y a analizar su eficiencia en términos de tiempo y espacio.
-
-                Además, Estructuras de Datos también suele incluir prácticas de laboratorio en las que los estudiantes aplican los conceptos aprendidos en la teoría a través de la resolución de problemas reales. Estas prácticas suelen requerir el uso de herramientas específicas, como compiladores, depuradores y herramientas de visualización de datos.
-
-                En resumen, Estructuras de Datos es una asignatura fundamental para cualquier profesional de la informática, ya que proporciona las herramientas y técnicas necesarias para diseñar y desarrollar sistemas informáticos eficientes y escalables.""",
+        Pack pack3 = new Pack("ED", "img/Subject-Icons/ED.png", "Estructuras de Datos", "Estructuras de Datos es una asignatura que se imparte en carreras relacionadas con la informatica y busca ensenar a los estudiantes a disenar y utilizar estructuras de datos eficientes.", "Estructuras de Datos es una asignatura fundamental en la formacion de cualquier profesional de la informatica. Esta asignatura se enfoca en el estudio de las diferentes estructuras de datos y algoritmos que se pueden utilizar para resolver problemas de programacion de manera eficiente. A lo largo del curso, los estudiantes aprenden a analizar, disenar e implementar estructuras de datos y algoritmos, asi como tambien a evaluar su eficiencia y complejidad.Entre los temas que se cubren en esta asignatura se encuentran: listas, pilas, colas, arboles, grafos, algoritmos de busqueda y ordenamiento, entre otros. Los estudiantes aprenden a implementar estas estructuras de datos y algoritmos en diferentes lenguajes de programacion, y a analizar su eficiencia en terminos de tiempo y espacio.Ademas, Estructuras de Datos tambien suele incluir practicas de laboratorio en las que los estudiantes aplican los conceptos aprendidos en la teoria a traves de la resolucion de problemas reales. Estas practicas suelen requerir el uso de herramientas especificas, como compiladores, depuradores y herramientas de visualizacion de datos.En resumen, Estructuras de Datos es una asignatura fundamental para cualquier profesional de la informatica, ya que proporciona las herramientas y tecnicas necesarias para disenar y desarrollar sistemas informaticos eficientes y escalables.",
                 9.99f, new ArrayList<>());
 
         // ManyToMany Relationships
@@ -123,10 +103,8 @@ public class DatabaseInitializer {
 
 
         // Pack4 CREATION
-        Pack pack4 = new Pack("POO", "img/Subject-Icons/ED.png", "Programación Orientada a Objetos", "Es una materia fundamental en la cual se aprenden los principios y técnicas necesarias para desarrollar programas mediante la utilización de objetos y clases.", """
-                La asignatura de Programación Orientada a Objetos (POO) se enfoca en enseñar a los estudiantes de informática y ciencias de la computación los principios fundamentales de la programación orientada a objetos. Así como las técnicas necesarias para desarrollar software utilizando esta metodología. La POO es una paradigma de programación que se basa en la idea de que un programa informático puede ser diseñado como un conjunto de objetos que interactúan entre sí para llevar a cabo tareas específicas.
-
-                Durante el desarrollo de esta asignatura, los estudiantes adquieren conocimientos acerca de los conceptos básicos de la POO, tales como la encapsulación, la herencia, el polimorfismo y la abstracción. A través de la enseñanza de estos conceptos, se pretende que los estudiantes puedan diseñar y desarrollar sistemas informáticos complejos de manera eficiente y mantenible, utilizando técnicas como la modularidad y la reutilización de código.""",
+        Pack pack4 = new Pack("POO", "img/Subject-Icons/ED.png", "Programacion Orientada a Objetos", "Es una materia fundamental en la cual se aprenden los principios y tecnicas necesarias para desarrollar programas mediante la utilizacion de objetos y clases.",
+                "La asignatura de Programacion Orientada a Objetos (POO) se enfoca en ensenar a los estudiantes de informatica y ciencias de la computacion los principios fundamentales de la programacion orientada a objetos. Asi como las tecnicas necesarias para desarrollar software utilizando esta metodologia. La POO es una paradigma de programacion que se basa en la idea de que un programa informatico puede ser disenado como un conjunto de objetos que interactuan entre si para llevar a cabo tareas especificas. Durante el desarrollo de esta asignatura, los estudiantes adquieren conocimientos acerca de los conceptos basicos de la POO, tales como la encapsulacion, la herencia, el polimorfismo y la abstraccion. A traves de la ensenanza de estos conceptos, se pretende que los estudiantes puedan disenar y desarrollar sistemas informaticos complejos de manera eficiente y mantenible, utilizando tecnicas como la modularidad y la reutilizacion de codigo.",
                 13.99f, new ArrayList<>());
 
         // ManyToMany Relationships
@@ -138,12 +116,8 @@ public class DatabaseInitializer {
         tagsRepository.save(tag1);
 
         // Pack5 CREATION
-        Pack pack5 = new Pack("ISI", "img/Subject-Icons/ED.png", "Ingeniería de Sistemas de Información", "¡Tenemos el pack perfecto para ti! Con un conjunto de recursos que te ayudará a comprender los conceptos clave y a dominar las técnicas necesarias para obtener una excelente calificación.", """
-                Con nuestro pack, tendrás acceso a:
-
-                Una selección de ejercicios y problemas resueltos para que puedas practicar y poner a prueba tus habilidades.
-                Resúmenes de los temas más importantes, organizados de manera clara y concisa para que puedas estudiar de manera efectiva.
-                Una guía de estudio detallada que te llevará paso a paso por todos los temas que debes dominar para el examen.""",
+        Pack pack5 = new Pack("ISI", "img/Subject-Icons/ED.png", "Ingenieria de Sistemas de Informacion", "¡Tenemos el pack perfecto para ti! Con un conjunto de recursos que te ayudara a comprender los conceptos clave y a dominar las tecnicas necesarias para obtener una excelente calificacion.",
+                "Con nuestro pack, tendras acceso a: Una seleccion de ejercicios y problemas resueltos para que puedas practicar y poner a prueba tus habilidades. Resumenes de los temas mas importantes, organizados de manera clara y concisa para que puedas estudiar de manera efectiva. Una guia de estudio detallada que te llevara paso a paso por todos los temas que debes dominar para el examen.",
                 13.99f, new ArrayList<>());
 
         // ManyToMany Relationships
@@ -159,7 +133,7 @@ public class DatabaseInitializer {
 
 
         // Pack6 CREATION
-        Pack pack6 = new Pack("LDM", "img/Subject-Icons/ED.png", "Laboratorios de Dispositivos Móviles", "Domina el mundo móvil con nuestro pack de laboratorios de dispositivos móviles: todo lo que necesitas para aprender y experimentar con los últimos avances en tecnología móvil","¿Quieres convertirte en un experto en dispositivos móviles y aplicaciones? Con nuestro pack de laboratorios de dispositivos móviles, podrás aprender y experimentar con las últimas tecnologías móviles. Obtendrás acceso a una amplia variedad de laboratorios, desde la creación de aplicaciones móviles hasta la resolución de problemas y la implementación de soluciones. Además, contarás con el apoyo de nuestros tutores expertos, quienes estarán disponibles para ayudarte a resolver tus dudas y asistirte en todo lo que necesites. Con nuestro pack, estarás listo para enfrentar los desafíos del mundo móvil y llevar tus habilidades al siguiente nivel. ¡Compra ahora y comienza a explorar el mundo móvil de manera completa!",
+        Pack pack6 = new Pack("LDM", "img/Subject-Icons/ED.png", "Laboratorios de Dispositivos Moviles", "Domina el mundo movil con nuestro pack de laboratorios de dispositivos moviles: todo lo que necesitas para aprender y experimentar con los ultimos avances en tecnologia movil","Si quieres convertirte en un experto en dispositivos moviles y aplicaciones? Con nuestro pack de laboratorios de dispositivos moviles, podras aprender y experimentar con las ultimas tecnologias moviles. Obtendras acceso a una amplia variedad de laboratorios, desde la creacion de aplicaciones moviles hasta la resolucion de problemas y la implementacion de soluciones. Ademas, contaras con el apoyo de nuestros tutores expertos, quienes estaran disponibles para ayudarte a resolver tus dudas y asistirte en todo lo que necesites. Con nuestro pack, estaras listo para enfrentar los desafios del mundo movil y llevar tus habilidades al siguiente nivel. Compra ahora y comienza a explorar el mundo movil de manera completa!",
                 13.99f, new ArrayList<>());
 
         // ManyToMany Relationships
@@ -175,7 +149,7 @@ public class DatabaseInitializer {
 
 
         // Pack7 CREATION
-        Pack pack7 = new Pack("AIC", "img/Subject-Icons/ED.png", "Arquitectura de Computadores", "Quítate una de las peores asignaturas de la carrera con nuestro completo pack de arquitectura e ingeniería de computadores","Nuestro pack de arquitectura e ingeniería de computadores es la herramienta que necesitas para desarrollar soluciones innovadoras y de alto rendimiento. Con una selección de recursos que incluyen ejercicios prácticos, resúmenes y guías de estudio detalladas, podrás aprender los conceptos fundamentales y las técnicas avanzadas necesarias para destacarte en el campo de la informática.",
+        Pack pack7 = new Pack("AIC", "img/Subject-Icons/ED.png", "Arquitectura de Computadores", "Quitate una de las peores asignaturas de la carrera con nuestro completo pack de arquitectura e ingenieria de computadores","Nuestro pack de arquitectura e ingenieria de computadores es la herramienta que necesitas para desarrollar soluciones innovadoras y de alto rendimiento. Con una seleccion de recursos que incluyen ejercicios practicos, resumenes y guias de estudio detalladas, podras aprender los conceptos fundamentales y las tecnicas avanzadas necesarias para destacarte en el campo de la informatica.",
                 13.99f, new ArrayList<>());
 
         // ManyToMany Relationships
@@ -190,7 +164,7 @@ public class DatabaseInitializer {
         tagsRepository.save(tag2);
 
         // Pack8 CREATION
-        Pack pack8 = new Pack("MOEG", "img/Subject-Icons/ED.png", "Métodos Operativos y Estadísticos de Gestión", "Pack completo de materiales para la asignatura Métodos operativos y estadísticos de gestión, que incluye ejercicios prácticos, resúmenes y ejemplos explicativos para aprobar con éxito","Domina los métodos operativos y estadísticos para mejorar la gestión empresarial con nuestro completo pack de materiales. Incluye apuntes detallados, ejercicios resueltos y exámenes de años anteriores para que puedas prepararte a fondo. ¡Asegura tu éxito en la asignatura con nuestro pack!”",
+        Pack pack8 = new Pack("MOEG", "img/Subject-Icons/ED.png", "Metodos Operativos y Estadisticos de Gestion", "Pack completo de materiales para la asignatura Metodos operativos y estadisticos de gestion, que incluye ejercicios practicos, resumenes y ejemplos explicativos para aprobar con exito","Domina los metodos operativos y estadisticos para mejorar la gestion empresarial con nuestro completo pack de materiales. Incluye apuntes detallados, ejercicios resueltos y examenes de anos anteriores para que puedas prepararte a fondo. Asegura tu exito en la asignatura con nuestro pack!”",
                 13.99f, new ArrayList<>());
 
         // ManyToMany Relationships
@@ -206,7 +180,7 @@ public class DatabaseInitializer {
 
 
         // Pack9 CREATION
-        Pack pack9 = new Pack("IC", "img/Subject-Icons/ED.png", "Ingeniería del Conocimiento", "Optimiza tus habilidades en la gestión empresarial con nuestro pack de Métodos operativos y estadísticos de gestión, que te brinda las herramientas necesarias para tomar decisiones inteligentes y basadas en datos","Nuestro pack de Métodos operativos y estadísticos de gestión te proporcionará las herramientas necesarias para optimizar tus habilidades en la gestión empresarial. Aprenderás a tomar decisiones inteligentes y basadas en datos, utilizando técnicas estadísticas y operativas avanzadas para analizar la información disponible y mejorar la eficiencia de los procesos empresariales. Con nuestra selección de recursos, incluyendo ejercicios prácticos y resúmenes de los temas más importantes, podrás estudiar de manera efectiva y asegurarte de dominar los conceptos fundamentales",
+        Pack pack9 = new Pack("IC", "img/Subject-Icons/ED.png", "Ingenieria del Conocimiento", "Optimiza tus habilidades en la gestion empresarial con nuestro pack de Metodos operativos y estadisticos de gestion, que te brinda las herramientas necesarias para tomar decisiones inteligentes y basadas en datos","Nuestro pack de Metodos operativos y estadisticos de gestion te proporcionara las herramientas necesarias para optimizar tus habilidades en la gestion empresarial. Aprenderas a tomar decisiones inteligentes y basadas en datos, utilizando tecnicas estadisticas y operativas avanzadas para analizar la informacion disponible y mejorar la eficiencia de los procesos empresariales. Con nuestra seleccion de recursos, incluyendo ejercicios practicos y resumenes de los temas mas importantes, podras estudiar de manera efectiva y asegurarte de dominar los conceptos fundamentales",
                 13.99f, new ArrayList<>());
 
         // ManyToMany Relationships
@@ -222,7 +196,7 @@ public class DatabaseInitializer {
 
 
         // Pack10 CREATION
-        Pack pack10 = new Pack("MULT", "img/Subject-Icons/ED.png", "Multimedia", "Desata tu creatividad con nuestro pack multimedia, que incluye todo lo que necesitas para crear contenido audiovisual de alta calidad, desde edición de video hasta producción musical y diseño gráfico","Nuestro pack multimedia es la herramienta perfecta para desatar tu creatividad y crear contenido audiovisual de alta calidad. Incluye una amplia selección de recursos que abarcan desde edición de video hasta producción musical y diseño gráfico, para que puedas crear contenido atractivo y de impacto visual. Con nuestra guía de estudio detallada y tutoriales en línea, podrás aprender nuevas habilidades y técnicas de manera efectiva, y contarás con el apoyo de nuestros expertos en todo momento. ¡Compra ahora y lleva tus habilidades creativas al siguiente nivel con nuestro pack multimedia!",
+        Pack pack10 = new Pack("MULT", "img/Subject-Icons/ED.png", "Multimedia", "Desata tu creatividad con nuestro pack multimedia, que incluye todo lo que necesitas para crear contenido audiovisual de alta calidad, desde edicion de video hasta produccion musical y diseno grafico","Nuestro pack multimedia es la herramienta perfecta para desatar tu creatividad y crear contenido audiovisual de alta calidad. Incluye una amplia seleccion de recursos que abarcan desde edicion de video hasta produccion musical y diseno grafico, para que puedas crear contenido atractivo y de impacto visual. Con nuestra guia de estudio detallada y tutoriales en linea, podras aprender nuevas habilidades y tecnicas de manera efectiva, y contaras con el apoyo de nuestros expertos en todo momento. Compra ahora y lleva tus habilidades creativas al siguiente nivel con nuestro pack multimedia!",
                 13.99f, new ArrayList<>());
 
         // ManyToMany Relationships
@@ -237,7 +211,7 @@ public class DatabaseInitializer {
         tagsRepository.save(tag2);
 
         // Pack11 CREATION
-        Pack pack11 = new Pack("AIR", "img/Subject-Icons/ED.png", "Análisis e Ingeniería de Requisitos", "Domina las técnicas de análisis e ingeniería de requisitos con nuestro pack completo de recursos, que incluye ejercicios prácticos y guías de estudio detalladas"," Aprende cómo identificar, analizar y documentar los requisitos para cualquier proyecto de software, y adquiere las habilidades necesarias para desarrollar soluciones de software de alta calidad y que cumplan con las necesidades de los usuarios finales.\"",
+        Pack pack11 = new Pack("AIR", "img/Subject-Icons/ED.png", "Analisis e Ingenieria de Requisitos", "Domina las tecnicas de analisis e ingenieria de requisitos con nuestro pack completo de recursos, que incluye ejercicios practicos y guias de estudio detalladas"," Aprende como identificar, analizar y documentar los requisitos para cualquier proyecto de software, y adquiere las habilidades necesarias para desarrollar soluciones de software de alta calidad y que cumplan con las necesidades de los usuarios finales.\"",
                 13.99f, new ArrayList<>());
 
         // ManyToMany Relationships
@@ -253,7 +227,7 @@ public class DatabaseInitializer {
 
 
         // Pack12 CREATION
-        Pack pack12 = new Pack("IP", "img/Subject-Icons/ED.png", "Introducción a la Programación", "Aprende a programar desde cero con nuestro pack de introducción a la programación, que te brinda los conceptos fundamentales y las habilidades necesarias para empezar a crear tus propias aplicaciones.","Aprende a programar desde cero con nuestro pack de introducción a la programación, que te brinda los conceptos fundamentales y las habilidades necesarias para empezar a crear tus propias aplicaciones.",
+        Pack pack12 = new Pack("IP", "img/Subject-Icons/ED.png", "Introduccion a la Programacion", "Aprende a programar desde cero con nuestro pack de introduccion a la programacion, que te brinda los conceptos fundamentales y las habilidades necesarias para empezar a crear tus propias aplicaciones.","Aprende a programar desde cero con nuestro pack de introduccion a la programacion, que te brinda los conceptos fundamentales y las habilidades necesarias para empezar a crear tus propias aplicaciones.",
                 13.99f, new ArrayList<>());
 
         // ManyToMany Relationships
@@ -277,10 +251,8 @@ public class DatabaseInitializer {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy : HH:mm");
         String formattedDate = now.format(formatter);
 
-        Forms forms = new Forms("¿Cómo hago relaciones Many to Many en Spring Boot?", "He estado mirando por encima y no consigo entender cómo puedo hacer una relacion de ese estilo, tampoco veo buenos ejemplos, help!",
-                """
+        Forms forms = new Forms("¿Como hago relaciones Many to Many en Spring Boot?", "He estado mirando por encima y no consigo entender como puedo hacer una relacion de ese estilo, tampoco veo buenos ejemplos, help!", """
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur sagittis nibh nec sodales lobortis. Integer tristique odio enim, eu placerat urna feugiat eget. Mauris vitae enim commodo, pulvinar justo et, faucibus est. Pellentesque molestie tempor malesuada. Sed quis urna iaculis, sagittis nibh a, commodo ante. Aliquam a lacus et nulla facilisis blandit. Sed lacinia nibh quis ligula rutrum varius. Vestibulum quis consequat tortor, nec feugiat lacus. Proin eleifend pharetra risus ut rutrum. Quisque ut ultricies augue.
-
                         Ut aliquam pulvinar metus. Ut a elementum nisi. Curabitur a nibh condimentum, venenatis metus ac, lobortis leo. In congue enim sed accumsan mollis. Suspendisse facilisis diam eu lectus tempor blandit. Vestibulum tempus turpis augue. Sed a arcu cursus, pulvinar mi sit amet, bibendum ipsum. Mauris tempus eleifend maximus. Suspendisse imperdiet at sapien non condimentum. Morbi commodo sodales erat.""", formattedDate,"Patron970", 0, "/static/img/Forms-Icons/code.svg");
 
         formsRepository.save(forms);
@@ -288,7 +260,7 @@ public class DatabaseInitializer {
 
         // Admin user CREATION
         User admin = new User("admin123","admin@hotmail.com", passwordEncoder.encode("123"), "USER", "ADMIN");
-        // Create a File object from the image file path
+    // Create a File object from the image file path
         File file = new File("src/main/resources/static/img/Profile-Pics/profile_img.png");
 
         // Read the image file into a byte array
