@@ -20,7 +20,7 @@ const routes: Routes = [
   {path: 'forms', component: FormsComponent},
   {path: 'surveys', component: SurveysComponent},
   
- {path: '**', component: ErrorPageComponent} //El path de error siempre el último*/
+ {path: '**', component: ErrorPageComponent} //path de error siempre el último*/
 ]
 
 
@@ -32,7 +32,8 @@ const routes: Routes = [
     HomePageComponentComponent,
     PacksComponent,
     FormsComponent,
-    SurveysComponent
+    SurveysComponent,
+    ErrorPageComponent
   ],
   imports: [
     BrowserModule,
