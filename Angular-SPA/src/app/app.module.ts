@@ -5,18 +5,41 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
+import { Routes, RouterModule} from '@angular/router';
+import { FormsModule } from '@angular/forms';
+import { HomePageComponentComponent } from './home-page-component/home-page-component.component';
+import { PacksComponent } from './packs/packs.component';
+import { FormsComponent } from './forms/forms.component';
+import { SurveysComponent } from './surveys/surveys.component';
+import { ErrorPageComponent } from './error-page/error-page.component';
+
+
+const routes: Routes = [
+  {path: '', component: HomePageComponentComponent},
+  {path: 'packs', component: PacksComponent},
+  {path: 'forms', component: FormsComponent},
+  {path: 'surveys', component: SurveysComponent},
+  
+ {path: '**', component: ErrorPageComponent} //El path de error siempre el último*/
+]
+
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    HomePageComponentComponent,
+    PacksComponent,
+    FormsComponent,
+    SurveysComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    RouterModule.forRoot(routes)
   ],
-  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
