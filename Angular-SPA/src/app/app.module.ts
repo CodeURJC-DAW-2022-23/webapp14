@@ -12,6 +12,7 @@ import { PacksComponent } from './packs/packs.component';
 import { FormsComponent } from './forms/forms.component';
 import { SurveysComponent } from './surveys/surveys.component';
 import { ErrorPageComponent } from './error-page/error-page.component';
+import { HeaderLoggedComponent } from './header-logged/header-logged.component';
 
 
 const routes: Routes = [
@@ -33,7 +34,8 @@ const routes: Routes = [
     PacksComponent,
     FormsComponent,
     SurveysComponent,
-    ErrorPageComponent
+    ErrorPageComponent,
+    HeaderLoggedComponent
   ],
   imports: [
     BrowserModule,
