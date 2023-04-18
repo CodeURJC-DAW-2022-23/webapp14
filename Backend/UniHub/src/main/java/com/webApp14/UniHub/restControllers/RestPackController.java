@@ -1,17 +1,22 @@
 package com.webApp14.UniHub.restControllers;
 
 import com.webApp14.UniHub.model.Pack;
+import com.webApp14.UniHub.model.Tags;
 import com.webApp14.UniHub.repository.PackRepository;
+import com.webApp14.UniHub.repository.TagsRepository;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+
 import java.util.Collection;
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -21,6 +26,8 @@ public class RestPackController {
     // Attributes
     @Autowired
     private PackRepository packRepository;
+
+
 
     //Crea un metodo que devuelva todos los packs
     @Operation(summary = "Get all packs")
@@ -39,6 +46,8 @@ public class RestPackController {
         Collection<Pack> packs = packRepository.findAll();
         return new ResponseEntity<>(packs, HttpStatus.OK);
     }
+
+
 
     // Get a specific pack based on the id
     @Operation(summary = "Get a pack by id")

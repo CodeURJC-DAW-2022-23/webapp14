@@ -32,6 +32,7 @@ public class RestSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 
+
         auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder);
     }
 

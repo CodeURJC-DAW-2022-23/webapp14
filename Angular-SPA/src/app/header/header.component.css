@@ -1,4 +1,7 @@
-
+@font-face {
+   font-family: 'myFont-Texts';
+   src: url(/assets/Fonts/rothek-extralight.otf) format('truetype');
+}
 
 
 header {
