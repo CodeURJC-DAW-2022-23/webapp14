@@ -14,13 +14,21 @@ import { ErrorPageComponent } from './error-page/error-page.component';
 import { HeaderLoggedComponent } from './header-logged/header-logged.component';
 import { PacksService } from './services/Packs/packs.service';
 import { TagsService } from './services/Tags/tags.service';
+import { FormsService } from './services/Forms/forms.service';
 import { HttpClientModule } from '@angular/common/http';
+import { LoginComponent } from './login/login.component';
+import { SignUpComponent } from './sign-up/sign-up.component';
+import { ReactiveFormsModule } from '@angular/forms';
+
+
 
 const routes: Routes = [
   { path: '', component: HomePageComponentComponent },
   { path: 'packs', component: PacksComponent },
   { path: 'forms', component: FormsComponent },
   { path: 'surveys', component: SurveysComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'signUp', component: SignUpComponent },
   { path: '**', component: ErrorPageComponent } // path de error siempre el último
 ];
 
@@ -34,18 +42,23 @@ const routes: Routes = [
     FormsComponent,
     SurveysComponent,
     ErrorPageComponent,
-    HeaderLoggedComponent
+    HeaderLoggedComponent,
+    LoginComponent,
+    SignUpComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
+    ReactiveFormsModule,
     RouterModule.forRoot(routes)
   ],
   providers: [
     PacksService,
-    TagsService
+    TagsService,
+    FormsService,
+    RouterModule
   ],
   bootstrap: [AppComponent]
 })

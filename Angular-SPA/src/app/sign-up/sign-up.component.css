@@ -1,0 +1,74 @@
+/*Styles for the login section to edit the position and sizes of buttons, text and container*/
+section #login_popup {
+   position: fixed;
+   top: 50%;
+   left: 50%;
+   max-width: 50%;
+   min-width: 30%;
+   height: 600px;
+   padding: 40px;
+   color: aliceblue;
+   box-shadow: 0 5px 30px rgba(0, 0, 0, 0.3);
+   transform: translate(-50%, -50%);
+   border-radius: 7%;
+   visibility: hidden;
+   opacity: 0;
+   transition: 500ms;
+}
+.btn {
+   transform: translateY(0);
+   transition: transform 0.2s;
+   margin-top: 100px;
+   padding: 10px 20px;
+   border-radius: 10px;
+   font-weight: bold;
+   text-transform: uppercase;
+}
+.btn:hover {
+   transform: translateY(-10px);
+   background: linear-gradient(to right, #211f1c, #73ffd6);
+}
+
+.btn-primary {
+   background-color: rgb(69, 0, 133);
+   color: rgb(255, 255, 255);
+}
+
+
+@media (max-width: 767px) {
+   #buttonsContainer {
+      flex-direction: column;
+   }
+}
+
+#buttonsContainer a, #buttonsContainer input {
+   margin-bottom: -85px;
+}
+
+#login_popup,
+#register_popup {
+   position: fixed;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%, -50%);
+   z-index: 1;
+   filter: none;
+   width: 40%;
+   font-size: 1.5rem;
+   width: 600px;
+   height: 900px;
+   border-radius: 10px;
+   box-shadow: 5px 5px 10px deepskyblue;
+   padding: 100px;
+
+}
+
+.FormInput {
+   font-family: 'myFont-Texts', sans-serif;
+}
+
+#login_popup h1,
+#register_popup h1{
+   margin-bottom: 40px;
+}
+

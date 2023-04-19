@@ -1,0 +1,136 @@
+/*Styles for separator element in between the pages*/
+.bg-gradient-to-r {
+   background-image: linear-gradient(to right, var(--tw-gradient-stops));
+}
+
+.from-orange-500 {
+   --tw-gradient-from: #f97316;
+   --tw-gradient-to: rgb(249 115 22 / 0);
+   --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.to-pink-500 {
+   --tw-gradient-to: #ec4899;
+}
+
+.rounded-full {
+   margin-top: 40px;
+   border-radius: 9999px;
+}
+
+.w-24 {
+   width: 6rem;
+}
+
+.h-1 {
+   height: 0.25rem;
+}
+
+.my-24 {
+   margin-top: 6rem;
+   margin-bottom: 6rem;
+}
+
+.mx-auto {
+   margin-left: auto;
+   margin-right: auto;
+}
+
+
+.post-link:hover {
+   text-decoration: none;
+}
+
+.thread {
+   cursor: pointer;
+   position: relative;
+   padding: 2rem 2rem 0.8rem 2rem;
+   border-radius: 15px;
+   transition: 500ms;
+   background: rgba(121, 121, 121, 0.315);
+}
+
+.thread-button {
+   transition: 500ms;
+}
+
+.thread-button:hover {
+   transition: 500ms;
+   color: white;
+   background: rgb(76, 24, 124);
+   scale: 1.03;
+}
+.thread:hover {
+   transition: 500ms;
+   background: rgba(121, 121, 121, 0.637);
+   scale: 1.03;
+}
+
+.thread-header {
+   display: flex;
+   flex-direction: row;
+   align-items: flex-start;
+}
+
+.thread-svg {
+   background: rgba(255, 255, 255, 0.829);
+   border-radius: 20px;
+   width: 100px;
+   height: 100px;
+}
+
+.thread-info {
+   display: flex;
+   flex-direction: column;
+   padding-left: 1rem;
+}
+
+.thread-title {
+   font-size: larger;
+   color: rgb(65, 230, 175);
+}
+
+.thread-content {
+   font-family: 'myFont-Texts', sans-serif;
+   padding-top: 0.4rem;
+   padding-left: 0.5rem;
+   font-weight: 800;
+   color: aliceblue;
+}
+
+.thread-author {
+   position: absolute;
+   bottom: 0;
+   right: 0;
+   color: aliceblue;
+   font-size: 17px;
+   padding: 10px;
+   margin-right: 10px;
+}
+
+.show-more {
+   min-width: 170px;
+   height: 30px;
+   border-radius: 20px;
+   background: rgb(40, 228, 181);
+   transition: 500 ms;
+}
+
+.show-more:hover {
+   transition: 500ms;
+   cursor: pointer;
+   color: aliceblue;
+   scale: 1.1;
+   background: rgb(95, 30, 156);
+}
+
+.more-packs {
+   text-align: right;
+   margin-bottom: 10px;
+   margin-right: 3rem;
+   padding: 1rem;
+
+}
+a {
+text-decoration: none;
+}

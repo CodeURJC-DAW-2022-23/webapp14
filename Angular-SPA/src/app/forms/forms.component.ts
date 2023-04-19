@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormsService } from '../services/Forms/forms.service';
 
 @Component({
   selector: 'app-forms',
@@ -6,5 +7,29 @@ import { Component } from '@angular/core';
   styleUrls: ['./forms.component.css']
 })
 export class FormsComponent {
+
+  constructor( private forms: FormsService) {}
+
+  userLogged: boolean = false;
+  formsList: any[] = [];
+  imagesObject:{[key: string]: string} = {
+  '/static/img/Forms-Icons/code.svg': '/assets/img/Forms-Icons/code.svg',
+  '/static/img/Forms-Icons/ballings.svg': '/assets/img/Forms-Icons/ballings.svg',
+  '/static/img/Forms-Icons/statistics.svg': '/assets/img/Forms-Icons/statistics.svg',
+  '/static/img/Forms-Icons/thunder_icon.svg': '/assets/img/Forms-Icons/thunder_icon.svg'
+};
+
+
+  ngOnInit(): void {
+    this.forms.getForms().subscribe((data: any) => {
+      this.formsList = data;
+      console.log(this.formsList);
+    })
+  }
+
+  getObjectKeys(obj: any) {
+    return Object.keys(obj);
+  }
+
 
 }

@@ -1,0 +1,31 @@
+        <div class="head-text text-center mb-8 mt-20 text-white">
+            <h1 class="head-text-content text-5xl mb-1">FORO E HILOS</h1>
+            <p class="my-0 text-gray3">Busca y encuentra lo que no sabías que querías</p>
+            <div class="mx-auto w-24 h-1 my-40 bg-gradient-to-r from-orange-500 to-pink-500 rounded-full"></div>
+        </div>
+        <br>
+        <div class="more-packs" *ngIf="userLogged">
+            <button class="thread-button" expanded="false"><a class="thread-button" href="">Crea tu Hilo!</a></button>
+        </div>
+        <span *ngFor="let form of formsList">
+            <div class="container thread-container">
+                <a class="post-link" href="">
+                    <article class="thread my-1">
+                        <div class="thread-header">
+                            <div class="thread-logo" *ngFor="let key of getObjectKeys(imagesObject)">
+                                <span *ngIf="key === form.threadImage">
+                                <img title="{{imagesObject[key]}}/{{form.id}}" class="thread-svg" src="{{imagesObject[key]}}" type="image/svg+xml"/>
+                                </span>
+                            </div>
+                            <div class="thread-info">
+                                <div class="thread-title">{{form.threadTitle}}</div>
+                                <div class="thread-content">{{form.threadContent_short}}</div>
+                            </div>
+                        </div>
+                        <div class="thread-date text-white">{{form.threadDate}}</div>
+                        <div class="thread-author">{{form.threadAuthor}}</div>
+                    </article>
+                </a>
+            </div>
+        </span>
+        
