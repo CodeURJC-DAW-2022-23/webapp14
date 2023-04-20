@@ -1,9 +1,42 @@
-@font-face {
-   font-family: 'myFont-Texts';
-   src: url(/Fonts/rothek-extralight.otf) format('truetype');
+/*Styles for separator element in between the pages*/
+.bg-gradient-to-r {
+   background-image: linear-gradient(to right, var(--tw-gradient-stops));
 }
 
-/*Client Style container styles*/
+.from-orange-500 {
+   --tw-gradient-from: #f97316;
+   --tw-gradient-to: rgb(249 115 22 / 0);
+   --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.to-pink-500 {
+   --tw-gradient-to: #ec4899;
+}
+
+.rounded-full {
+   margin-top: 40px;
+   border-radius: 9999px;
+}
+
+.w-24 {
+   width: 6rem;
+}
+
+.h-1 {
+   height: 0.25rem;
+}
+
+.my-24 {
+   margin-top: 6rem;
+   margin-bottom: 6rem;
+}
+
+.mx-auto {
+   margin-left: auto;
+   margin-right: auto;
+}
+
+
 .profile-container {
    position: relative;
    min-height: 400px;
@@ -20,48 +53,7 @@
    align-items: flex-start;
 }
 
-.section-title {
-   color: rgb(40, 228, 181);
-   font-size: 2.5rem;
-   padding-top: 0.5rem;
-   padding-left: 1rem;
-   top: 0;
-   left: 0;
-}
 
-.profile-img {
-   background: rgba(255, 255, 255, 0.829);
-   width: 150px;
-   height: 150px;
-   border-radius: 20px;
-   transition: 500ms;
-}
-
-.profile-img:hover {
-   cursor: pointer;
-   transition: 500ms;
-   scale: 1.04;
-}
-
-.profile-placeholder {
-   color: rgb(40, 228, 181);
-   font-size: 24px;
-   margin-top: 1rem;
-   padding-left: 3rem;
-}
-
-.profile-name {
-   width: 100%;
-}
-
-.user-name {
-   bottom: 0;
-   right: 0;
-   color: aliceblue;
-   font-size: 25px;
-   padding: 15px;
-   margin-right: 10px;
-}
 
 .pack-elements {
    margin-bottom: 3rem;
@@ -76,6 +68,12 @@
    transition: 500ms;
 }
 
+
+.packId-container {
+   display: flex;
+   flex-direction: column;
+  
+}
 .packId-container:hover {
    cursor: pointer;
    background-image: linear-gradient(rgba(92, 92, 92, 0.74), rgba(68, 68, 68, 0.74));
@@ -85,8 +83,8 @@
 
 .packId-header {
    display: flex;
-   flex-direction: row;
-   align-items: flex-start;
+   flex-direction: column;
+   align-items: center;
 }
 
 .packId-svg {
@@ -99,6 +97,7 @@
    flex-direction: column;
    padding-left: 1rem;
 }
+
 
 .packId-title {
    font-size: larger;
@@ -116,13 +115,16 @@
 .packId-logo img {
    max-width: 100%;
    max-height: 100%;
+      
 }
 
-.packInfo-img {
-   max-width: 100%;
-   height: 40%;
-   object-fit: cover;
-   box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.349);
+.section-title {
+   color: rgb(40, 228, 181);
+   font-size: 2.5rem;
+   padding-top: 0.5rem;
+   padding-left: 1rem;
+   top: 0;
+   left: 0;
 }
 
 /*Styles for separator element in between the pages*/
@@ -156,4 +158,46 @@
    color: aliceblue;
    scale: 1.1;
    background: rgb(95, 30, 156);
+}
+
+/*Styles for the different tags of each individual pack*/
+.tag {
+   font-family: 'myFont-Texts', sans-serif;
+   width: fit-content;
+   bottom: 0.3rem;
+   left: 0.3rem;
+   display: inline-block;
+   margin-top: 4px;
+   margin-right: 0.25rem;
+   border-radius: 0.375rem;
+   border-style: none;
+   padding: 0.25rem 0.25rem 0.3rem;
+   font-size: 0.75rem;
+   font-weight: bolder;
+   line-height: 1rem;
+   --tw-text-opacity: 1;
+}
+
+.tag-math {
+   background-color: #d8c444;
+}
+
+.tag-programming {
+   background-color: #f02b56;
+}
+
+.tag-hardware {
+   background-color: #401470;
+   color: white;
+}
+
+.tag-logic {
+   color: rgb(63, 63, 204);
+   background-color: #111111;
+}
+
+@media (max-width: 992px) {
+   .product-column {
+      width: 100%;
+   }
 }

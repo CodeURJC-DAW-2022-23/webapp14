@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { HttpClient } from '@angular/common/http';
 import { UsersService } from '../services/Users/users.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -11,7 +11,7 @@ import { UsersService } from '../services/Users/users.service';
 export class LoginComponent {
   loginForm!: FormGroup;
 
-  constructor(private http: HttpClient, private users: UsersService) {
+  constructor(private users: UsersService, private router: Router) {
     this.loginForm = new FormGroup({
       username: new FormControl('', Validators.required),
       password: new FormControl('', Validators.required)
@@ -21,10 +21,12 @@ export class LoginComponent {
   onSubmit() {
     if (this.loginForm.valid) {
       const username = this.loginForm.get('username')!.value;
+      console.log(username);
       const password = this.loginForm.get('password')!.value;
+      console.log(password);
 
       this.users.logIn(username, password);
-
+      this.router.navigate(['/']);
 
   }
 }

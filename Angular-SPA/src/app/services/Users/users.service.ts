@@ -7,7 +7,7 @@ import { User } from 'src/app/Model/users.model';
 })
 export class UsersService {
 
-            logged: boolean = false;
+                logged: boolean = false;
                 user?:User
                 constructor(private http: HttpClient) {}
 
@@ -37,6 +37,8 @@ export class UsersService {
 
             logIn(user: string, pass: string) {
 
+                console.log(user);
+                console.log(pass);
                 this.http.post("https://localhost:8443/api/auth/login", { username: user, password: pass }, { withCredentials: true })
                     .subscribe(
                         (response) => this.reqIsLogged(),
@@ -47,7 +49,7 @@ export class UsersService {
 
             logOut() {
 
-                return this.http.post('https://localhost:8443/api/auth/logout', { withCredentials: true })
+                return this.http.post('https://localhost:8443/api/auth/logout', { withCredentials: false })
                     .subscribe((resp: any) => {
                         console.log("LOGOUT: Successfully");
                         this.logged = false;

@@ -19,6 +19,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './login/login.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { CustomSearchComponent } from './custom-search/custom-search.component';
+import { SearchService } from './services/Search/search.service';
+
 
 
 
@@ -29,6 +32,7 @@ const routes: Routes = [
   { path: 'surveys', component: SurveysComponent },
   { path: 'login', component: LoginComponent },
   { path: 'signUp', component: SignUpComponent },
+  { path: 'search', component: CustomSearchComponent },
   { path: '**', component: ErrorPageComponent } // path de error siempre el último
 ];
 
@@ -44,7 +48,8 @@ const routes: Routes = [
     ErrorPageComponent,
     HeaderLoggedComponent,
     LoginComponent,
-    SignUpComponent
+    SignUpComponent,
+    CustomSearchComponent
   ],
   imports: [
     BrowserModule,
@@ -58,6 +63,7 @@ const routes: Routes = [
     PacksService,
     TagsService,
     FormsService,
+    SearchService,
     RouterModule
   ],
   bootstrap: [AppComponent]

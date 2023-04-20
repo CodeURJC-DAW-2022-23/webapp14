@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { UsersService } from '../services/Users/users.service';
 
 @Component({
   selector: 'app-header-logged',
@@ -6,5 +7,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./header-logged.component.css']
 })
 export class HeaderLoggedComponent {
+
+
+  constructor(private users: UsersService) { }
+
+  logOut(){
+    this.users.logOut();
+  }
 
 }

@@ -1,9 +1,8 @@
- <body>
- 
-    <app-header ></app-header>
-    <router-outlet></router-outlet>
-    <app-footer *ngIf="!router.url.includes('login') && !router.url.includes('signUp')"></app-footer>
- 
+<body>
+  <app-header *ngIf="!isLogged"></app-header>
+  <app-header-logged *ngIf="isLogged"></app-header-logged>
+  <router-outlet></router-outlet>
+  <app-footer *ngIf="!router.url.includes('login') && !router.url.includes('signUp')"></app-footer>
 </body>
 
 
