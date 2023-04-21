@@ -41,7 +41,7 @@ export class UsersService {
                 console.log(pass);
                 this.http.post("https://localhost:8443/api/auth/login", { username: user, password: pass }, { withCredentials: true })
                     .subscribe(
-                        (response) => this.reqIsLogged(),
+                        (response) => alert("parece que funciona"),
                         (error) => alert("Wrong credentials")
                     );
 

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { PacksService } from '../services/Packs/packs.service';
 import { TagsService } from '../services/Tags/tags.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-packs',
@@ -10,7 +11,7 @@ import { TagsService } from '../services/Tags/tags.service';
 
 
 export class PacksComponent {
-  constructor(private packs: PacksService, private tags: TagsService ){}
+  constructor(private packs: PacksService, private tags: TagsService, private router: Router ){}
 
   packsList: any[] = [];
   tagsList: any[] = [];
@@ -47,5 +48,8 @@ export class PacksComponent {
             this.numPacksToShow -= 4;
      }
  
+     onPackClick(pack: any) {
+        this.router.navigate(['packInfo'], { state: { pack } });
+    }
 
 }

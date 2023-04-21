@@ -7,4 +7,16 @@ import { Component } from '@angular/core';
 })
 export class SurveysComponent {
 
+  toggleSurvey(id: number): void {
+    const content = document.getElementById(`survey${id}-content`);
+
+    if (content && content.style.display === 'none') {
+      content.style.display = 'block';
+    } else if (content) {
+      content.style.display = 'none';
+    }
+  }
+
+
+
 }

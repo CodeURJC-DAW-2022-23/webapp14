@@ -9,7 +9,7 @@
         </div>
         <span *ngFor="let form of formsList">
             <div class="container thread-container">
-                <a class="post-link" href="">
+                <a class="post-link" (click)="onFormClick(form)">
                     <article class="thread my-1">
                         <div class="thread-header">
                             <div class="thread-logo" *ngFor="let key of getObjectKeys(imagesObject)">

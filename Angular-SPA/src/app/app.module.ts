@@ -21,6 +21,8 @@ import { SignUpComponent } from './sign-up/sign-up.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CustomSearchComponent } from './custom-search/custom-search.component';
 import { SearchService } from './services/Search/search.service';
+import { PackInfoComponent } from './pack-info/pack-info.component';
+import { PostComponent } from './post/post.component';
 
 
 
@@ -33,6 +35,8 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'signUp', component: SignUpComponent },
   { path: 'search', component: CustomSearchComponent },
+  { path: 'packInfo', component: PackInfoComponent },
+  {path: 'post', component: PostComponent},
   { path: '**', component: ErrorPageComponent } // path de error siempre el último
 ];
 
@@ -49,7 +53,9 @@ const routes: Routes = [
     HeaderLoggedComponent,
     LoginComponent,
     SignUpComponent,
-    CustomSearchComponent
+    CustomSearchComponent,
+    PackInfoComponent,
+    PostComponent
   ],
   imports: [
     BrowserModule,

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormsService } from '../services/Forms/forms.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-forms',
@@ -8,7 +9,7 @@ import { FormsService } from '../services/Forms/forms.service';
 })
 export class FormsComponent {
 
-  constructor( private forms: FormsService) {}
+  constructor( private forms: FormsService, private router: Router) {}
 
   userLogged: boolean = false;
   formsList: any[] = [];
@@ -30,6 +31,11 @@ export class FormsComponent {
   getObjectKeys(obj: any) {
     return Object.keys(obj);
   }
+
+
+   onFormClick(form: any) {
+        this.router.navigate(['post'], { state: { form } });
+    }
 
 
 }

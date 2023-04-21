@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { SearchService } from '../services/Search/search.service';
 import { TagsService } from '../services/Tags/tags.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-custom-search',
@@ -9,7 +10,7 @@ import { TagsService } from '../services/Tags/tags.service';
 })
 export class CustomSearchComponent {
 
-  constructor(private searchService:SearchService, private tags: TagsService) { }
+  constructor(private searchService:SearchService, private tags: TagsService, private router: Router) { }
 
   packsList: any[] = [];
   tagsList: any[] = [];
@@ -38,5 +39,10 @@ export class CustomSearchComponent {
    isPackInTag(packTitle: string, tag: any): boolean {
      return tag.packs.findIndex((p: any) => p.packTitle === packTitle) !== -1;
     }
+
+    onPackClick(pack: any) {
+        this.router.navigate(['packInfo'], { state: { pack } });
+    }
+
 
 }

@@ -11,7 +11,7 @@ import { UsersService } from './services/Users/users.service';
 
 
 export class AppComponent {
-  isLogged: boolean = false;
+  isLogged: boolean = true;
 
   constructor(public router: Router, private userService: UsersService) {
     // verifica si el usuario está logueado al cargar la aplicación

@@ -1,0 +1,65 @@
+        <div class="mx-auto w-24 h-1 my-40 bg-gradient-to-r from-orange-500 to-pink-500 rounded-full"></div>
+            <div class="container post-container" style="margin-top: 4rem;">
+                <div class="post-header">
+                    <div class="post-logo" *ngFor="let key of getObjectKeys(imagesObject)">
+                        <span *ngIf="key === form.threadImage">
+                            <img class="post-svg"src="{{imagesObject[key]}}" type="image/svg+xml"/>
+                        </span>
+                    </div>
+                    <div class="post-title">{{form.threadTitle}}</div>
+                </div>
+                <div class="mx-auto w-25 h-1 my-40 bg-gradient-to-r from-blue-500 to-purple-500 roundy"></div>
+                <div class="post-comments">
+                    <div class="post-info">
+                        <div class="post-content">{{form.threadContent}}</div>
+                        <form id="upvoteThread">
+                            <input type="hidden" id="threadUpvote" name="threadUpvote" value="" />
+                            <div class="post-upvotes">
+                                <img id="threadUpPusher"
+                                        class="upvote-svg"
+                                        src="/assets/img/Loaders/up_icon.svg"
+                                        type="image/svg+xml"
+                                        (click)="upvoteForm(form.id)"
+                                />
+                                <span class="upvote-number">{{form.threadUpvotes}}</span>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="post-metadata">
+                        <div class="post-date text-white">{{form.threadDate}}</div>
+                        <div class="post-author">{{form.threadAuthor}}</div>
+                    </div>
+                </div>
+                <div class="post-comments" *ngFor="let post of posts">
+                    <div class="post-response">
+                        <div class="post-info">
+                            <div class="post-content">{{post.postContent}}</div>
+                            <div class="post-upvotes">
+                                <form id="upvotePosts">
+                                    <input type="hidden" id="upvotePost" name="upvotePost" value=""/>
+                                    <input type="hidden" id="postIteration" name="postId" value=""/>
+                                    <img id="upvotePusher"
+                                            class="upvote-svg"
+                                            src="/assets/img/Loaders/up_icon.svg"
+                                            type="image/svg+xml"
+                                            (click)="upvotePost(post.id)"
+                                    />
+                                    <span class="upvote-number">{{post.postUpvotes}}</span>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="post-metadata">
+                            <div class="post-date text-white">{{post.Date}}</div>
+                            <div class="post-author">{{post.postAuthor}}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mx-auto w-25 mb-2 h-1 bg-gradient-to-r from-blue-500 to-purple-500 roundy"></div>
+           <div class="container post-reply">
+                <form (ngSubmit)="formComent(form.id, comment)" #commentForm>
+                    <label for="comment">Comentario:</label>
+                    <textarea class="submit-CommentText" id="comment" name="comment" [(ngModel)]="comment"></textarea>
+                    <input type="submit" class="submit-Comment" value="Enviar" />
+                </form>
+            </div>
