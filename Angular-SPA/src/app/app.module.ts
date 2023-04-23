@@ -23,6 +23,8 @@ import { CustomSearchComponent } from './custom-search/custom-search.component';
 import { SearchService } from './services/Search/search.service';
 import { PackInfoComponent } from './pack-info/pack-info.component';
 import { PostComponent } from './post/post.component';
+import { ClientAreaComponent } from './client-area/client-area.component';
+import { FormsMakerComponent } from './forms-maker/forms-maker.component';
 
 
 
@@ -37,6 +39,8 @@ const routes: Routes = [
   { path: 'search', component: CustomSearchComponent },
   { path: 'packInfo', component: PackInfoComponent },
   {path: 'post', component: PostComponent},
+  {path: 'clientArea', component: ClientAreaComponent},
+  {path: 'formsMaker', component: FormsMakerComponent},
   { path: '**', component: ErrorPageComponent } // path de error siempre el último
 ];
 
@@ -55,7 +59,9 @@ const routes: Routes = [
     SignUpComponent,
     CustomSearchComponent,
     PackInfoComponent,
-    PostComponent
+    PostComponent,
+    ClientAreaComponent,
+    FormsMakerComponent
   ],
   imports: [
     BrowserModule,

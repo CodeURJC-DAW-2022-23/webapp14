@@ -15,6 +15,7 @@ export class UsersService {
                 this.http.get('https://localhost:8443/api/users/me', { withCredentials: true }).subscribe(
                     response => {
                         this.user = response as User;
+                        console.log(this.user)
                         this.logged = true;
                     },
                     error => {
@@ -23,7 +24,6 @@ export class UsersService {
                         }
                     }
                 );
-
             }
 
             register(username: string, email: string, pass: string){
@@ -32,30 +32,25 @@ export class UsersService {
                         (response) => console.log("Usuario registrado con éxito"),
                         (error) => alert("Error al registrar el usuario")
                     );
-
             }
 
             logIn(user: string, pass: string) {
-
                 console.log(user);
                 console.log(pass);
                 this.http.post("https://localhost:8443/api/auth/login", { username: user, password: pass }, { withCredentials: true })
                     .subscribe(
-                        (response) => alert("parece que funciona"),
+                        (response) => this.reqIsLogged(),
                         (error) => alert("Wrong credentials")
                     );
-
             }
 
             logOut() {
-
                 return this.http.post('https://localhost:8443/api/auth/logout', { withCredentials: false })
                     .subscribe((resp: any) => {
                         console.log("LOGOUT: Successfully");
                         this.logged = false;
                         this.user = undefined;
                     });
-
             }
 
             isLogged() {
@@ -65,8 +60,6 @@ export class UsersService {
             isAdmin() {
                 return this.user && this.user.roles.indexOf('ADMIN') !== -1;
             }
-
-        
 
             currentUser() {
                 return this.user;

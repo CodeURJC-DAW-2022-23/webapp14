@@ -11,18 +11,18 @@ import { UsersService } from './services/Users/users.service';
 
 
 export class AppComponent {
-  isLogged: boolean = true;
+  isLogged: boolean = false;
 
-  constructor(public router: Router, private userService: UsersService) {
-    // verifica si el usuario está logueado al cargar la aplicación
+  constructor(public router: Router, private userService: UsersService) {}
+
+  // Verifica si el usuario está logueado al inicializar el componente
+  ngOnInit() {
+  this.isLogged = this.userService.isLogged();
+  
+  // Verifica si el usuario está logueado cada X segundos
+  setInterval(() => {
     this.isLogged = this.userService.isLogged();
-    
-    // verifica si el usuario está logueado cada vez que cambia la URL
-    this.router.events.pipe(
-      filter((event: any) => event instanceof NavigationEnd)
-    ).subscribe(() => {
-      this.isLogged = this.userService.isLogged();
-    });
-  }
+  }, 3000); // Cambia el valor "5000" por la cantidad de milisegundos que desees
+}
   
 }

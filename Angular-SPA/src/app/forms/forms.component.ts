@@ -37,5 +37,9 @@ export class FormsComponent {
         this.router.navigate(['post'], { state: { form } });
     }
 
+    onFormMakerClick() {
+        this.router.navigate(['formsMaker']);
+    }
+
 
 }
