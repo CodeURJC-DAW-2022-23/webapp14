@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { Post } from 'src/app/Model/post.model';
 
 @Injectable({
   providedIn: 'root'
@@ -21,12 +22,12 @@ export class PostService {
         return this.http.put(`/api/posts/${idForm}/comment/${idPost}`, post).subscribe();
     }
 
-    makeComment(formId: number, comment: string) {
-    const url = `/api/posts/${formId}`; 
-    const headers = new HttpHeaders().set('Content-Type', 'application/json');
-    const body = JSON.stringify({ comment: comment });
-
-    return this.http.post(url, body, { headers: headers });
+    makeComment(formId: number, post: Post) {
+    const url = `/api/posts/comment/${formId}`; 
+    return this.http.post(url, post).subscribe(
+          (response) => console.log("Form actualizado"),
+          (error) => alert("Error al registrar el post")
+    );
   }
 
 

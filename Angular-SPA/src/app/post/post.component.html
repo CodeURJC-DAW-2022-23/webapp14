@@ -49,7 +49,7 @@
                             </div>
                         </div>
                         <div class="post-metadata">
-                            <div class="post-date text-white">{{post.Date}}</div>
+                            <div class="post-date text-white">{{post.postDate}}</div>
                             <div class="post-author">{{post.postAuthor}}</div>
                         </div>
                     </div>
@@ -57,9 +57,9 @@
             </div>
             <div *ngIf="userLogged" class="mx-auto w-25 mb-2 h-1 bg-gradient-to-r from-blue-500 to-purple-500 roundy"></div>
            <div *ngIf="userLogged" class="container post-reply">
-                <form (ngSubmit)="formComent(form.id, comment)" #commentForm>
+                <form>
                     <label for="comment">Comentario:</label>
                     <textarea class="submit-CommentText" id="comment" name="comment" [(ngModel)]="comment"></textarea>
-                    <input type="submit" class="submit-Comment" value="Enviar" />
+                    <input (click)="formComent(form.id, comment)" type="submit" class="submit-Comment" value="Enviar" />
                 </form>
             </div>

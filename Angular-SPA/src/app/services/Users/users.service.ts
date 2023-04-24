@@ -9,7 +9,9 @@ export class UsersService {
 
                 logged: boolean = false;
                 user?:User
-                constructor(private http: HttpClient) {}
+                constructor(private http: HttpClient) {
+                    this.reqIsLogged();
+                }
 
                 reqIsLogged() {
                 this.http.get('/api/users/me', { withCredentials: true }).subscribe(

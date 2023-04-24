@@ -21,6 +21,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Controller
+@RestController
 public class FormsController {
 
     // Attributes
@@ -110,7 +111,7 @@ public class FormsController {
     }
 
     // Updates the individual posted comment upvote counter and adds 1 when the button is pressed
-    @PostMapping("/post/{id}/upvote/post")
+    @PutMapping("/post/{id}/upvote/post")
     public String postUpvote(@PathVariable("id") Long id, @RequestParam("postId") Long postId, @RequestParam("upvotePost") int up, Model model) {
         Forms forms = formsRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid thread id"));
         Post post = postRepository.findById(postId).orElseThrow(() -> new IllegalArgumentException("Invalid post id"));
