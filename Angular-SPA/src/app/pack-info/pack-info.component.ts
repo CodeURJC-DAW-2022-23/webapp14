@@ -14,7 +14,7 @@ export class PackInfoComponent {
   tagsList: any[] = [];
   tagsNames : String[] = [];
  
-  private readonly DOWNLOAD_PDF_URL = 'https://localhost:8443/download/';
+  private readonly DOWNLOAD_PDF_URL = '/api/pdf/download/';
 
   constructor(private activatedRoute: ActivatedRoute, private tags: TagsService, private http: HttpClient) {}
 

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { PacksService } from '../services/Packs/packs.service';
 import { TagsService } from '../services/Tags/tags.service';
 import { Router } from '@angular/router';
+import { UsersService } from '../services/Users/users.service';
 
 @Component({
   selector: 'app-packs',
@@ -11,7 +12,7 @@ import { Router } from '@angular/router';
 
 
 export class PacksComponent {
-  constructor(private packs: PacksService, private tags: TagsService, private router: Router ){}
+  constructor(private packs: PacksService, private tags: TagsService, private router: Router, private userService: UsersService){}
 
   packsList: any[] = [];
   tagsList: any[] = [];
@@ -49,7 +50,12 @@ export class PacksComponent {
      }
  
      onPackClick(pack: any) {
-        this.router.navigate(['packInfo'], { state: { pack } });
+      if (this.userService.isLogged()){
+          this.router.navigate(['packInfo'], { state: { pack } });
+      } else {
+          this.router.navigate(['login']);
+      }
+        
     }
 
 }
