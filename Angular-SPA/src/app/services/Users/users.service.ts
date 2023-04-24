@@ -12,7 +12,7 @@ export class UsersService {
                 constructor(private http: HttpClient) {}
 
                 reqIsLogged() {
-                this.http.get('https://localhost:8443/api/users/me', { withCredentials: true }).subscribe(
+                this.http.get('/api/users/me', { withCredentials: true }).subscribe(
                     response => {
                         this.user = response as User;
                         console.log(this.user)
@@ -27,7 +27,7 @@ export class UsersService {
             }
 
             register(username: string, email: string, pass: string){
-                this.http.post("https://localhost:8443/api/users/new", { username: username, email: email, password: pass }, { withCredentials: true })
+                this.http.post("/api/users/new", { username: username, email: email, password: pass }, { withCredentials: true })
                     .subscribe(   
                         (response) => console.log("Usuario registrado con éxito"),
                         (error) => alert("Error al registrar el usuario")
@@ -37,7 +37,7 @@ export class UsersService {
             logIn(user: string, pass: string) {
                 console.log(user);
                 console.log(pass);
-                this.http.post("https://localhost:8443/api/auth/login", { username: user, password: pass }, { withCredentials: true })
+                this.http.post("/api/auth/login", { username: user, password: pass }, { withCredentials: true })
                     .subscribe(
                         (response) => this.reqIsLogged(),
                         (error) => alert("Wrong credentials")
@@ -45,7 +45,7 @@ export class UsersService {
             }
 
             logOut() {
-                return this.http.post('https://localhost:8443/api/auth/logout', { withCredentials: false })
+                return this.http.get('/api/auth/logout', { withCredentials: false })
                     .subscribe((resp: any) => {
                         console.log("LOGOUT: Successfully");
                         this.logged = false;

@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { PostService } from '../services/Post/post.service';
+import { UsersService } from '../services/Users/users.service';
 
 @Component({
   selector: 'app-post',
@@ -21,10 +22,17 @@ export class PostComponent {
   '/static/img/Forms-Icons/thunder_icon.svg': '/assets/img/Forms-Icons/thunder_icon.svg'
 };
   
-  constructor(private activatedRoute: ActivatedRoute,  private http: HttpClient, private postService: PostService){}
-
+  constructor(private activatedRoute: ActivatedRoute,  private http: HttpClient, private postService: PostService, private userService: UsersService){}
+  userLogged = false;
   
   ngOnInit() {
+
+    this.userLogged = this.userService.isLogged();
+     // Verifica si el usuario está logueado cada X segundos
+    setInterval(() => {
+      this.userLogged = this.userService.isLogged();
+    }, 100); 
+
     this.form = history.state.form;
     this.posts = this.form.posts;
     console.log(this.form); 

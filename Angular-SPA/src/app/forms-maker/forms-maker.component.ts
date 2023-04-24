@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./forms-maker.component.css']
 })
 export class FormsMakerComponent {
-
+ 
   constructor(private router:Router) { }
 
   formsPicsList:{[key: string]: string} = {
@@ -20,7 +20,4 @@ export class FormsMakerComponent {
   getObjectKeys(obj: any) {
     return Object.keys(obj);
   }
-
-   
-
 }

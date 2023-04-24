@@ -4,8 +4,8 @@
             <div class="mx-auto w-24 h-1 my-40 bg-gradient-to-r from-orange-500 to-pink-500 rounded-full"></div>
         </div>
         <br>
-        <div class="more-packs">
-            <button class="thread-button" expanded="false"><a class="thread-button" (click)="onFormMakerClick()">Crea tu Hilo!</a></button>
+        <div  *ngIf="userLogged" class="more-packs">
+            <button class="thread-button" expanded="false"><a  class="thread-button" (click)="onFormMakerClick()">Crea tu Hilo!</a></button>
         </div>
         <span *ngFor="let form of formsList">
             <div class="container thread-container">

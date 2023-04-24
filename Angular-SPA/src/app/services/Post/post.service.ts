@@ -10,15 +10,19 @@ export class PostService {
       constructor(private http: HttpClient) { }
     
      upvoteForm(id: number, form: any) {
-        return this.http.put(`https://localhost:8443/api/forms/${id}`, form).subscribe();
+      console.log(form);
+         this.http.put(`/api/forms/${id}`, form).subscribe(
+          (response) => console.log("Form actualizado"),
+          (error) => alert("Error al registrar el post")
+         );
     }
 
       upvotePost(idForm: number, idPost:number, post: any ) {
-        return this.http.put(`https://localhost:8443/api/posts/${idForm}/comment/${idPost}`, post).subscribe();
+        return this.http.put(`/api/posts/${idForm}/comment/${idPost}`, post).subscribe();
     }
 
     makeComment(formId: number, comment: string) {
-    const url = `https://localhost:8443/api/posts/${formId}`; // URL completa de la solicitud POST
+    const url = `/api/posts/${formId}`; 
     const headers = new HttpHeaders().set('Content-Type', 'application/json');
     const body = JSON.stringify({ comment: comment });
 

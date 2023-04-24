@@ -55,8 +55,8 @@
                     </div>
                 </div>
             </div>
-            <div class="mx-auto w-25 mb-2 h-1 bg-gradient-to-r from-blue-500 to-purple-500 roundy"></div>
-           <div class="container post-reply">
+            <div *ngIf="userLogged" class="mx-auto w-25 mb-2 h-1 bg-gradient-to-r from-blue-500 to-purple-500 roundy"></div>
+           <div *ngIf="userLogged" class="container post-reply">
                 <form (ngSubmit)="formComent(form.id, comment)" #commentForm>
                     <label for="comment">Comentario:</label>
                     <textarea class="submit-CommentText" id="comment" name="comment" [(ngModel)]="comment"></textarea>

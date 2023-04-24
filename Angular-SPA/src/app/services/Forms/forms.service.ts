@@ -10,7 +10,7 @@ export class FormsService {
       constructor(private http: HttpClient) { }
     
      getForms(): Observable<any[]> {
-        return this.http.get<any[]>('https://localhost:8443/api/forms/');
+        return this.http.get<any[]>('/api/forms/');
     }
 
  }

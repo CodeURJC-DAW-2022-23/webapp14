@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormsService } from '../services/Forms/forms.service';
 import { Router } from '@angular/router';
+import { UsersService } from '../services/Users/users.service';
 
 @Component({
   selector: 'app-forms',
@@ -9,7 +10,7 @@ import { Router } from '@angular/router';
 })
 export class FormsComponent {
 
-  constructor( private forms: FormsService, private router: Router) {}
+  constructor( private forms: FormsService, private router: Router, private userService: UsersService) {}
 
   userLogged: boolean = false;
   formsList: any[] = [];
@@ -22,6 +23,12 @@ export class FormsComponent {
 
 
   ngOnInit(): void {
+    this.userLogged = this.userService.isLogged();
+     // Verifica si el usuario está logueado cada X segundos
+    setInterval(() => {
+      this.userLogged = this.userService.isLogged();
+    }, 100); 
+
     this.forms.getForms().subscribe((data: any) => {
       this.formsList = data;
       console.log(this.formsList);

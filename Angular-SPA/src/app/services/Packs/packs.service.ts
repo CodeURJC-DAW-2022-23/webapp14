@@ -11,7 +11,7 @@ export class PacksService {
       constructor(private http: HttpClient) { }
     
      getPacks(): Observable<any[]> {
-        return this.http.get<any[]>('https://localhost:8443/api/packs/');
+        return this.http.get<any[]>('/api/packs/');
     }
 
  }

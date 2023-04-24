@@ -18,7 +18,7 @@ export class SearchService {
   getSearchPacks(): Observable<any[]> {
     return this.querySubject.asObservable().pipe(
       switchMap(query => {
-        return this.http.get<any[]>('https://localhost:8443/api/search/' + query);
+        return this.http.get<any[]>('/api/search/' + query);
       })
     );
   }

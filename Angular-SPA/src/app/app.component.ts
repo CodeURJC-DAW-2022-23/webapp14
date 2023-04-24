@@ -22,7 +22,7 @@ export class AppComponent {
   // Verifica si el usuario está logueado cada X segundos
   setInterval(() => {
     this.isLogged = this.userService.isLogged();
-  }, 3000); // Cambia el valor "5000" por la cantidad de milisegundos que desees
+  }, 1000); 
 }
   
 }
