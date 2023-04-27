@@ -1,5 +1,5 @@
 export interface Post {
-    id?: number,
+    id: number | null,
     postContent: string;
     postDate: string;
     postAuthor: string,

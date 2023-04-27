@@ -74,6 +74,7 @@ export class PostComponent {
    upvotePost(id: number){
     if (this.userLogged){
     this.form.posts.forEach((post: Post, i: number) => {
+      console.log(i)
       if(post.id == id){
        this.form.posts[i].postUpvotes += 1;
         this.postService.upvotePost(this.form.id, id, post);
@@ -88,6 +89,7 @@ export class PostComponent {
     }
   
     let post: Post = { 
+    id: null,
     postContent: coment,
     postDate: new Date().toLocaleString('es-ES'), // "dd/mm/yyyy" ,
     postAuthor: this.userName,
