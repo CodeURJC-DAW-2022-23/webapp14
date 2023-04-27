@@ -1,9 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { PostService } from '../services/Post/post.service';
 import { UsersService } from '../services/Users/users.service';
 import { Post } from '../Model/post.model';
+import { FormsService } from '../services/Forms/forms.service';
 
 @Component({
   selector: 'app-post',
@@ -13,6 +14,7 @@ import { Post } from '../Model/post.model';
 export class PostComponent {
   form: any;
   posts:any[] = [];
+  formsList:any[] = [];
   comment: string = "";
 
 
@@ -23,7 +25,16 @@ export class PostComponent {
   '/static/img/Forms-Icons/thunder_icon.svg': '/assets/img/Forms-Icons/thunder_icon.svg'
 };
   
-  constructor(private activatedRoute: ActivatedRoute,  private http: HttpClient, private postService: PostService, private userService: UsersService){}
+  constructor(
+    private activatedRoute: ActivatedRoute,  
+    private http: HttpClient, 
+    private forms: FormsService,
+    private postService: PostService, 
+    private userService: UsersService, 
+    private formService: FormsService,
+    private router: Router)
+    {}
+
   userLogged = false;
   user = this.userService.currentUser();
   userName = '';
@@ -38,8 +49,14 @@ export class PostComponent {
     }, 100); 
 
     this.form = history.state.form;
+    console.log(this.form);
     this.posts = this.form.posts;
-    console.log(this.form); 
+    console.log(this.form.posts); 
+    this.forms.getForms().subscribe((data: any) => {
+      this.formsList = data;
+    })
+
+
   }
 
   getObjectKeys(obj: any) {
@@ -66,26 +83,25 @@ export class PostComponent {
   }
 
   formComent(formId: number, coment: string){
-    
     if (this.user?.username){
         this.userName = this.user.username; 
     }
   
-    const post: Post = {
-    id: this.posts.length + 1, // Deberás asignar un valor adecuado a esta propiedad
+    let post: Post = { 
     postContent: coment,
     postDate: new Date().toLocaleString('es-ES'), // "dd/mm/yyyy" ,
     postAuthor: this.userName,
     postUpvotes: 0
   };
 
-    this.posts.push(post);
-    this.form.posts = this.posts;
+   // this.posts.push(post);
     this.comment = '';
+    this.posts.push(post);
 
     this.postService.makeComment(formId, post);
-
+  
   }
+
 
 
 

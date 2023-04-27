@@ -70,12 +70,13 @@ public class RestPostController {
     @ResponseStatus(HttpStatus.CREATED)
     public ResponseEntity<Post> createPost(@RequestBody Post post, @PathVariable long id){
         Optional<Forms> tryForm = formsRepository.findById(id);
+        System.out.println(tryForm);
         if(tryForm.isPresent()){
             Forms form = tryForm.get();
-            LocalDateTime now = LocalDateTime.now();
+            /*LocalDateTime now = LocalDateTime.now();
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy : HH:mm");
             String formattedDate = now.format(formatter);
-            post.setPostDate(formattedDate);
+            post.setPostDate(formattedDate);*/
             form.getPosts().add(post);
             postRepository.save(post);
             formsRepository.save(form);

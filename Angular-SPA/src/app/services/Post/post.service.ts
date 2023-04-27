@@ -22,7 +22,9 @@ export class PostService {
         return this.http.put(`/api/posts/${idForm}/comment/${idPost}`, post).subscribe();
     }
 
-    makeComment(formId: number, post: Post) {
+    makeComment(formId: number, post: any) {
+      console.log(formId)
+      console.log(post)
     const url = `/api/posts/comment/${formId}`; 
     return this.http.post(url, post).subscribe(
           (response) => console.log("Form actualizado"),

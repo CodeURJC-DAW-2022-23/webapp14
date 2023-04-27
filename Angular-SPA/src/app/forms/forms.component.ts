@@ -35,12 +35,14 @@ export class FormsComponent {
     })
   }
 
-  getObjectKeys(obj: any) {
-    return Object.keys(obj);
-  }
-
+    getObjectKeys(obj: any) {
+      return Object.keys(obj);
+    }
 
    onFormClick(form: any) {
+      this.forms.getForms().subscribe((data: any) => {
+        this.formsList = data;
+      })
         this.router.navigate(['post'], { state: { form } });
     }
 

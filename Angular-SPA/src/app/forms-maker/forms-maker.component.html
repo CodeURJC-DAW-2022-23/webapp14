@@ -1,32 +1,35 @@
+<div class="head-text text-center mb-8 mt-20 text-white"></div>
 
-        <div class="head-text text-center mb-8 mt-20 text-white"></div>
-
-        <div class="container post-creator">
-            <h2 class="creation-title text-center text-white">Ingrese la información requerida</h2>
-            <div class="mx-auto w-25 mb-2 h-1 bg-gradient-to-r from-blue-500 to-purple-500 roundy"></div>
-            <form>
-                <input type="hidden" id="selectedImage" name="selectedImage" value="" />
-                <label class="thread-inputText" for="title">Título</label><br />
-                <span id="title-counter"></span>
-                <input class="thread-userInput" type="text" id="title" name="title" oninput="countCharacters(this, 'title-counter', 75)" /><br />
-                <div class="mx-auto w-25 mb-2 h-1 bg-gradient-to-r from-blue-500 to-purple-500 roundy"></div>
-                <label class="thread-inputText" for="image">Imagen del hilo</label><br />
-                <div class="container pic-showcase my-2">
-                    <button id="img-button" type="button" name="selectedImage">Seleccionar imagen</button>
-                    <div id="img-container" class="img-container" *ngFor="let key of getObjectKeys(formsPicsList)">
-                        <img class="thread-imgSelector" src="{{key}}" alt="{{formsPicsList[key]}}" />
-                    </div>
-                </div>
-                <br/><br/>
-                <div class="mx-auto w-25 mb-2 h-1 bg-gradient-to-r from-blue-500 to-purple-500 roundy"></div>
-                <label class="thread-inputText" for="subtitle">Subtítulo:</label><br />
-                <span id="subtitle-counter"></span>
-                <textarea class="thread-userInput" id="subtitle" name="subtitle" rows="2" cols="50" placeholder="Max. 125" oninput="countCharacters(this, 'subtitle-counter', 125)"></textarea><br />
-                <div class="mx-auto w-25 mb-2 h-1 bg-gradient-to-r from-blue-500 to-purple-500 roundy"></div>
-                <label class="thread-inputText" for="description">Descripción:</label><br />
-                <textarea class="thread-userInput" id="description" name="description" rows="5" cols="50"></textarea><br /><br />
-                <input class="post-creatorSubmit" type="submit" value="Publicar" />
-            </form>
+<div class="container post-creator">
+    <h2 class="creation-title text-center text-white">Ingrese la información requerida</h2>
+    <div class="mx-auto w-25 mb-2 h-1 bg-gradient-to-r from-blue-500 to-purple-500 roundy"></div>
+    <form>
+        <input type="hidden" id="selectedImage" name="selectedImage" value="" />
+        <label class="thread-inputText" for="title">Título</label><br />
+        <span id="title-counter"></span>
+        <input class="thread-userInput" type="text" id="title" name="title"  [(ngModel)]="threadTitle"/><br />
+        <div class="mx-auto w-25 mb-2 h-1 bg-gradient-to-r from-blue-500 to-purple-500 roundy"></div>
+        <label class="thread-inputText" for="image">Imagen del hilo</label><br />
+        <div class="container pic-showcase my-2">
+            <div class="dropdown">
+                <select class="btn btn-secondary dropdown-toggle" type="button" id="img-button" data-toggle="dropdown" 
+                    aria-haspopup="true" aria-expanded="false" name = "miselect" [(ngModel)]="imageSelected">
+                    <option hidden disabled selected value="">Seleccione una imagen</option>
+                    <option *ngFor="let image of images" [value]="image">{{image}}</option>
+                </select>
+            </div>
         </div>
+        <br/><br/>
+        <div class="mx-auto w-25 mb-2 h-1 bg-gradient-to-r from-blue-500 to-purple-500 roundy"></div>
+        <label class="thread-inputText" for="subtitle">Subtítulo:</label><br />
+        <span id="subtitle-counter"></span>
+        <textarea class="thread-userInput" id="subtitle" name="subtitle" rows="2" cols="50" placeholder="Max. 125" [(ngModel)]="content_short"></textarea><br />
+        <div class="mx-auto w-25 mb-2 h-1 bg-gradient-to-r from-blue-500 to-purple-500 roundy"></div>
+        <label class="thread-inputText" for="description">Descripción:</label><br />
+        <textarea class="thread-userInput" id="description" name="description" rows="5" cols="50" [(ngModel)]="threadContent"></textarea><br /><br />
+        <input class="post-creatorSubmit" type="submit" value="Publicar" (click)="createForm()" />
+    </form>
+</div>
+
     
-  
+
