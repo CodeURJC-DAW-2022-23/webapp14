@@ -1,50 +1,50 @@
-
-        <div class="head-text text-center mb-8 mt-20 text-white">
-            <h1 class="head-text-content text-5xl mb-1">Cursos</h1>
-            <p class="my-0 text-gray3">asignaturas con materiales disponibles actualmente</p>
-        </div>
-        <div class="mx-auto w-24 h-1 my-40 bg-gradient-to-r from-orange-500 to-pink-500 rounded-full"></div>
-    <main>
-        <div class="container pack-info text-center text-white">
-            <img class="packInfo-img" src="/assets/{{pack.packImage}}" />
-            <section class="p-3">
-                <div class="packInfo-header">
-                    <h3 class="title">{{pack.packTitle_expanded}}</h3>
-                    <div clas="tagArea">
-                          <span *ngFor=" let tag of tagsList">
-                             <span *ngIf="isPackInTag(pack.packTitle, tag)" class="tag {{tag.tagType}}">{{tag.tagName}}</span>
-                          </span>
-                    </div>
-                </div>
-                <div class="mx-auto w-25 mb-2 h-1 bg-gradient-to-r from-blue-500 to-purple-500 roundy"></div>
-            </section>
-            <div class="packInfo-content">
-                <p class="course-information">
-                    {{pack.packDescriptionLong}}
-                </p>
+<div class="head-text text-center mb-8 mt-20 text-white">
+   <h1 class="head-text-content text-5xl mb-1">Cursos</h1>
+   <p class="my-0 text-gray3">asignaturas con materiales disponibles actualmente</p>
+</div>
+<div class="mx-auto w-24 h-1 my-40 bg-gradient-to-r from-orange-500 to-pink-500 rounded-full"></div>
+<main>
+   <div class="container pack-info text-center text-white">
+      <img class="packInfo-img" src="/assets/{{ pack.packImage }}" />
+      <section class="p-3">
+         <div class="packInfo-header">
+            <h3 class="title">{{ pack.packTitle_expanded }}</h3>
+            <div clas="tagArea">
+               <span *ngFor="let tag of tagsList">
+                  <span *ngIf="isPackInTag(pack.packTitle, tag)" class="tag {{ tag.tagType }}">{{ tag.tagName }}</span>
+               </span>
             </div>
-            <div class="mx-auto w-25 mb-2 h-1 bg-gradient-to-r from-blue-500 to-purple-500 roundy"></div>
-            <div class="purchase-area">
-                <span class="price-tag">{{pack.packPrice}}</span>
-                <span class="dollars">💵</span>
-                <div class="button-container">
-                    <form action="/addPack/{{pack.id}}" method="post">
-                        <button type="submit" class="packAdder-button"><span class="buyout"><img class="buyout-logo" src="/assets/img/Loaders/purchase.svg" type="image/svg+xml"/></span></button>
-                    </form>
-                </div>
-            </div>
-            <div class="mx-auto w-25 mb-2 h-1 bg-gradient-to-r from-blue-500 to-purple-500 roundy"></div>
-            <div class="download-files">
-                <span class="price-tag">Contenido Descargable</span>
-                <span class="dollars">
-                    <a (click)="downloadPdf(pack.id)" id="download-link">
-                        <span class="dollars">📁</span>
-                    </a>
-                </span>
-                <div class="button-container">
-                    <span class="buyout"><object class="buyout-logo" data="" type="image/svg+xml"></object></span>
-                </div>
-            </div>
-        </div>
-    </main>
-   
+         </div>
+         <div class="mx-auto w-25 mb-2 h-1 bg-gradient-to-r from-blue-500 to-purple-500 roundy"></div>
+      </section>
+      <div class="packInfo-content">
+         <p class="course-information">
+            {{ pack.packDescriptionLong }}
+         </p>
+      </div>
+      <div class="mx-auto w-25 mb-2 h-1 bg-gradient-to-r from-blue-500 to-purple-500 roundy"></div>
+      <div class="purchase-area">
+         <span class="price-tag">{{ pack.packPrice }}</span>
+         <span class="dollars">💵</span>
+         <div class="button-container">
+            <form (ngSubmit)="addPack(pack)">
+               <button type="submit" class="packAdder-button">
+                  <span class="buyout"><img class="buyout-logo" src="/assets/img/Loaders/purchase.svg" type="image/svg+xml" /></span>
+               </button>
+            </form>
+         </div>
+      </div>
+      <div class="mx-auto w-25 mb-2 h-1 bg-gradient-to-r from-blue-500 to-purple-500 roundy"></div>
+      <div class="download-files">
+         <span class="price-tag">Contenido Descargable</span>
+         <span class="dollars">
+            <a (click)="downloadPdf(pack.id)" id="download-link">
+               <span class="dollars">📁</span>
+            </a>
+         </span>
+         <div class="button-container">
+            <span class="buyout"><object class="buyout-logo" data="" type="image/svg+xml"></object></span>
+         </div>
+      </div>
+   </div>
+</main>
