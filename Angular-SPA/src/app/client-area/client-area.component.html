@@ -1,1 +1,78 @@
-<p>client-area works!</p>
+<!-- This is the client area component, it is the component that is shown when the user is logged in. -->
+<div class="head-text text-center mb-8 mt-20 text-white">
+   <h1 class="head-text-content text-5xl mb-1">AREA PERSONAL</h1>
+   <div class="mx-auto w-24 h-1 my-40 bg-gradient-to-r from-orange-500 to-pink-500 rounded-full"></div>
+</div>
+<div class="container page-elements my-3">
+   <article class="profile-container my-1">
+      <div class="section-title">Datos e Imagen de Perfil</div>
+      <div class="mx-auto w-25 h-1 my-40 bg-gradient-to-r from-blue-500 to-purple-500 roundier"></div>
+      <div class="profile-placeholder">PERFIL</div>
+      <div class="profile-elements">
+         <div class="profile-pic">
+            <img class="profile-img" src="{{ image }}" />
+         </div>
+         <div class="profile-name">
+            <div class="user-name">{{ username }}</div>
+         </div>
+      </div>
+      <br />
+      <form class="form-inline" (submit)="onSubmit()">
+         <div class="form-group" style="margin-right: 10px">
+            <label for="image" class="btn btn-primary">Selecciona una imagen</label>
+            <input type="file" hidden class="form-control-file btn btn-primary" id="image" name="image" accept="image/*" (change)="handleFileInput($event)" />
+         </div>
+         <button type="submit" class="btn btn-primary" style="margin-left: 10px">Cargar imagen</button>
+      </form>
+   </article>
+</div>
+<div class="container page-elements my-3" *ngIf="!isAdmin">
+   <article class="profile-container my-1">
+      <div class="section-title">Mis Cursos!</div>
+      <div class="mx-auto w-25 h-1 my-40 bg-gradient-to-r from-blue-500 to-purple-500 roundier"></div>
+      <div class="pack-elements" *ngFor="let pack of packsList">
+         <article class="packId-container my-2" style="text-decoration: none">
+            <a class="pack-Linker" (click)="onPackClick(pack)">
+               <div class="packId-header">
+                  <div class="packId-info">
+                     <div class="packId-title">{{ pack.packTitle }}</div>
+                     <div class="packId-content">{{ pack.packDescription_short }}</div>
+                  </div>
+               </div>
+               <div class="tag" *ngFor="let tag of tagsList">
+                  <span *ngIf="isPackInTag(pack.packTitle, tag)" class="tag {{ tag.tagType }}">{{ tag.tagName }}</span>
+               </div>
+            </a>
+         </article>
+      </div>
+   </article>
+</div>
+<div class="container page-elements my-3" *ngIf="isAdmin">
+   <article class="profile-container my-1">
+      <div class="section-title">Hilos de usuarios</div>
+      <div class="mx-auto w-25 h-1 my-40 bg-gradient-to-r from-blue-500 to-purple-500 roundier"></div>
+      <div class="pack-elements" *ngFor="let thread of formsList">
+         <a class="thread-Deleter" (click)="deleteForm(thread.id)">
+            <article class="packId-container Deleter my-2">
+               <div class="packId-header">
+                  <div class="packId-logoAdmin" *ngFor="let key of getObjectKeys(imagesObject)">
+                     <span *ngIf="thread.threadImage == key">
+                        <img class="packId-svglogoAdmin" src="{{ imagesObject[key] }}" type="image/svg+xml" />
+                     </span>
+                  </div>
+                  <div class="packId-info">
+                     <div class="packId-title">{{ thread.threadTitle }}</div>
+                     <div class="packId-content">{{ thread.threadContent_short }}</div>
+                     <div class="packId-title">Contenido extendido</div>
+                     <div class="packId-content">{{ thread.threadContent }}</div>
+                  </div>
+               </div>
+               <div class="tag-section">
+                  <span class="tag tag-programming">{{ thread.threadDate }}</span>
+                  <span class="tag tag-programming">{{ thread.threadAuthor }}</span>
+               </div>
+            </article>
+         </a>
+      </div>
+   </article>
+</div>
