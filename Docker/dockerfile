@@ -9,7 +9,7 @@ FROM maven:3.6.3-openjdk-17 as builder
 WORKDIR /project
 COPY Backend/UniHub/pom.xml /project/
 COPY Backend/UniHub/src /project/src
-COPY --from=angular /code/dist/frontend /project/src/main/resources/static/new
+COPY --from=angular /code/dist /project/src/main/resources/static/new
 RUN mvn package
 
 FROM openjdk:17

@@ -4,7 +4,7 @@ services:
     image: mysql:8.0
     restart: always
     environment:
-      - MYSQL_ROOT_PASSWORD=YWhE3=58Yj3az#BP
+      - MYSQL_ROOT_PASSWORD=password
       - MYSQL_DATABASE=unihub
       - MYSQL_TCP_PORT=3307
     ports:
@@ -21,5 +21,7 @@ services:
     environment:
       - SPRING_DATASOURCE_URL=jdbc:mysql://mysqldb:3307/unihub
       - SPRING_DATASOURCE_USERNAME=root
-      - SPRING_DATASOURCE_PASSWORD=YWhE3=58Yj3az#BP
+      - SPRING_DATASOURCE_PASSWORD=password
       - SPRING_JPA_HIBERNATE_DDL_AUTO=create-drop
+
+
