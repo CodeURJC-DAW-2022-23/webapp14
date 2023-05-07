@@ -9,7 +9,7 @@ RUN npm run build -- --configuration production --base-href=/new/
 FROM maven:3.6.3-openjdk-17 as builder
 COPY Backend/UniHub/src/ /usr/src/app/src
 COPY Backend/UniHub/pom.xml /usr/src/app
-COPY --from=angular /code/dist/ /project/src/main/resources/static/new
+COPY --from=angular /code/dist/angular-spa /project/src/main/resources/static/new
 WORKDIR /usr/src/app
 RUN mvn package -DskipTests=true
 
