@@ -142,6 +142,8 @@ En cuanto al diagrama de clases y templates se puede visualizar en la siguiente 
 
 Añadiendo a estos diagramas tenemos los diagramas de la parte relacionada con Angular, por ello tenemos:
 
+![image](https://user-images.githubusercontent.com/63263060/236704857-edbe7f7d-87ad-4e4d-a9fa-3f9574c473af.png)
+
 ---
 
 > _La solución para todo lo necesario en el aula_
