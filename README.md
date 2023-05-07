@@ -1,8 +1,6 @@
-# Fase 3
+# Fase 4
 
-En esta fase hemos llevado a cabo la implementación de una API REST, donde mediante el uso de la herramienta Postman podemos realizar las operaciones de nuestra web gracias a esta API. Tenemos la implementación de todas las consultas, desde las personalizadas a las más comunes, incluyendo eliminaciones de foros, de packs, etc.
-
-Para poder llevar a cabo un despliegue de esta aplicación y que su ejecución pueda ser realizada en cualquier entorno de desarrollo hemos usado Docker, donde con un Dockerfile y un archivo .yml que usa Docker Compose, creamos dos imágenes (una para la base de datos y otra para la aplicación) logramos generar un contenedor para nuestra aplicación.
+En esta fase hemos llevado a cabo la migración para que sea una verdadera SPA gracias al uso de Angular. Por lo que los mayores cambios vienen en el diagrama que nos relaciona los nuevos componentes que hemos creado.
 
 En cuanto a los miembros del grupo, su participación y commits significativos y partiendo de la base de que todos conocemos el funcionamiento de los apartados que no se mencionan en nuestros commits significativos:
 
@@ -10,13 +8,13 @@ En cuanto a los miembros del grupo, su participación y commits significativos y
 
 ##### Participación y Contribución
 
-Entre mis contribuciones destacaría la de llevar a cabo numerosas implementaciones de consultas para la API REST y gestionar la creación de ficheros y correcta funcionalidad del proceso de creación de contenedores Docker. Aquí dejo mis 5 commits más relevantes de esta fase:
+Entre mis contribuciones destacaría la de control de errores en los estilos de la migración en los componentes de Angular así como la revisión, creación y actualización del apartado de Client Area, formsService y userService:
 
-1. https://github.com/CodeURJC-DAW-2022-23/webapp14/commit/a800897c1f5272934f3de17340dcd56d8037c64f
-2. https://github.com/CodeURJC-DAW-2022-23/webapp14/commit/294435b45df4add2288d2f9dad076b86f249ff6f
-3. https://github.com/CodeURJC-DAW-2022-23/webapp14/commit/3aaa6f4802ea6e73586fcbc74808fefe2754967b
-4. https://github.com/CodeURJC-DAW-2022-23/webapp14/commit/867b49cac03e8d883fc02a85f8bc8cffc99d386d
-5. https://github.com/CodeURJC-DAW-2022-23/webapp14/commit/4a03cced2282cc8909fe97cb9a857cc8209035bc
+1. https://github.com/CodeURJC-DAW-2022-23/webapp14/commit/0bcdfc72e824557a093b6d45a9fbf92bfce87d68
+2. https://github.com/CodeURJC-DAW-2022-23/webapp14/commit/f1d69481e58cfbbdddcd0cfa49a26a7c430e5045
+3. https://github.com/CodeURJC-DAW-2022-23/webapp14/commit/3dfd9f8d5366d3dc75a40896f823101137fd2057
+4. https://github.com/CodeURJC-DAW-2022-23/webapp14/commit/76c0ac41f33de800bfada4f9bccee9d1028054aa
+5. https://github.com/CodeURJC-DAW-2022-23/webapp14/commit/a647f242298d60bec6dae7f045fee65b7fd5102e
 
 ---
 
@@ -24,13 +22,13 @@ Entre mis contribuciones destacaría la de llevar a cabo numerosas implementacio
 
 ##### Participación y Contribución
 
-Entre mis contribuciones destacaría la parte correspondiente a la seguridad de la aplicación web con Spring Boot Security, la implementación de la tecnología extra correspondiente al envío de un correo electrónico de confirmación de registro para el usuario, la funcionalidad de descarga de un pdf con los materiales del curso seleccionado, la carga de imágenes del usuario para poder modificar su avatar dentro del area cliente.También he participado activamente en el desarrollo de la mayoría de los archivos del frontend para crear una interfaz de usuario atractiva y fácil de usar. Mis commits más significativos son:
+Entre mis contribuciones destacaría la parte correspondiente a la creación de las bases para desarrollar todas las futuras componentes de Angular, así como desarrollar e implementar Foro, Packs y Login entre otras clases así como crear los servicios necesarios:
 
-1. https://github.com/CodeURJC-DAW-2022-23/webapp14/commit/cf1b733eb3eb4c794b1e7ec28add742601a5e3a9
-2. https://github.com/CodeURJC-DAW-2022-23/webapp14/commit/7477ff440fc34006f82191fc190819aa53d378ba
-3. https://github.com/CodeURJC-DAW-2022-23/webapp14/commit/318c1cf44b35b3f410d4b26fb31de95393609654#diff-c18ee21c2ccb2e35368ec10eb2351b79349dee5df6ab59142e8a4e0f3c0d651e
-4. https://github.com/CodeURJC-DAW-2022-23/webapp14/commit/8b0945d5b7d32d0399e015ecf6b699a2e222c05b
-5. https://github.com/CodeURJC-DAW-2022-23/webapp14/commit/ec8bf2605608f3653df6be9ed9ce3932c93b24a3
+1. https://github.com/CodeURJC-DAW-2022-23/webapp14/commit/eab1bc5bb666c6ac9964c695401cca16c0c5b662
+2. https://github.com/CodeURJC-DAW-2022-23/webapp14/commit/cb0314021e2dd463bfbe74722056dd4aa18ae323
+3. https://github.com/CodeURJC-DAW-2022-23/webapp14/commit/e0570365f25ee8016dc2ce7d8a7b9155c93dd4a2
+4. https://github.com/CodeURJC-DAW-2022-23/webapp14/commit/99ec4ae8da9d2bdbd061947c6f2525beaea5724e
+5. https://github.com/CodeURJC-DAW-2022-23/webapp14/commit/1ea3abf0d403cdb4b0ff8c596a37fb51a7a7cee1
 
 ---
 
@@ -119,7 +117,7 @@ La navegación por nuestra web queda definida con los roles de cada usuario medi
 
 ##### Video Demo
 
-Video demo mostrando el comportamiento y funcionalidad de la aplicación web
+Video demo mostrando el comportamiento y funcionalidad de la aplicación web actualizada con la funcionalidad de Angular!
 [![UniHub](https://youtu.be/KWRKlhbISiY)](https://youtu.be/KWRKlhbISiY)
 
 ---
@@ -141,6 +139,8 @@ En este caso los diagramas han cambiado debido a la implementación de varios ar
 En cuanto al diagrama de clases y templates se puede visualizar en la siguiente imagen:
 
 ![WhatsApp Image 2023-03-10 at 14 03 31](https://user-images.githubusercontent.com/79569564/224545059-0acd15ed-ccff-4468-bec5-1b082a763e51.jpeg)
+
+Añadiendo a estos diagramas tenemos los diagramas de la parte relacionada con Angular, por ello tenemos:
 
 ---
 
