@@ -5,9 +5,9 @@ services:
       ports:
         - "8443:8443"
       environment:
-        - SPRING_DATASOURCE_URL=jdbc:mysql://mysqldb:3307/unihub
+        - SPRING_DATASOURCE_URL=jdbc:mysql://db:3306/unihub
         - SPRING_DATASOURCE_USERNAME=root
-        - SPRING_DATASOURCE_PASSWORD=YWhE3=58Yj3az#BP
+        - SPRING_DATASOURCE_PASSWORD=password
         - SPRING_JPA_HIBERNATE_DDL_AUTO=create-drop
       depends_on:
         - db
@@ -16,8 +16,8 @@ services:
       image: mysql:8.0
       container_name: db
       environment:
-        - MYSQL_ROOT_PASSWORD=YWhE3=58Yj3az#BP
-        - MYSQL_DATABASE=unihub
+         MYSQL_ROOT_PASSWORD: password
+         MYSQL_DATABASE: unihub
       ports:
         - "3307:3306"
     
