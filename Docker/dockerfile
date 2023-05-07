@@ -7,15 +7,15 @@ RUN npm run build -- --configuration production --base-href=/new/
 
 
 FROM maven:3.6.3-openjdk-17 as builder
-COPY Backend/UniHub/src/ /usr/src/app/src
-COPY Backend/UniHub/pom.xml /usr/src/app
+COPY Backend/UniHub/src /project/src
+COPY Backend/UniHub/pom.xml /project/
 COPY --from=angular /code/dist/angular-spa /project/src/main/resources/static/new
-WORKDIR /usr/src/app
+WORKDIR /project
 RUN mvn package -DskipTests=true
 
 FROM openjdk:17
-COPY --from=builder /usr/src/app/target/UniHub-0.0.1-SNAPSHOT.jar /usr/src/
-WORKDIR /usr/src
+COPY --from=builder /project/target/*.jar /usr/src/app/
+WORKDIR /usr/src/app/
 EXPOSE 8443
 CMD ["java","-jar","UniHub-0.0.1-SNAPSHOT.jar"]
 
