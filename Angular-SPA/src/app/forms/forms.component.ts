@@ -15,12 +15,11 @@ export class FormsComponent {
   userLogged: boolean = false;
   formsList: any[] = [];
   imagesObject:{[key: string]: string} = {
-  '/static/img/Forms-Icons/code.svg': '/assets/img/Forms-Icons/code.svg',
-  '/static/img/Forms-Icons/ballings.svg': '/assets/img/Forms-Icons/ballings.svg',
-  '/static/img/Forms-Icons/statistics.svg': '/assets/img/Forms-Icons/statistics.svg',
-  '/static/img/Forms-Icons/thunder_icon.svg': '/assets/img/Forms-Icons/thunder_icon.svg'
+  '/static/img/Forms-Icons/code.svg': 'assets/img/Forms-Icons/code.svg',
+  '/static/img/Forms-Icons/ballings.svg': 'assets/img/Forms-Icons/ballings.svg',
+  '/static/img/Forms-Icons/statistics.svg': 'assets/img/Forms-Icons/statistics.svg',
+  '/static/img/Forms-Icons/thunder_icon.svg': 'assets/img/Forms-Icons/thunder_icon.svg'
 };
-
 
   ngOnInit(): void {
     this.userLogged = this.userService.isLogged();

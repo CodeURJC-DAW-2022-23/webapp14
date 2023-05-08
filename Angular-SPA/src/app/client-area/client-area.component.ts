@@ -25,10 +25,10 @@ export class ClientAreaComponent {
    sendImage: File | null = null
 
    imagesObject: {[key: string]: string} = {
-      '/static/img/Forms-Icons/code.svg': '/assets/img/Forms-Icons/code.svg',
-      '/static/img/Forms-Icons/ballings.svg': '/assets/img/Forms-Icons/ballings.svg',
-      '/static/img/Forms-Icons/statistics.svg': '/assets/img/Forms-Icons/statistics.svg',
-      '/static/img/Forms-Icons/thunder_icon.svg': '/assets/img/Forms-Icons/thunder_icon.svg',
+      '/static/img/Forms-Icons/code.svg': 'assets/img/Forms-Icons/code.svg',
+      '/static/img/Forms-Icons/ballings.svg': 'assets/img/Forms-Icons/ballings.svg',
+      '/static/img/Forms-Icons/statistics.svg': 'assets/img/Forms-Icons/statistics.svg',
+      '/static/img/Forms-Icons/thunder_icon.svg': 'assets/img/Forms-Icons/thunder_icon.svg',
    }
 
    constructor(private clientService: ClientService, private forms: FormsService, private userService: UsersService, private http: HttpClient, private router: Router) {}
@@ -120,7 +120,7 @@ export class ClientAreaComponent {
             }
             reader.readAsArrayBuffer(data)
          } else {
-            this.image = '/assets/img/Profile-Pics/profile_img.png'
+            this.image = 'assets/img/Profile-Pics/profile_img.png'
          }
       })
    }

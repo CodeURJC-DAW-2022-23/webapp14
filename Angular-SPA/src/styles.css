@@ -1,12 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
 @font-face {
    font-family: 'myFont-Titles';
-   src: url(/assets/Fonts/panton-rust-black-base.ttf) format('truetype');
+   src: url(/new/assets/fonts/panton-rust-black-base.ttf) format('truetype');
 }
 
 @font-face {
    font-family: 'myFont-Texts';
-   src: url(/assets/Fonts/rothek-extralight.ttf) format('truetype');
+   src: url(/new/assets/fonts/rothek-extralight.ttf) format('truetype');
 }
 
 /*Styles for the background gradient animation*/
