@@ -1,0 +1,129 @@
+.container {
+   width: 100%;
+   margin: 0 auto;
+}
+
+.my-20 {
+   margin-top: 20px;
+   margin-bottom: 20px;
+}
+
+.d-flex {
+   display: flex;
+}
+
+.align-items-center {
+   align-items: center;
+}
+
+.text-center {
+   text-align: center;
+   color: rgb(206, 202, 202);
+}
+
+.row {
+   padding-top: 10px;
+}
+
+/* Heading styles */
+.text-6xl {
+   font-size: 6rem;
+}
+
+.text-2xl {
+   font-size: 2rem;
+}
+
+
+/* Text color styles */
+.text-gray-700 {
+   padding-top: 50px;
+   color: #333;
+   text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #0ff, 0 0 30px #0ff, 0 0 40px #0ff;
+}
+
+.text-primary {
+   color: rgb(57, 57, 248);
+}
+
+.text-yellow-500 {
+   color: rgb(168, 168, 10);
+}
+
+.text-pink-500 {
+   color: rgb(180, 75, 93);
+}
+
+/* Button styles */
+.btn {
+   transform: translateY(0);
+   transition: transform 0.2s;
+   margin-top: 100px;
+   padding: 10px 20px;
+   border-radius: 10px;
+   font-weight: bold;
+   text-transform: uppercase;
+}
+
+#information {
+   transform: translateY(0);
+   transition: transform 500ms;
+   color: #353433;
+   font-weight: bold;
+   font-family: 'myFont-Texts', sans-serif;
+   font-size: 25px;
+   line-height: 1.5;
+   text-align: justify center;
+   font-weight: 900;
+   text-shadow: -0.3px -0.3px 0 #000, 0.3px -0.3px 0 #000, -0.3px 0.3px 0 #000, 0.3px 0.3px 0 #000;
+   padding: 25px;
+   background-image: linear-gradient(rgba(55, 255, 188, 0.959), rgb(174, 0, 255));
+   border-radius: 10px;
+   box-shadow: 0 0 20px 15px rgb(91, 254, 189);
+}
+
+#information:hover {
+   transform: translateY(-30px);
+}
+
+#emoji {
+   padding: 5px;
+   animation: bounce 2s infinite;
+}
+
+/*Animation styles function*/
+@keyframes bounce {
+   0%,
+   20%,
+   50%,
+   80%,
+   100% {
+      transform: translateY(0);
+   }
+
+   40% {
+      transform: translateY(-30px);
+   }
+
+   60% {
+      transform: translateY(-15px);
+   }
+}
+
+.btn:hover {
+   transform: translateY(-10px);
+   background: linear-gradient(to right, #211f1c, #73ffd6);
+}
+
+.btn-primary {
+   background-color: rgb(69, 0, 133);
+   color: rgb(255, 255, 255);
+}
+
+#secondContainer {
+   margin-top: 100px;
+}
+
+#information {
+   margin-top: 75px;
+}

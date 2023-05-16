@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.security.Principal;
 
 @RestController
 @RequestMapping("/api/auth")
@@ -39,6 +40,7 @@ public class RestLoginController {
             @CookieValue(name = "AuthToken", required = false) String accessToken,
             @CookieValue(name = "RefreshToken", required = false) String refreshToken,
             @RequestBody LoginRequest loginRequest){
+
         return userLoginService.login(loginRequest, accessToken, refreshToken);
 
     }

@@ -1,0 +1,51 @@
+<div class="head-text text-center mb-8 mt-20 text-white">
+    <h1 class="head-text-content text-5xl mb-1">Cursos</h1>
+    <p class="my-0 text-gray3">asignaturas con materiales disponibles actualmente</p>
+</div>
+
+<div class="mx-auto w-24 h-1 my-40 bg-gradient-to-r from-orange-500 to-pink-500 rounded-full"></div>
+
+<div class="more-packs">
+    <button class="load-more-btn" id="load-more-btn" (click)="showMorePacks()">+</button>
+</div>
+<div class="more-packs">
+    <button class="load-more-btn" id="load-more-btn" (click)="showLessPacks()">-</button>
+</div>
+
+<section>
+    <div class="container-fluid">
+        <div class="product-row no-gutters" id="packContent">
+            <div class="product-column col-sm-6 col-md-3 col-lg-3" *ngFor="let pack of packsList.slice(0, numPacksToShow)">
+                <a class="packInfo-link" (click)="onPackClick(pack)">
+                    <img src="assets/{{pack.packImage}}" />
+                    <section class="p-3">
+                        <h3>{{pack.packTitle}}</h3>
+                        <p>{{pack.packDescription_short}}</p>
+                        <span *ngFor=" let tag of tagsList">
+                            <span *ngIf="isPackInTag(pack.packTitle, tag)" class="tag {{tag.tagType}}">{{tag.tagName}}</span>
+                        </span>
+                    </section>
+                  </a>
+            </div>
+            <div class="container-fluid" *ngIf="numPacksToShow < packsList.length">
+                <div class="product-row no-gutters">
+                    <div class="product-column col-sm-6 col-md-3 col-lg-3" *ngFor="let pack of packsList.slice(numPacksToShow, numPacksToShow+4)">
+                      <div>
+                          <a class="packInfo-link"  (click)="onPackClick(pack)">
+                              <img src="assets/{{pack.packImage}}" />
+                              <section class="p-3">
+                                  <h3>{{pack.packTitle}}</h3>
+                                  <p>{{pack.packDescription_short}}</p>
+                                  <span *ngFor=" let tag of tagsList">
+                                      <span *ngIf="isPackInTag(pack.packTitle, tag)" class="tag {{tag.tagType}}">{{tag.tagName}}</span>
+                                  </span>
+                              </section>
+                          </a>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</section>

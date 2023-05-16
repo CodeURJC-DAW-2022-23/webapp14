@@ -21,7 +21,7 @@ public class EmailService {
     // Method that sends an email to a designated subject and with a predefined content
     public void sendEmail(String to, String subject, String content) {
         SimpleMailMessage email = new SimpleMailMessage();
-        email.setFrom("unihubcontacturjc@gmail.com");
+        email.setFrom("unihub636@gmail.com");
         email.setTo(to);
         email.setSubject(subject);
         email.setText(content);

@@ -1,0 +1,14 @@
+
+
+body {
+            margin-top: 27rem;
+            transition: 500ms;
+            font-family: 'myFont-Titles', sans-serif;
+            background-size: 1000% 1000%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .text-white {
+            color: #fff !important;
+        }

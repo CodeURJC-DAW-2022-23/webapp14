@@ -1,0 +1,31 @@
+
+<header id="headerContent">
+   <a class="navbar-brand mr-5" routerLink='/'><img src="assets/img/Brand-Icon/brand.png" width="65" height="65" /></a>
+
+   <nav class="navbar navbar-expand-lg">
+      <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+         <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+            <li class="nav-item">
+               <a class="nav-link" routerLink="/packs">Packs🔥</a>
+            </li>
+            <li class="nav-item">
+               <a class="nav-link" routerLink="/forms">Foro📝</a>
+            </li>
+            <li class="nav-item">
+               <a class="nav-link" routerLink="/surveys">Encuestas👍</a>
+            </li>
+         </ul>
+         <form class="form-inline my-2 my-lg-0" (submit)="onSearchSubmit(searchInput)">
+            <input #searchInput class="form-control mr-sm-2" type="search" name="query" placeholder="Search" aria-label="Search" />
+            <button (click)="onSearchSubmit(searchInput)" class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            <a class="nav-link text-white ml-5" routerLink="/login">LOG IN&#x2705;</a>
+         </form>
+      </div>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+         <span class="navbar-toggler-icon">
+            <img src="assets/img/Loaders/DeployMore.svg" width="65" height="65" />
+         </span>
+      </button>
+   </nav>
+</header>
+
