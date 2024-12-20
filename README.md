@@ -4,7 +4,7 @@ En esta fase hemos llevado a cabo la migración para que sea una verdadera SPA g
 
 En cuanto a los miembros del grupo, su participación y commits significativos y partiendo de la base de que todos conocemos el funcionamiento de los apartados que no se mencionan en nuestros commits significativos:
 
--  Alberto García Sroda
+-Alber
 
 ##### Participación y Contribución
 
